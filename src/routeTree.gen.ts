@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EventsSlugRouteImport } from './routes/events.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -58,26 +59,33 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EventsSlugRoute = EventsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => EventsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/calendar': typeof CalendarRoute
   '/contact': typeof ContactRoute
-  '/events': typeof EventsRoute
+  '/events': typeof EventsRouteWithChildren
   '/gallery': typeof GalleryRoute
   '/products': typeof ProductsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/events/$slug': typeof EventsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/calendar': typeof CalendarRoute
   '/contact': typeof ContactRoute
-  '/events': typeof EventsRoute
+  '/events': typeof EventsRouteWithChildren
   '/gallery': typeof GalleryRoute
   '/products': typeof ProductsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/events/$slug': typeof EventsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -85,10 +93,11 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/calendar': typeof CalendarRoute
   '/contact': typeof ContactRoute
-  '/events': typeof EventsRoute
+  '/events': typeof EventsRouteWithChildren
   '/gallery': typeof GalleryRoute
   '/products': typeof ProductsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/events/$slug': typeof EventsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/products'
     | '/sitemap.xml'
+    | '/events/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/products'
     | '/sitemap.xml'
+    | '/events/$slug'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/products'
     | '/sitemap.xml'
+    | '/events/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -128,7 +140,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CalendarRoute: typeof CalendarRoute
   ContactRoute: typeof ContactRoute
-  EventsRoute: typeof EventsRoute
+  EventsRoute: typeof EventsRouteWithChildren
   GalleryRoute: typeof GalleryRoute
   ProductsRoute: typeof ProductsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -192,15 +204,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/events/$slug': {
+      id: '/events/$slug'
+      path: '/$slug'
+      fullPath: '/events/$slug'
+      preLoaderRoute: typeof EventsSlugRouteImport
+      parentRoute: typeof EventsRoute
+    }
   }
 }
+
+interface EventsRouteChildren {
+  EventsSlugRoute: typeof EventsSlugRoute
+}
+
+const EventsRouteChildren: EventsRouteChildren = {
+  EventsSlugRoute: EventsSlugRoute,
+}
+
+const EventsRouteWithChildren =
+  EventsRoute._addFileChildren(EventsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CalendarRoute: CalendarRoute,
   ContactRoute: ContactRoute,
-  EventsRoute: EventsRoute,
+  EventsRoute: EventsRouteWithChildren,
   GalleryRoute: GalleryRoute,
   ProductsRoute: ProductsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
