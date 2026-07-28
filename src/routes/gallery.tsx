@@ -1,136 +1,251 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
+import { z } from "zod";
+import { fallback, zodValidator } from "@tanstack/zod-adapter";
+import {
+  AVAILABLE_YEARS,
+  EVENT_META,
+  filterMedia,
+  MEDIA,
+  type EventSlug,
+} from "@/lib/media";
+import { Lightbox } from "@/components/Lightbox";
+
+const searchSchema = z.object({
+  event: fallback(z.string(), "all").default("all"),
+  year: fallback(z.string(), "all").default("all"),
+  type: fallback(z.string(), "all").default("all"),
+});
 
 export const Route = createFileRoute("/gallery")({
+  validateSearch: zodValidator(searchSchema),
   head: () => ({
     meta: [
       { title: "Gallery | WWU VSA" },
-      { name: "description", content: "A visual journey through WWU VSA heritage, community, and shared memories at Western Washington University." },
+      { name: "description", content: "The full WWU VSA media archive — filter by event, year, and media type." },
       { property: "og:title", content: "Gallery | WWU VSA" },
-      { property: "og:description", content: "Captured moments from Heritage Night, Tết Festival, ACCE socials, and workshops." },
+      { property: "og:description", content: "Photos and videos from Heritage Night, Tết, Turkey Bowl, SpikeFest, meetings, and more." },
     ],
   }),
   component: GalleryPage,
 });
 
-const HERO = "https://lh3.googleusercontent.com/aida-public/AB6AXuDfX911ngX4FrCv5JghJ27a1rR4XAMci5E2xAuheVNRT58WnLBida3BSK3-icM9g-cpRMH_kqCpXfgH5D-O7MFu1BXbIV10ey6VBwEfun6S9PpUC09u5kTclw7yLzrTsjt1-DZpV4rH297nf8eGUgpN0JYbyWE1kDSfgdy4EaV8-APYwqx41dPLr_j7713bN53Ce0hXj34NVgfbNNT8k37HaFTlOJL8z69QpLFF28IOLz4gLvqxsv-zoFvjNTBLU9y7kORQIXVWC9s2";
-const FEAT1 = "https://lh3.googleusercontent.com/aida-public/AB6AXuAoVvnWTwHymFaPGud3yjPNzr9LjOz0_xtZpEEe1IwDNfz0KDAjZrkBYHLA9MgC0qCTwfWlr0AoJSzkPNVLc7SBGvTrC0ExneW0-lYtdHJKT9ksPekf7oW0-JZ7KZyFE7MaIJ9K0xwvYMKHQXdLnE7oiKWvbhca2eRXeQ5N1xUKLbirZhX3tmv_bwzzJrnv8E0shtbyx0fbxUIjZ6nralVEfFFn9yHiNZgcuP1XGU51u5NlVBJSIy7GFsGW1KVKCYQwdYt6i1xFC9hd";
-const FEAT2 = "https://lh3.googleusercontent.com/aida-public/AB6AXuDBSCz0w9mRjH5ga5kiObTs4A2oOBYS16rrvyE5IgR6htUTznOMHQ1VnwGa4ZDGpXTgBIm5i9-Bs4jeP8f7xQI5WIEIJwvja4OCNl1uICToVM43DJDo9O8HPCOs_F7tPNkjd7mqpvP71eHWTzyFnvxBIzPv3tCW9jPS8IXAbZM7U0zRGKfN8_5A7JWkiXOXEyddF3qedXH_4xLQV8oqV9ybBdrpSdKlZ7Rfd5F83jrzA7ms7lxNzEd-8GIMWtA2xC9cbotVmAIvvTNT";
+const HERO =
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuDfX911ngX4FrCv5JghJ27a1rR4XAMci5E2xAuheVNRT58WnLBida3BSK3-icM9g-cpRMH_kqCpXfgH5D-O7MFu1BXbIV10ey6VBwEfun6S9PpUC09u5kTclw7yLzrTsjt1-DZpV4rH297nf8eGUgpN0JYbyWE1kDSfgdy4EaV8-APYwqx41dPLr_j7713bN53Ce0hXj34NVgfbNNT8k37HaFTlOJL8z69QpLFF28IOLz4gLvqxsv-zoFvjNTBLU9y7kORQIXVWC9s2";
 
-const gallery = [
-  { span: "col-span-2 row-span-1", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuD1_C1lFukvKJipGVi9ukS5LdDIPzMFUYDEd5caa4qvTAZs2TubU0a3FDpvg2HuDMCUj0TUbwwo1yKqa1Ol955Dki_SJhe5PqoUTrW1oEIrez6JTuo0T3ApN6oNKV9YJy1THwrYWV2BxHA526NHqTsRJOz6X1Dn5N8QZP5rmGB2LkAuQ-cgWB1A30bcuQ9SefeIIfDupiY4HjU_5wSD439fYaidbLcybc6hY6WObiRp0Gpbj-5Txvfzwi_pEMRwOCi5qtTuMmewKfkj", alt: "Students sharing a meal at an ACCE social" },
-  { span: "col-span-1 row-span-2", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDRqhJpH36x8ISR9rn20BAQfFYy7j2EJ-GMCIxAHixNbzfmCOGTie1QRRoCs0kBECA8-J3VECULPz4YUmGSkOMizvE5oBpdcaxT-iQPA3jJdHpVAq2Ln5fbqepXSoubsflwlcjeXMTjKSLynC7Fu7xuUX2cgbPE5DBPYCIa-HSlJoND6MEaaOy9s8LT_8bGpYqOlzD8JsKZjvwowg8IOHlG_4qNNcSRAxSNdw27zUa7T6M4e8uKaMLd7ciT7TlYxOF5BGXAIaxDhIRU", alt: "Portrait of a student in a white ao dai" },
-  { span: "col-span-1 row-span-1", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAO1HsrOOAD12Y8uOBrYSf7wokPB8yQwt2dVYfHop6IXdlhHQ55GQcQaDVj0xFG_G2xQgR4drvBe6ARCPRKWt5ixd2SRtF3K5ZV-d5tYNMc2Vtn0SLH0mnLjYGbkfiZS_rEBsfx8ITFNxeXzc2kihek35xSCSMc0cEOsMYYNMupGygOwZnN8RjnzkQzBp1-FNoBIAQHXzTlfifu1pxJydQUP22H5-Lw4Pj2OC8XwnOg7p4Q3Zo_KLseNcVWlsMjPWmAa1NTFyyXFpMO", alt: "Hands crafting a Non La conical hat" },
-  { span: "col-span-1 row-span-2", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAx6d32ysioFpU0odI_vk-SArWXvys7EW59SFm0_YQLW3bsIEuNUjC_-jnnjnGdTRfZsRywAE1qCI5LOPXCR2K1yC6fHwCc7r77Im64cZWzzQoWYtV1PQcc0V4erUtb-H2brGZAhRpXRmh32wkKgcytwBSK3pL2yY6sHg23hzUNteqR53Ia8APJnY2eKNB__ipHD10aRcaOH8b0MlW7cR_jWue7bd9D-NgjnHqCCbFM1A0otEX5r6s7ra8z95gtQX3qp-zGDB7L17sE", alt: "Volleyball match mid-air spike" },
-  { span: "col-span-2 row-span-2", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCoXaghr936JdqA8cV8WGnvlznNF_KlPs0gC6-npqAvEtxQDzo1fgn6ibvDm8lHLkV59dHtlx26P4BmtPeUgzW8veY8azDEcJxsBe1CkCCybu9DZZv_VXGmTWqhh_OWX07cDIRCmog6gKNO9Pi2Bc3EbwsIHsDaLf1rNV6K72wgULMUEDCO5tGjYEzY6SvWtFN4J8JyecombpaOUKDH5trfFxygcp3cWlATGzjRotP3zZmrY5m_IoXHGXu71OtgGdPfj1lr60bxe1s-", alt: "VSA general body meeting in a lecture hall" },
-  { span: "col-span-1 row-span-1", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDt1SdkMLT_GJ2laY9398cNbbjAJPtyIYm-9P-aDiAbUpgesb2_63H85c8vORu4WoSq2r-tWYOly8lC-witrV7cAAuNmnJ-MGmq_z9gS6Pn0FtqsG0W9R9MlfuGfP9KcCw5PwWx7VRSO22JDOgSFIv9ywiI7FHLcbAeAfFHiJbElmfDdS_TIGujEbcnRrsNc9wlx1hA0ZTAp7a7jIEih_itbpoL3JzMsnHOo504ao7n-qjQp3SbqM8vtM3uKBQN4o_Uv3A3DtvGUA7B", alt: "Board members collaborating in a lounge" },
+const EVENT_FILTERS: { value: "all" | EventSlug; label: string }[] = [
+  { value: "all", label: "All" },
+  { value: "heritage-night", label: "Heritage Night" },
+  { value: "tet", label: "Tết" },
+  { value: "turkey-bowl", label: "Turkey Bowl" },
+  { value: "spikefest", label: "SpikeFest" },
+  { value: "fundraisers", label: "Fundraisers" },
+  { value: "general-meetings", label: "General Meetings" },
+  { value: "community-events", label: "Community Events" },
+  { value: "other", label: "Other" },
+];
+
+const TYPE_FILTERS: { value: "all" | "photo" | "video"; label: string }[] = [
+  { value: "all", label: "All" },
+  { value: "photo", label: "Photos" },
+  { value: "video", label: "Videos" },
 ];
 
 function GalleryPage() {
-  const [time, setTime] = useState("All Time");
-  const [cat, setCat] = useState<string | null>(null);
+  const raw = Route.useSearch();
+  const navigate = useNavigate({ from: "/gallery" });
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const event = (EVENT_FILTERS.find((e) => e.value === raw.event)?.value ?? "all") as
+    | "all"
+    | EventSlug;
+  const year: number | "all" =
+    raw.year === "all" ? "all" : AVAILABLE_YEARS.includes(Number(raw.year)) ? Number(raw.year) : "all";
+  const type =
+    raw.type === "photo" || raw.type === "video" ? raw.type : "all";
+
+  const items = useMemo(
+    () => filterMedia({ event, year, type }),
+    [event, year, type],
+  );
+
+  const setFilter = (key: "event" | "year" | "type", value: string) => {
+    navigate({
+      search: (prev) => ({ ...prev, [key]: value }),
+      replace: true,
+    });
+  };
+
+  const reset = () => {
+    navigate({ search: { event: "all", year: "all", type: "all" }, replace: true });
+  };
+
+  const activeCount = MEDIA.length;
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex h-[520px] items-center justify-center overflow-hidden bg-ink-black">
+      <section className="relative flex h-[420px] items-center justify-center overflow-hidden bg-ink-black md:h-[520px]">
         <div className="absolute inset-0 opacity-45">
-          <img src={HERO} alt="Vietnamese cultural performance" className="h-full w-full object-cover" loading="eager" />
+          <img src={HERO} alt="" className="h-full w-full object-cover" loading="eager" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink-black/85 to-transparent" />
         <div className="relative z-10 px-5 text-center">
-          <h1 className="font-display text-4xl text-white md:text-6xl">Captured Moments</h1>
+          <h1 className="font-display text-4xl text-white md:text-6xl">
+            {event === "all" ? "Captured Moments" : `${EVENT_META[event].name} Gallery`}
+          </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
-            A visual journey through our heritage, community growth, and the vibrant memories
-            we've built together at WWU.
+            {event === "all"
+              ? "A visual journey through our heritage, community growth, and the vibrant memories we've built together at WWU."
+              : EVENT_META[event].description}
           </p>
           <div className="dong-son-divider mx-auto mt-6 h-px w-48" />
         </div>
       </section>
 
-      {/* Filters + Grid */}
-      <section className="bg-rice-paper px-5 md:px-20 py-16 md:py-24">
+      <section className="bg-rice-paper px-5 md:px-20 py-12 md:py-16">
         <div className="mx-auto max-w-screen-2xl">
-          <div className="mb-10 flex flex-wrap items-center justify-between gap-6">
-            <div className="flex flex-wrap gap-2">
-              {["All Time", "2024-25", "2023-24"].map((t) => (
-                <button
-                  key={t}
-                  onClick={() => setTime(t)}
-                  className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
-                    time === t
-                      ? "bg-vietnamese-red text-white shadow-sm"
-                      : "border border-[color:var(--color-outline-variant)] bg-surface text-on-surface-variant hover:border-vietnamese-red"
-                  }`}
+          {/* Filters */}
+          <div className="mb-8 space-y-5 rounded-2xl border border-[color:var(--color-outline-variant)]/60 bg-white/70 p-5 md:p-6">
+            <FilterRow label="Event">
+              {EVENT_FILTERS.map((f) => (
+                <FilterChip
+                  key={f.value}
+                  active={event === f.value}
+                  onClick={() => setFilter("event", f.value)}
                 >
-                  {t}
+                  {f.label}
+                </FilterChip>
+              ))}
+            </FilterRow>
+
+            <FilterRow label="Year">
+              <FilterChip active={year === "all"} onClick={() => setFilter("year", "all")}>
+                All
+              </FilterChip>
+              {AVAILABLE_YEARS.map((y) => (
+                <FilterChip
+                  key={y}
+                  active={year === y}
+                  onClick={() => setFilter("year", String(y))}
+                >
+                  {y}
+                </FilterChip>
+              ))}
+            </FilterRow>
+
+            <FilterRow label="Media Type">
+              {TYPE_FILTERS.map((f) => (
+                <FilterChip
+                  key={f.value}
+                  active={type === f.value}
+                  onClick={() => setFilter("type", f.value)}
+                >
+                  {f.label}
+                </FilterChip>
+              ))}
+            </FilterRow>
+
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
+              <p className="text-sm text-on-surface-variant">
+                Showing <span className="font-semibold text-ink-black">{items.length}</span> of {activeCount} items
+              </p>
+              <button
+                onClick={reset}
+                className="inline-flex items-center gap-2 rounded-full border border-vietnamese-red/40 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-vietnamese-red hover:bg-vietnamese-red hover:text-white"
+              >
+                <span className="material-symbols-outlined text-base">refresh</span>
+                Reset Filters
+              </button>
+            </div>
+          </div>
+
+          {items.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-[color:var(--color-outline-variant)] bg-white/60 p-12 text-center">
+              <p className="font-display text-2xl text-ink-black">No media matches these filters.</p>
+              <p className="mt-2 text-on-surface-variant">Try clearing a filter or viewing all media.</p>
+              <button
+                onClick={reset}
+                className="mt-6 inline-flex rounded-full bg-vietnamese-red px-5 py-2 text-sm font-semibold text-white"
+              >
+                View All Media
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
+              {items.map((m, i) => (
+                <button
+                  key={m.id}
+                  onClick={() => setLightboxIndex(i)}
+                  className="group relative aspect-square overflow-hidden rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-vietnamese-red focus:ring-offset-2"
+                  aria-label={`Open ${m.altText}`}
+                >
+                  <img
+                    src={m.thumbnailUrl}
+                    alt={m.altText}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span className="absolute left-2 top-2 rounded bg-black/55 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
+                    {m.eventName}
+                  </span>
+                  {m.mediaType === "video" && (
+                    <span className="absolute right-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-black/60 text-white">
+                      <span className="material-symbols-outlined text-base">play_arrow</span>
+                    </span>
+                  )}
+                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-vietnamese-red/40 opacity-0 transition-opacity group-hover:opacity-100">
+                    <span className="material-symbols-outlined text-4xl text-white">zoom_in</span>
+                  </span>
                 </button>
               ))}
             </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="mr-1 text-sm font-semibold text-on-surface-variant">Category:</span>
-              {["Heritage Night", "Tết Festival", "ACCE Socials", "Workshops"].map((c) => (
-                <button
-                  key={c}
-                  onClick={() => setCat((prev) => (prev === c ? null : c))}
-                  className={`rounded-lg px-4 py-1.5 text-xs font-semibold transition ${
-                    cat === c ? "bg-vietnamese-red text-white" : "bg-surface-container-high text-on-surface-variant hover:bg-vietnamese-red hover:text-white"
-                  }`}
-                >
-                  {c}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Featured */}
-          <div className="mb-10 grid grid-cols-1 gap-6 md:grid-cols-12">
-            <div className="group relative h-[420px] overflow-hidden rounded-2xl bg-white shadow-sm transition-all hover:shadow-xl md:col-span-8">
-              <img src={FEAT1} alt="Heritage Night finale" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6">
-                <span className="mb-2 inline-block rounded bg-vietnamese-red px-3 py-1 text-xs font-semibold uppercase text-white">Featured Album</span>
-                <h3 className="font-display text-2xl text-white md:text-3xl">Heritage Night 2024: Roots &amp; Wings</h3>
-                <p className="text-white/85">142 Photos • April 2024</p>
-              </div>
-            </div>
-            <div className="group relative h-[420px] overflow-hidden rounded-2xl bg-white shadow-sm transition-all hover:shadow-xl md:col-span-4">
-              <img src={FEAT2} alt="Tết festival decorations" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6">
-                <h3 className="font-display text-2xl text-white">Tết Festival</h3>
-                <p className="text-white/85">86 Photos • Feb 2024</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Organic grid */}
-          <div className="grid auto-rows-[180px] grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-            {gallery.map((g, i) => (
-              <figure key={i} className={`group relative overflow-hidden rounded-lg shadow-sm ${g.span}`}>
-                <img src={g.src} alt={g.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <figcaption className="pointer-events-none absolute inset-0 flex items-center justify-center bg-vietnamese-red/40 opacity-0 transition-opacity group-hover:opacity-100">
-                  <span className="material-symbols-outlined text-4xl text-white">zoom_in</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          )}
         </div>
       </section>
 
-      {/* Contribute CTA */}
-      <section className="bg-surface-container-low px-5 md:px-20 py-16 md:py-24 text-center">
-        <div className="mx-auto max-w-3xl">
-          <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-vietnamese-red">
-            Have Photos to Share?
-          </span>
-          <h2 className="font-display text-3xl md:text-4xl text-ink-black">Contribute to our Archive</h2>
-          <p className="mt-4 text-on-surface-variant">
-            Our story is written by everyone. If you have photos from a VSA event you'd like to see
-            featured, please share them with the board.
-          </p>
-        </div>
-      </section>
+      {lightboxIndex !== null && (
+        <Lightbox
+          items={items}
+          index={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onIndex={setLightboxIndex}
+        />
+      )}
     </>
+  );
+}
+
+function FilterRow({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
+      <span className="w-24 shrink-0 text-xs font-semibold uppercase tracking-wider text-on-surface-variant">
+        {label}
+      </span>
+      <div className="flex flex-wrap gap-2">{children}</div>
+    </div>
+  );
+}
+
+function FilterChip({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      aria-pressed={active}
+      className={`rounded-full px-4 py-1.5 text-xs font-semibold transition ${
+        active
+          ? "bg-vietnamese-red text-white shadow-sm"
+          : "border border-[color:var(--color-outline-variant)] bg-white text-on-surface-variant hover:border-vietnamese-red hover:text-vietnamese-red"
+      }`}
+    >
+      {children}
+    </button>
   );
 }
