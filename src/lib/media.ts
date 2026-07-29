@@ -33,6 +33,13 @@ export type EventMeta = {
   meaning: string;
   heroImage: string;
   accent: "red" | "gold" | "blue";
+  location?: string;
+  audience?: string;
+  category?: string;
+  videoUrl?: string;
+  videoTitle?: string;
+  videoDescription?: string;
+  expectations?: { icon: string; title: string; description: string }[];
 };
 
 export const EVENT_META: Record<EventSlug, EventMeta> = {
@@ -47,6 +54,15 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
       "A full-scale production in the PAC: traditional fan and lion dances, live music, student-written skits, a family-style Vietnamese dinner, and a closing tribute from the graduating class.",
     meaning:
       "Heritage Night is where the year's work becomes a shared story. Families travel in, alumni come home, and new members see themselves on stage for the first time.",
+    location: "Performing Arts Center, WWU",
+    audience: "Open to students, families, and the public",
+    category: "Cultural Showcase",
+    expectations: [
+      { icon: "theater_comedy", title: "Student-Led Performances", description: "Fan dance, lion dance, and modern sets choreographed by members over two quarters." },
+      { icon: "restaurant", title: "Family-Style Dinner", description: "A catered Vietnamese meal served before the show, shared at round tables." },
+      { icon: "history_edu", title: "Original Storyline", description: "A student-written skit tying the night's performances into one Vietnamese-American story." },
+      { icon: "school", title: "Senior Send-Off", description: "A closing tribute to graduating members and the alumni who return for it." },
+    ],
     heroImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAoVvnWTwHymFaPGud3yjPNzr9LjOz0_xtZpEEe1IwDNfz0KDAjZrkBYHLA9MgC0qCTwfWlr0AoJSzkPNVLc7SBGvTrC0ExneW0-lYtdHJKT9ksPekf7oW0-JZ7KZyFE7MaIJ9K0xwvYMKHQXdLnE7oiKWvbhca2eRXeQ5N1xUKLbirZhX3tmv_bwzzJrnv8E0shtbyx0fbxUIjZ6nralVEfFFn9yHiNZgcuP1XGU51u5NlVBJSIy7GFsGW1KVKCYQwdYt6i1xFC9hd",
     accent: "red",
@@ -62,6 +78,15 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
       "A shared meal of authentic Vietnamese dishes, lion dance from a visiting troupe, red-envelope traditions, and small-group games that pull first-year students right into the community.",
     meaning:
       "Tết is about belonging. For students spending the new year away from family, this night is how VSA becomes home.",
+    location: "Viking Union Multipurpose Room",
+    audience: "Members and guests welcome",
+    category: "Cultural Celebration",
+    expectations: [
+      { icon: "set_meal", title: "Bánh Chưng & Home Cooking", description: "Traditional New Year dishes prepared with community volunteers." },
+      { icon: "redeem", title: "Lì Xì Tradition", description: "Red envelopes exchanged with wishes for the year ahead." },
+      { icon: "festival", title: "Lion Dance", description: "A visiting troupe opens the night to drums and firecracker energy." },
+      { icon: "casino", title: "Traditional Games", description: "Bầu cua and small-group games that pull newcomers straight in." },
+    ],
     heroImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDBSCz0w9mRjH5ga5kiObTs4A2oOBYS16rrvyE5IgR6htUTznOMHQ1VnwGa4ZDGpXTgBIm5i9-Bs4jeP8f7xQI5WIEIJwvja4OCNl1uICToVM43DJDo9O8HPCOs_F7tPNkjd7mqpvP71eHWTzyFnvxBIzPv3tCW9jPS8IXAbZM7U0zRGKfN8_5A7JWkiXOXEyddF3qedXH_4xLQV8oqV9ybBdrpSdKlZ7Rfd5F83jrzA7ms7lxNzEd-8GIMWtA2xC9cbotVmAIvvTNT",
     accent: "gold",
@@ -77,6 +102,15 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
       "Round-robin flag football on the WWU intramural fields, potluck sideline, and a trophy ceremony hosted by the Turkey Bowl committee.",
     meaning:
       "Turkey Bowl is where regional VSA chapters meet as friends first, competitors second. Long-term friendships between schools start on these fields.",
+    location: "WWU Intramural Fields",
+    audience: "Open to VSA members and regional chapters",
+    category: "Regional Tournament",
+    expectations: [
+      { icon: "sports_football", title: "Round-Robin Brackets", description: "Co-ed flag football matches running through the afternoon." },
+      { icon: "groups", title: "Regional Chapters", description: "Teams travel in from VSAs across Washington to play and mingle." },
+      { icon: "lunch_dining", title: "Sideline Potluck", description: "Shared food between games — bring a dish or just bring an appetite." },
+      { icon: "emoji_events", title: "Trophy Ceremony", description: "The Turkey Bowl committee closes the day with awards and photos." },
+    ],
     heroImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuCXG1WqjA9jCmAtpoLxz4RHcRzjcdl_VfteJ8TZuzibyWE3AiiJGD6f0oHX5hONSG67IsWw5mCjrr8iVFIXWF50NyT4hPXPfxr2Ov7LkGZKJLG94mNcfCcpsctTqgI15THWNtrhzlO0t8IEF2Q2FueumKl3IViJx3e89MJkfXhRRgvvr69LiJy8KR0RWcDMmr9sBofprbSgyLTAu88vWo9Zt9oHEiEUqze1jkRvY0iRwmHKmFZ2o-Yo3_mxjAf7K82bc7tPtKdnyLmt",
     accent: "blue",
@@ -92,6 +126,15 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
       "Bracket-style volleyball in Carver Gym, food trucks outside, and a members-vs-alumni exhibition match to close out the day.",
     meaning:
       "SpikeFest is our spring homecoming. Alumni return, current members compete, and the community sees VSA at its most spirited.",
+    location: "Carver Gym, WWU",
+    audience: "Members, alumni, and friends",
+    category: "Athletic Tournament",
+    expectations: [
+      { icon: "sports_volleyball", title: "Bracket Play", description: "Mixed-skill teams compete through a single-day volleyball bracket." },
+      { icon: "diversity_3", title: "Alumni Match", description: "A members-vs-alumni exhibition game closes out the tournament." },
+      { icon: "storefront", title: "Food Trucks", description: "Local vendors set up outside Carver for the afternoon." },
+      { icon: "volunteer_activism", title: "Fundraising Spirit", description: "Entry proceeds go back into next year's cultural programming." },
+    ],
     heroImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAaqqqy1hzZH3qlyScHHBEb4WcPcg-JquOcNB5eBTcFbJ7ZTzpaLUERJhL1-4CuwMQ6DBKtCH_2uPRSIa0oZUQVVsfAySJkTsdcOZoRPrxbod76EgpugDEYzM809w1Z8nmDC0LSnNTYmbH09RehsWltQ0n61L1ubSIzSsRGDWlRyE4lda-_BW5ucxOcuuYLtCNeJcoaGS3BaluNET-zsj2n6NM1BbUF0DQUlUvpOsMdw3IvwH9syWAFEYzBLWTXihFyXl9xYIzhIUAb",
     accent: "red",
