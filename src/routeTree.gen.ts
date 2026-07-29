@@ -18,6 +18,7 @@ import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EventsIndexRouteImport } from './routes/events.index'
+import { Route as EventsSlugRouteImport } from './routes/events.$slug'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -64,6 +65,11 @@ const EventsIndexRoute = EventsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => EventsRoute,
 } as any)
+const EventsSlugRoute = EventsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => EventsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -74,6 +80,7 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/products': typeof ProductsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/events/$slug': typeof EventsSlugRoute
   '/events/': typeof EventsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/products': typeof ProductsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/events/$slug': typeof EventsSlugRoute
   '/events': typeof EventsIndexRoute
 }
 export interface FileRoutesById {
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/products': typeof ProductsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/events/$slug': typeof EventsSlugRoute
   '/events/': typeof EventsIndexRoute
 }
 export interface FileRouteTypes {
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/products'
     | '/sitemap.xml'
+    | '/events/$slug'
     | '/events/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/products'
     | '/sitemap.xml'
+    | '/events/$slug'
     | '/events'
   id:
     | '__root__'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/products'
     | '/sitemap.xml'
+    | '/events/$slug'
     | '/events/'
   fileRoutesById: FileRoutesById
 }
@@ -209,14 +221,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsIndexRouteImport
       parentRoute: typeof EventsRoute
     }
+    '/events/$slug': {
+      id: '/events/$slug'
+      path: '/$slug'
+      fullPath: '/events/$slug'
+      preLoaderRoute: typeof EventsSlugRouteImport
+      parentRoute: typeof EventsRoute
+    }
   }
 }
 
 interface EventsRouteChildren {
+  EventsSlugRoute: typeof EventsSlugRoute
   EventsIndexRoute: typeof EventsIndexRoute
 }
 
 const EventsRouteChildren: EventsRouteChildren = {
+  EventsSlugRoute: EventsSlugRoute,
   EventsIndexRoute: EventsIndexRoute,
 }
 
