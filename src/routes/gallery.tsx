@@ -71,7 +71,7 @@ function GalleryPage() {
 
   const setFilter = (key: "event" | "year" | "type", value: string) => {
     navigate({
-      search: (prev) => ({ ...prev, [key]: value }),
+      search: (prev: Record<string, string>) => ({ ...prev, [key]: value }),
       replace: true,
     });
   };
