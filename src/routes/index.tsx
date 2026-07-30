@@ -49,7 +49,7 @@ const events = [
     date: "NOV 22",
     title: "Turkey Bowl",
     desc: "Our Thanksgiving-week flag football tournament bringing regional VSA chapters together.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC9S6FdXCl7_NSSoiDtMLnyAXTPgXkNkBU2Gf-gKDnZYm5OTIiMyDpC5wuV1VHJ3HTbw8ozXrLVgDlrS3ebqfxucijYi8GCXPZ2sG5qf9J-3zZg7ZRqM2xsdWOULRj2GGWsVX8FnNDxkpCXvIpSL0RL_q1j8FWCrMcTyF-FzzIAx5NMhhp-KmjgyTo6kNUh5lrMM18VrcQse7bo3aMxVLEjoDtFFf2F7Ft96QuLs6yZNCCLDeqQKA7ApmXbqD7cv0m8IjTwdAiuIdR0",
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCXG1WqjA9jCmAtpoLxz4RHcRzjcdl_VfteJ8TZuzibyWE3AiiJGD6f0oHX5hONSG67IsWw5mCjrr8iVFIXWF50NyT4hPXPfxr2Ov7LkGZKJLG94mNcfCcpsctTqgI15THWNtrhzlO0t8IEF2Q2FueumKl3IViJx3e89MJkfXhRRgvvr69LiJy8KR0RWcDMmr9sBofprbSgyLTAu88vWo9Zt9oHEiEUqze1jkRvY0iRwmHKmFZ2o-Yo3_mxjAf7K82bc7tPtKdnyLmt",
   },
 ];
 
