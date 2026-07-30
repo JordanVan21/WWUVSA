@@ -46,9 +46,9 @@ const events = [
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDyIv9SdYQQIA-h7Wa9KWUgXH2FFn-d1iOoZMqZ5eJ9tzIeQ-YEXTan99PsnQL-C-4zRlRY1ab-6ngTZG1HJyHxZu1yXgLP1rI88HSqOG4ZNa6iE1SGTlzqdbog23DEuFfD-KDFHQ0hPkIYlNoMqPBClcoCHlBKXcYCmfEAEpCAeZ5s72TmUo7Val-M5YOIJ9jqHYb7Tn23w8eyrOETTi0PEZxTU5dlzvUqROD6l0qgfkxzLGU0u1VmEWy93fQB2cqQHn33cPJrFgIu",
   },
   {
-    date: "OCT 20",
-    title: "VSA Fall Mixer",
-    desc: "A warm welcome-back gathering where new members meet the community and find their family.",
+    date: "NOV 22",
+    title: "Turkey Bowl",
+    desc: "Our Thanksgiving-week flag football tournament bringing regional VSA chapters together.",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC9S6FdXCl7_NSSoiDtMLnyAXTPgXkNkBU2Gf-gKDnZYm5OTIiMyDpC5wuV1VHJ3HTbw8ozXrLVgDlrS3ebqfxucijYi8GCXPZ2sG5qf9J-3zZg7ZRqM2xsdWOULRj2GGWsVX8FnNDxkpCXvIpSL0RL_q1j8FWCrMcTyF-FzzIAx5NMhhp-KmjgyTo6kNUh5lrMM18VrcQse7bo3aMxVLEjoDtFFf2F7Ft96QuLs6yZNCCLDeqQKA7ApmXbqD7cv0m8IjTwdAiuIdR0",
   },
 ];
