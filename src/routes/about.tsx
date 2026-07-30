@@ -1,6 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { BoardCarousel } from "@/components/BoardCarousel";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -20,17 +20,7 @@ const HERO_IMG =
 const ACCE_IMG =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCOKt9p1ajL1X_TpC_ppJkAD4lgET5s0Vt88sCQYvqNtkI1j3LioOoBYXnyUk9dKj8qj2Twmwvptb5e5uaMz7w3w7GdfgFCux2_UirR-icKRq3eKtyOgfX8Cn3wrSs58dPoZBbGXQLHv9KFjmxdpmRHHzDq-UyQ1mBXoKuCRWSC9FkCslYy7DKXSroA73DGBk78hYtBF6-enP6G-42KQ9TLUCQcieho4n1lq2j6AklFkhusIQyv2CbGePiMldeUFcrdLUqmQOzcwKKI";
 
-const board = [
-  { name: "Linh Nguyen", role: "President", major: "Behavioral Neuroscience", accent: "bg-vietnamese-red/90", roleColor: "text-vietnamese-red", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB178x-Fdi11e9WcSxBBTqxapUBKHyOZDDzDlUhOjbTpcJnwKX6EA8mAeITC09NE-gBUV-P8hg8aAktPhXlvKwhMzXSH-LQ5cAZkrvrP02Nfx8I4X_b9JbmuAcmMIrsrfu_ZI1M35NrWDur6MTDKTFZm9y0jRRU56rb3g3LrdbVvfe50s8K1NzhtWJan8PhpPySZa0j-ljuCU-wOM_tjYQ-FoTWTItfAxweB8Dqi6h9Q9kFGtV4I9Mkr4x81WQ3qgrJiyhC56pkhGES" },
-  { name: "Minh Tran", role: "Internal Vice President", major: "Business Administration", accent: "bg-viking-blue/90", roleColor: "text-viking-blue", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDjo2XTfrVusklk3Z5gSs2iavIJdi5ES4Pj2Vab5oRWkTVt2LgRAIukbKXuCNt9C5fk5X5o7WvqsSonFNJ93BGGU6e9x200QAX7UUSF79b2u8Vewk0r1WnU_5IjPBCe6ckggkCItupLF8BhMNO3jcxsdWcN76R2PDw-omonWWGURJH1f254-JBOFBo8LxhaNMVITtlyVm8lwEqShvwanXrv5j_Zssr8B4mA00zjnA6YdOBtcXQ9Kkd36pmAaC0j3ctT2GiSAWA9QdUI" },
-  { name: "Anh Le", role: "External Vice President", major: "Graphic Design", accent: "bg-imperial-gold/90", roleColor: "text-[color:var(--color-imperial-gold)]", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDxPiQ37g5Fex9BfKlJ3B1pmRsFukpCJDoOHSGOH46jnjpOYirR74pzSBkqbXV9-NTSHazkytXCBYEoUa-tkAE_Dm_Esppz-WFIO5X7epL_EJm3QXZ4t3MvJcZA5zA_uzpNUWb3TDOz1h5d8DDNGS5i5R_p1UId9VTj9KU1RY2bAUF8yIqP-PqDS7OowTswzeWgvTSw0vLsjUviVXtqY-rO-M1dFkxYfMjSGJCgq3rx1X0lLQoUPlXiWNHpSJko4Dt6XQiE5zrcJxdZ" },
-  { name: "Duy Pham", role: "Secretary", major: "Computer Science", accent: "bg-ink-black/90", roleColor: "text-on-surface-variant", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCCdCjGVLD132GUL94UQa8t0vRMH0pZ2xxTw51Rdd7yJGhBoWWENDvQdzrZp-yjenC8O147CrKKK34YwVlvGPKRfef1u-TWfbeRmWHWTlG6rN232-l8nCsopxtNjOhR3pMIfSwq77FYOgXL0peTKBzSRWnPgFEH_BWKzZB9RRZyGe7Md3aC2nOat2yz_VX3yUg5j2uT4bpJEU5KUl3L5zoQX1Ee4mP0qjVPpfZzZSzxO_XVQkDrRkzNviUnJiR7cwakjla29FfPquuV" },
-];
-
 function AboutPage() {
-  const slider = useRef<HTMLDivElement | null>(null);
-  const scroll = (dir: number) => slider.current?.scrollBy({ left: dir * 320, behavior: "smooth" });
-
   return (
     <>
       {/* Hero */}
