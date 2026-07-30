@@ -76,39 +76,66 @@ function AboutPage() {
           <h2 className="mb-10 text-center font-display text-3xl md:text-4xl">Our Signature Programs</h2>
           <div className="grid h-auto grid-cols-1 gap-6 md:h-[600px] md:grid-cols-6 md:grid-rows-2">
             {/* ACCE big tile */}
-            <div className="group relative overflow-hidden rounded-2xl p-8 text-white md:col-span-3 md:row-span-2">
+            <Link
+              to="/programs/$slug"
+              params={{ slug: "acce" }}
+              aria-label="Learn more about ACCE, our family-style mentorship program"
+              className="group relative block overflow-hidden rounded-2xl p-8 text-white md:col-span-3 md:row-span-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
+            >
               <img src={ACCE_IMG} alt="ACCE family gathering" className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-ink-black/85 to-transparent" />
               <div className="relative z-20 flex h-full flex-col justify-end">
                 <span className="mb-3 w-fit rounded-full bg-vietnamese-red px-3 py-1 text-xs font-semibold">ACCE (Family System)</span>
                 <h3 className="font-display text-3xl">A Core Connection Effort</h3>
                 <p className="mt-2 max-w-sm opacity-90">Our mentorship program that pairs incoming students with experienced upperclassmen — creating lifelong "families" within VSA.</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold">
+                  Learn More
+                  <span className="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
+                </span>
               </div>
-            </div>
+            </Link>
             {/* Viet 101 — no stats cards per brief */}
-            <div className="group relative overflow-hidden rounded-2xl bg-surface-container p-8 md:col-span-3 md:row-span-1">
+            <Link
+              to="/programs/$slug"
+              params={{ slug: "viet-101" }}
+              aria-label="Learn more about Viet 101, our language and culture workshop series"
+              className="group relative block overflow-hidden rounded-2xl bg-surface-container p-8 transition-shadow hover:shadow-xl md:col-span-3 md:row-span-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
+            >
               <div className="flex h-full flex-col items-start gap-6 md:flex-row md:items-center">
                 <div className="flex-1">
                   <span className="mb-2 inline-block rounded-full bg-imperial-gold/20 px-3 py-1 text-xs font-semibold text-on-tertiary-container">Culture &amp; Language</span>
                   <h3 className="font-display text-2xl">Viet 101</h3>
                   <p className="mt-2 text-on-surface-variant">Dive into Vietnamese language, history, and modern nuances in a casual, student-led workshop series that meets you where you are.</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-viking-blue">
+                    Learn More
+                    <span className="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
+                  </span>
                 </div>
                 <div className="grid h-24 w-24 shrink-0 place-items-center rounded-2xl bg-white p-4 shadow-sm">
                   <span className="material-symbols-outlined text-5xl text-[color:var(--color-imperial-gold)]">translate</span>
                 </div>
               </div>
-            </div>
+            </Link>
             {/* Wavy Fan Dance */}
-            <div className="group relative overflow-hidden rounded-2xl bg-viking-blue p-8 text-white md:col-span-3 md:row-span-1">
+            <Link
+              to="/programs/$slug"
+              params={{ slug: "wavy-fan-dance" }}
+              aria-label="Learn more about Wavy Fan Dance, our performance troupe"
+              className="group relative block overflow-hidden rounded-2xl bg-viking-blue p-8 text-white transition-shadow hover:shadow-xl md:col-span-3 md:row-span-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-imperial-gold"
+            >
               <div className="relative z-20 flex h-full items-center justify-between">
                 <div>
                   <span className="mb-2 inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold">Art &amp; Performance</span>
                   <h3 className="font-display text-2xl">Wavy Fan Dance</h3>
                   <p className="mt-2 opacity-90">Graceful storytelling through traditional dance, showcased at Heritage Night each year.</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold">
+                    Learn More
+                    <span className="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
+                  </span>
                 </div>
                 <span className="material-symbols-outlined shrink-0 text-5xl">auto_awesome</span>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -116,34 +143,7 @@ function AboutPage() {
       {/* Board Slider */}
       <section className="bg-surface px-5 md:px-20 py-16 md:py-24">
         <div className="mx-auto max-w-screen-2xl">
-          <div className="mb-10 flex items-end justify-between gap-4">
-            <div>
-              <h2 className="font-display text-3xl md:text-4xl">Meet the Board</h2>
-              <p className="mt-2 text-on-surface-variant">The passionate team behind our current vision.</p>
-            </div>
-            <div className="flex gap-2">
-              <button aria-label="Scroll left" onClick={() => scroll(-1)} className="grid h-11 w-11 place-items-center rounded-full bg-white text-viking-blue shadow-md transition hover:bg-viking-blue hover:text-white">
-                <span className="material-symbols-outlined">chevron_left</span>
-              </button>
-              <button aria-label="Scroll right" onClick={() => scroll(1)} className="grid h-11 w-11 place-items-center rounded-full bg-white text-viking-blue shadow-md transition hover:bg-viking-blue hover:text-white">
-                <span className="material-symbols-outlined">chevron_right</span>
-              </button>
-            </div>
-          </div>
-          <div ref={slider} className="scrollbar-hide flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-6">
-            {board.map((m) => (
-              <div key={m.name} className="group min-w-[260px] max-w-[260px] snap-start sm:min-w-[280px] sm:max-w-[280px]">
-                <div className="relative mb-3 overflow-hidden rounded-2xl border-2 border-rice-paper shadow-sm">
-                  <img src={m.img} alt={`${m.name}, ${m.role}`} loading="lazy" className="aspect-[4/5] w-full object-cover transition-transform group-hover:scale-105" />
-                  <div className={`absolute bottom-0 left-0 w-full translate-y-full p-3 text-xs text-white backdrop-blur-sm transition-transform group-hover:translate-y-0 ${m.accent}`}>
-                    Major: {m.major}
-                  </div>
-                </div>
-                <h4 className="font-display text-xl text-ink-black">{m.name}</h4>
-                <p className={`text-xs font-semibold uppercase tracking-wider ${m.roleColor}`}>{m.role}</p>
-              </div>
-            ))}
-          </div>
+          <BoardCarousel />
           <div className="mt-12 text-center">
             <p className="mb-4 text-on-surface-variant">Want to make an impact? Applications for next year's board open in Spring.</p>
           </div>
