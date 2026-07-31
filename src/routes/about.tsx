@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { BoardCarousel } from "@/components/BoardCarousel";
+import { COMMUNITY_ORGANIZATIONS } from "@/lib/community";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -150,28 +151,48 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Community Roots — only ESC, NWVSA, WWU */}
+      {/* Community Roots — WWU ESC, NWVSA, UNAVSA */}
       <section className="bg-rice-paper px-5 md:px-20 py-16 md:py-24">
         <div className="mx-auto flex max-w-screen-2xl flex-col items-center text-center">
           <h2 className="font-display text-3xl md:text-4xl">Community Roots</h2>
           <p className="mt-4 max-w-2xl text-lg text-on-surface-variant">
-            We're part of a larger ecosystem of cultural advocacy and student support.
+            We are connected to a larger network of campus support, regional community, and
+            Vietnamese student leadership across North America.
           </p>
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-12">
-            {[
-              { code: "ESC", label: "Ethnic Student Center", icon: "groups_2", color: "text-vietnamese-red" },
-              { code: "NWVSA", label: "Northwest VSA", icon: "hub", color: "text-viking-blue" },
-              { code: "WWU", label: "Western Washington University", icon: "school", color: "text-[color:var(--color-imperial-gold)]" },
-            ].map((p) => (
-              <div key={p.code} className="flex flex-col items-center gap-2">
-                <div className="grid h-24 w-24 place-items-center rounded-full bg-white p-4 shadow-sm">
-                  <span className={`material-symbols-outlined text-4xl ${p.color}`}>{p.icon}</span>
-                </div>
-                <span className="text-sm font-semibold text-on-surface">{p.code}</span>
-                <span className="text-xs text-on-surface-variant">{p.label}</span>
-              </div>
-            ))}
-          </div>
+          <ul className="mt-12 grid w-full max-w-4xl grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-10">
+            {COMMUNITY_ORGANIZATIONS.map((org, i) => {
+              const color = ["text-vietnamese-red", "text-viking-blue", "text-[color:var(--color-imperial-gold)]"][i % 3];
+              return (
+                <li key={org.id} className="flex justify-center">
+                  <a
+                    href={org.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${org.accessibleLabel} (opens in a new tab)`}
+                    className="group flex w-full max-w-[16rem] flex-col items-center gap-2 rounded-2xl px-3 py-4 transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                  >
+                    <div className="grid h-24 w-24 place-items-center rounded-full bg-white p-4 shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md motion-reduce:transition-none motion-reduce:group-hover:scale-100">
+                      {org.logoUrl ? (
+                        <img src={org.logoUrl} alt="" className="h-full w-full object-contain" loading="lazy" />
+                      ) : (
+                        <span className={`material-symbols-outlined text-4xl ${color}`} aria-hidden="true">
+                          {org.icon}
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-sm font-semibold text-on-surface group-hover:underline">{org.acronym}</span>
+                    <span className="text-xs leading-snug text-on-surface-variant">{org.fullName}</span>
+                    <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-viking-blue">
+                      Visit website
+                      <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden="true">
+                        open_in_new
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
     </>
