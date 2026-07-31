@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -11,15 +11,41 @@ const nav = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
+const joinLinks = [
+  { label: "WWU WIN", href: "#", external: false },
+  { label: "WWU Instagram", href: "https://instagram.com/wwuvsa", external: true },
+  { label: "Calendar", to: "/calendar", external: false },
+] as const;
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [joinOpen, setJoinOpen] = useState(false);
+  const joinRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!joinOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setJoinOpen(false);
+    };
+    const onClick = (e: MouseEvent) => {
+      if (joinRef.current && !joinRef.current.contains(e.target as Node)) {
+        setJoinOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("mousedown", onClick);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("mousedown", onClick);
+    };
+  }, [joinOpen]);
 
   return (
     <header
@@ -47,12 +73,63 @@ export function Header() {
               {n.label}
             </Link>
           ))}
-          <Link
-            to="/contact"
-            className="ml-2 rounded-full bg-vietnamese-red px-5 py-2 text-sm font-semibold text-white shadow-md shadow-vietnamese-red/25 hover:scale-105 active:scale-95 transition-transform"
-          >
-            Join Us
-          </Link>
+          <div ref={joinRef} className="relative ml-2">
+            <button
+              onClick={() => setJoinOpen((v) => !v)}
+              aria-expanded={joinOpen}
+              aria-haspopup="menu"
+              aria-controls="join-us-menu"
+              className="inline-flex items-center gap-1 rounded-full bg-vietnamese-red px-5 py-2 text-sm font-semibold text-white shadow-md shadow-vietnamese-red/25 hover:scale-105 active:scale-95 transition-transform"
+            >
+              Join Us
+              <span className="material-symbols-outlined text-base" aria-hidden="true">
+                {joinOpen ? "expand_less" : "expand_more"}
+              </span>
+            </button>
+            {joinOpen && (
+              <div
+                id="join-us-menu"
+                role="menu"
+                className="absolute right-0 top-full mt-2 w-56 rounded-2xl border border-[color:var(--color-outline-variant)]/60 bg-[color:var(--color-surface)] p-2 shadow-xl"
+              >
+                {joinLinks.map((item) => {
+                  const baseClasses =
+                    "flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-colors hover:bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vietnamese-red/50";
+                  const content = (
+                    <>
+                      <span>{item.label}</span>
+                      <span className="material-symbols-outlined text-base text-on-surface-variant" aria-hidden="true">
+                        {item.external ? "open_in_new" : "arrow_forward"}
+                      </span>
+                    </>
+                  );
+                  return item.to ? (
+                    <Link
+                      key={item.label}
+                      to={item.to}
+                      role="menuitem"
+                      className={`${baseClasses} text-on-surface`}
+                      onClick={() => setJoinOpen(false)}
+                    >
+                      {content}
+                    </Link>
+                  ) : (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      role="menuitem"
+                      className={`${baseClasses} text-on-surface`}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noopener noreferrer" : undefined}
+                      onClick={() => setJoinOpen(false)}
+                    >
+                      {content}
+                    </a>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </div>
 
         <button
@@ -80,13 +157,33 @@ export function Header() {
                 {n.label}
               </Link>
             ))}
-            <Link
-              to="/contact"
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-vietnamese-red px-5 py-3 text-center text-sm font-semibold text-white shadow-md"
-            >
-              Join Us
-            </Link>
+            <div className="my-2 h-px bg-[color:var(--color-outline-variant)]/40" />
+            <p className="px-3 pt-1 text-xs font-semibold uppercase tracking-wide text-on-surface-variant">Join Us</p>
+            {joinLinks.map((item) =>
+              item.to ? (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between rounded-lg px-3 py-3 text-base font-semibold text-on-surface-variant hover:bg-surface-container hover:text-vietnamese-red"
+                >
+                  <span>{item.label}</span>
+                  <span className="material-symbols-outlined text-base">arrow_forward</span>
+                </Link>
+              ) : (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between rounded-lg px-3 py-3 text-base font-semibold text-on-surface-variant hover:bg-surface-container hover:text-vietnamese-red"
+                >
+                  <span>{item.label}</span>
+                  <span className="material-symbols-outlined text-base">{item.external ? "open_in_new" : "arrow_forward"}</span>
+                </a>
+              )
+            )}
           </div>
         </div>
       )}
