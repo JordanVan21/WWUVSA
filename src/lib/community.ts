@@ -11,7 +11,7 @@ export type CommunityOrganization = {
   displayOrder: number;
 };
 
-export const COMMUNITY_ORGANIZATIONS: CommunityOrganization[] = [
+const ORGS: CommunityOrganization[] = [
   {
     id: "wwu-esc",
     acronym: "WWU ESC",
@@ -43,4 +43,8 @@ export const COMMUNITY_ORGANIZATIONS: CommunityOrganization[] = [
       "Visit the Union of North American Vietnamese Student Associations website",
     displayOrder: 3,
   },
-].sort((a, b) => a.displayOrder - b.displayOrder);
+];
+
+export const COMMUNITY_ORGANIZATIONS: CommunityOrganization[] = [...ORGS].sort(
+  (a, b) => a.displayOrder - b.displayOrder,
+);
