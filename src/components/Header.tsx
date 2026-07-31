@@ -11,11 +11,15 @@ const nav = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-const joinLinks = [
-  { label: "WWU WIN", href: "#", external: false },
-  { label: "WWU Instagram", href: "https://instagram.com/wwuvsa", external: true },
-  { label: "Calendar", to: "/calendar", external: false },
-] as const;
+type JoinLink =
+  | { type: "external"; label: string; href: string }
+  | { type: "internal"; label: string; to: string };
+
+const joinLinks: JoinLink[] = [
+  { type: "external", label: "WWU WIN", href: "#" },
+  { type: "external", label: "WWU Instagram", href: "https://instagram.com/wwuvsa" },
+  { type: "internal", label: "Calendar", to: "/calendar" },
+];
 
 export function Header() {
   const [open, setOpen] = useState(false);
