@@ -164,31 +164,33 @@ export function Header() {
             ))}
             <div className="my-2 h-px bg-[color:var(--color-outline-variant)]/40" />
             <p className="px-3 pt-1 text-xs font-semibold uppercase tracking-wide text-on-surface-variant">Join Us</p>
-            {joinLinks.map((item) =>
-              item.to ? (
+            {joinLinks.map((item) => {
+              const icon = item.type === "external" ? "open_in_new" : "arrow_forward";
+              const classes = "flex items-center justify-between rounded-lg px-3 py-3 text-base font-semibold text-on-surface-variant hover:bg-surface-container hover:text-vietnamese-red";
+              return item.type === "internal" ? (
                 <Link
                   key={item.label}
                   to={item.to}
                   onClick={() => setOpen(false)}
-                  className="flex items-center justify-between rounded-lg px-3 py-3 text-base font-semibold text-on-surface-variant hover:bg-surface-container hover:text-vietnamese-red"
+                  className={classes}
                 >
                   <span>{item.label}</span>
-                  <span className="material-symbols-outlined text-base">arrow_forward</span>
+                  <span className="material-symbols-outlined text-base">{icon}</span>
                 </Link>
               ) : (
                 <a
                   key={item.label}
                   href={item.href}
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noopener noreferrer" : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
-                  className="flex items-center justify-between rounded-lg px-3 py-3 text-base font-semibold text-on-surface-variant hover:bg-surface-container hover:text-vietnamese-red"
+                  className={classes}
                 >
                   <span>{item.label}</span>
-                  <span className="material-symbols-outlined text-base">{item.external ? "open_in_new" : "arrow_forward"}</span>
+                  <span className="material-symbols-outlined text-base">{icon}</span>
                 </a>
-              )
-            )}
+              );
+            })}
           </div>
         </div>
       )}
