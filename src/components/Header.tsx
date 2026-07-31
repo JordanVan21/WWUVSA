@@ -99,15 +99,16 @@ export function Header() {
                 {joinLinks.map((item) => {
                   const baseClasses =
                     "flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-colors hover:bg-surface-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vietnamese-red/50";
+                  const icon = item.type === "external" ? "open_in_new" : "arrow_forward";
                   const content = (
                     <>
                       <span>{item.label}</span>
                       <span className="material-symbols-outlined text-base text-on-surface-variant" aria-hidden="true">
-                        {item.external ? "open_in_new" : "arrow_forward"}
+                        {icon}
                       </span>
                     </>
                   );
-                  return item.to ? (
+                  return item.type === "internal" ? (
                     <Link
                       key={item.label}
                       to={item.to}
@@ -123,8 +124,8 @@ export function Header() {
                       href={item.href}
                       role="menuitem"
                       className={`${baseClasses} text-on-surface`}
-                      target={item.external ? "_blank" : undefined}
-                      rel={item.external ? "noopener noreferrer" : undefined}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={() => setJoinOpen(false)}
                     >
                       {content}
