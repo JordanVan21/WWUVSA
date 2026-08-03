@@ -6,42 +6,42 @@ const linkClasses =
 
 export function Footer() {
   return (
-    <footer className="border-t border-[color:var(--color-outline-variant)]/60 bg-rice-paper">
-      <div className="mx-auto grid max-w-screen-2xl grid-cols-1 gap-x-12 gap-y-8 px-5 py-12 sm:grid-cols-2 md:px-20 lg:grid-cols-[1.5fr_0.75fr_0.9fr] lg:gap-x-16">
-        <div className="min-w-0 space-y-4 sm:col-span-2 lg:col-span-1">
+    <footer className="w-full border-t border-[color:var(--color-outline-variant)]/60 bg-rice-paper">
+      <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-1 gap-x-12 gap-y-10 px-5 py-12 sm:grid-cols-2 md:px-20 lg:grid-cols-[1.5fr_0.75fr_0.9fr] lg:gap-x-16">
+        <div className="w-full min-w-0 space-y-4 sm:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-3">
             <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-vietnamese-red text-white font-display font-bold">
               V
             </div>
             <span className="font-display text-xl font-bold text-viking-blue">WWU VSA</span>
           </div>
-          <p className="max-w-md text-sm leading-relaxed text-on-surface-variant">
+          <p className="w-full text-sm leading-relaxed text-on-surface-variant sm:max-w-md">
             Representing the Vietnamese student body at Western Washington University — celebrating
             heritage, empowering leadership, and building community since 1996.
           </p>
-          <div>
+          <div className="w-full min-w-0">
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-ink-black">
               Part of the Community
             </h4>
-            <ul className="flex flex-wrap items-start gap-x-8 gap-y-5">
+            <ul className="grid w-full grid-cols-3 items-start gap-x-4 gap-y-5 sm:flex sm:flex-wrap sm:gap-x-8">
               {COMMUNITY_ORGANIZATIONS.map((org) => (
-                <li key={org.id} className="min-w-0">
+                <li key={org.id} className="w-full min-w-0 sm:w-auto">
                   <a
                     href={org.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${org.accessibleLabel} (opens in a new tab)`}
-                    className="group flex w-[9rem] flex-col items-center gap-1 rounded-lg p-1 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
+                    className="group flex w-full min-w-0 flex-col items-center gap-1 rounded-lg p-1 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red sm:w-[9rem]"
                   >
-                    <span className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--color-outline-variant)] bg-white text-viking-blue transition-colors group-hover:border-viking-blue">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color:var(--color-outline-variant)] bg-white text-viking-blue transition-colors group-hover:border-viking-blue">
                       <span className="material-symbols-outlined text-xl" aria-hidden="true">
                         {org.icon}
                       </span>
                     </span>
-                    <span className="text-sm font-bold text-on-surface-variant group-hover:text-viking-blue group-hover:underline">
+                    <span className="break-words text-sm font-bold text-on-surface-variant group-hover:text-viking-blue group-hover:underline">
                       {org.acronym}
                     </span>
-                    <span className="text-[11px] leading-tight text-on-surface-variant">
+                    <span className="break-words text-[11px] leading-tight text-on-surface-variant">
                       {org.shortName.replace(/\n/g, " ")}
                     </span>
                   </a>
@@ -51,7 +51,7 @@ export function Footer() {
           </div>
         </div>
 
-        <nav aria-label="Explore" className="min-w-0">
+        <nav aria-label="Explore" className="w-full min-w-0">
           <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-vietnamese-red">
             Explore
           </h4>
@@ -63,7 +63,7 @@ export function Footer() {
           </ul>
         </nav>
 
-        <div className="min-w-0">
+        <div className="w-full min-w-0">
           <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-vietnamese-red">
             Connect
           </h4>
@@ -86,8 +86,10 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-[color:var(--color-outline-variant)]/40 px-5 py-5 text-center text-xs text-on-surface-variant md:px-20">
-        © {new Date().getFullYear()} WWU Vietnamese Student Association. Heritage &amp; Future.
+      <div className="w-full border-t border-[color:var(--color-outline-variant)]/40">
+        <div className="mx-auto w-full max-w-screen-2xl px-5 py-5 text-center text-xs text-on-surface-variant md:px-20">
+          © {new Date().getFullYear()} WWU Vietnamese Student Association. Heritage &amp; Future.
+        </div>
       </div>
     </footer>
   );

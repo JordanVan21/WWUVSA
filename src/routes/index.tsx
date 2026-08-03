@@ -92,7 +92,7 @@ function HomePage() {
         <div className="mx-auto grid max-w-screen-2xl grid-cols-1 items-center gap-14 md:grid-cols-2">
           <div className="relative">
             <img src={WELCOME_IMG} alt="Student leaders collaborating in a bright campus lounge" className="relative z-10 aspect-[4/3] w-full rounded-2xl object-cover shadow-2xl" loading="lazy" />
-            <div className="absolute -bottom-6 -right-6 -z-10 h-full w-full translate-x-3 translate-y-3 rounded-2xl border-2 border-imperial-gold/40" />
+            <div className="absolute -bottom-6 -right-6 -z-10 hidden h-full w-full translate-x-3 translate-y-3 rounded-2xl border-2 border-imperial-gold/40 sm:block" />
           </div>
           <div>
             <h2 className="dong-son-border font-display text-3xl md:text-4xl text-vietnamese-red">
