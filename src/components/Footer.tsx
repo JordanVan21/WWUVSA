@@ -1,12 +1,16 @@
 import { Link } from "@tanstack/react-router";
+import { COMMUNITY_ORGANIZATIONS } from "@/lib/community";
+
+const linkClasses =
+  "inline-flex min-h-[32px] items-center text-on-surface-variant transition-colors hover:text-viking-blue hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red rounded-sm";
 
 export function Footer() {
   return (
     <footer className="border-t border-[color:var(--color-outline-variant)]/60 bg-rice-paper">
-      <div className="mx-auto grid max-w-screen-2xl grid-cols-1 gap-10 px-5 md:px-20 py-12 md:grid-cols-4">
-        <div className="md:col-span-2 space-y-4">
+      <div className="mx-auto grid max-w-screen-2xl grid-cols-1 gap-x-12 gap-y-8 px-5 py-12 sm:grid-cols-2 md:px-20 lg:grid-cols-[1.5fr_0.75fr_0.9fr] lg:gap-x-16">
+        <div className="min-w-0 space-y-4 sm:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-full bg-vietnamese-red text-white font-display font-bold">
+            <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-vietnamese-red text-white font-display font-bold">
               V
             </div>
             <span className="font-display text-xl font-bold text-viking-blue">WWU VSA</span>
@@ -15,62 +19,74 @@ export function Footer() {
             Representing the Vietnamese student body at Western Washington University — celebrating
             heritage, empowering leadership, and building community since 1996.
           </p>
-          <div className="pt-2">
-            <h4 className="mb-3 text-xs font-semibold uppercase tracking-widest text-ink-black">
+          <div>
+            <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-ink-black">
               Part of the Community
             </h4>
-            <div className="flex flex-wrap items-start gap-6 pt-2">
-              {[
-                { code: "ESC", label: "Ethnic Student Center" },
-                { code: "NWVSA", label: "Northwest Vietnamese\nStudent Association" },
-                { code: "WWU", label: "Western Washington\nUniversity" },
-              ].map((p) => (
-                <div key={p.code} className="flex flex-col items-center gap-1 text-center">
-                  <div className="grid h-12 w-12 place-items-center rounded-full border border-[color:var(--color-outline-variant)] bg-white font-bold text-viking-blue">
-                    {p.code.slice(0, 1)}
-                  </div>
-                  <span className="text-sm font-bold text-on-surface-variant">{p.code}</span>
-                  <span className="whitespace-pre text-[11px] leading-tight text-on-surface-variant">
-                    {p.label}
-                  </span>
-                </div>
+            <ul className="flex flex-wrap items-start gap-x-8 gap-y-5">
+              {COMMUNITY_ORGANIZATIONS.map((org) => (
+                <li key={org.id} className="min-w-0">
+                  <a
+                    href={org.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${org.accessibleLabel} (opens in a new tab)`}
+                    className="group flex w-[9rem] flex-col items-center gap-1 rounded-lg p-1 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
+                  >
+                    <span className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--color-outline-variant)] bg-white text-viking-blue transition-colors group-hover:border-viking-blue">
+                      <span className="material-symbols-outlined text-xl" aria-hidden="true">
+                        {org.icon}
+                      </span>
+                    </span>
+                    <span className="text-sm font-bold text-on-surface-variant group-hover:text-viking-blue group-hover:underline">
+                      {org.acronym}
+                    </span>
+                    <span className="text-[11px] leading-tight text-on-surface-variant">
+                      {org.shortName.replace(/\n/g, " ")}
+                    </span>
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
 
-        <div>
+        <nav aria-label="Explore" className="min-w-0">
           <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-vietnamese-red">
             Explore
           </h4>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/about" className="text-on-surface-variant hover:text-viking-blue">About Us</Link></li>
-            <li><Link to="/events" className="text-on-surface-variant hover:text-viking-blue">Events</Link></li>
-            <li><Link to="/gallery" className="text-on-surface-variant hover:text-viking-blue">Gallery</Link></li>
-            <li><Link to="/products" className="text-on-surface-variant hover:text-viking-blue">Products</Link></li>
+          <ul className="space-y-1 text-sm">
+            <li><Link to="/about" className={linkClasses}>About Us</Link></li>
+            <li><Link to="/events" className={linkClasses}>Events</Link></li>
+            <li><Link to="/gallery" className={linkClasses}>Gallery</Link></li>
+            <li><Link to="/products" className={linkClasses}>Products</Link></li>
           </ul>
-        </div>
+        </nav>
 
-        <div>
+        <div className="min-w-0">
           <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-vietnamese-red">
             Connect
           </h4>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/calendar" className="text-on-surface-variant hover:text-viking-blue">Calendar</Link></li>
-            <li><Link to="/contact" className="text-on-surface-variant hover:text-viking-blue">Contact</Link></li>
-            <li><a href="mailto:westernvsa@gmail.com" className="text-on-surface-variant hover:text-viking-blue">westernvsa@gmail.com</a></li>
+          <ul className="space-y-1 text-sm">
+            <li><Link to="/calendar" className={linkClasses}>Calendar</Link></li>
+            <li><Link to="/contact" className={linkClasses}>Contact</Link></li>
+            <li>
+              <a href="mailto:westernvsa@gmail.com" className={`${linkClasses} break-all`}>
+                westernvsa@gmail.com
+              </a>
+            </li>
           </ul>
           <div className="mt-4 flex gap-3">
-            <a href="#" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-full border border-[color:var(--color-outline-variant)] text-on-surface-variant hover:border-viking-blue hover:text-viking-blue transition-colors">
+            <a href="https://instagram.com/wwuvsa" target="_blank" rel="noopener noreferrer" aria-label="WWU VSA on Instagram (opens in a new tab)" className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--color-outline-variant)] text-on-surface-variant transition-colors hover:border-viking-blue hover:text-viking-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red">
               <span className="material-symbols-outlined text-lg">alternate_email</span>
             </a>
-            <a href="mailto:westernvsa@gmail.com" aria-label="Email" className="grid h-10 w-10 place-items-center rounded-full border border-[color:var(--color-outline-variant)] text-on-surface-variant hover:border-viking-blue hover:text-viking-blue transition-colors">
+            <a href="mailto:westernvsa@gmail.com" aria-label="Email WWU VSA" className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--color-outline-variant)] text-on-surface-variant transition-colors hover:border-viking-blue hover:text-viking-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red">
               <span className="material-symbols-outlined text-lg">mail</span>
             </a>
           </div>
         </div>
       </div>
-      <div className="border-t border-[color:var(--color-outline-variant)]/40 px-5 md:px-20 py-5 text-center text-xs text-on-surface-variant">
+      <div className="border-t border-[color:var(--color-outline-variant)]/40 px-5 py-5 text-center text-xs text-on-surface-variant md:px-20">
         © {new Date().getFullYear()} WWU Vietnamese Student Association. Heritage &amp; Future.
       </div>
     </footer>
