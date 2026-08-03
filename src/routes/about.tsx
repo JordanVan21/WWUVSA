@@ -156,39 +156,47 @@ function AboutPage() {
         <div className="mx-auto flex max-w-screen-2xl flex-col items-center text-center">
           <h2 className="font-display text-3xl md:text-4xl">Community Roots</h2>
           <p className="mt-4 max-w-2xl text-lg text-on-surface-variant">
-            We are connected to a larger network of campus support, regional community, and
+            WWU VSA is connected to a wider network of campus support, regional community, and
             Vietnamese student leadership across North America.
           </p>
-          <ul className="mt-12 grid w-full max-w-4xl grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-10">
+          <ul className="mt-12 grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
             {COMMUNITY_ORGANIZATIONS.map((org, i) => {
               const color = ["text-vietnamese-red", "text-viking-blue", "text-[color:var(--color-imperial-gold)]"][i % 3];
               return (
-                <li key={org.id} className="flex justify-center">
-                  <a
-                    href={org.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${org.accessibleLabel} (opens in a new tab)`}
-                    className="group flex w-full max-w-[16rem] flex-col items-center gap-2 rounded-2xl px-3 py-4 transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-                  >
-                    <div className="grid h-24 w-24 place-items-center rounded-full bg-white p-4 shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md motion-reduce:transition-none motion-reduce:group-hover:scale-100">
+                <li key={org.id} className="flex">
+                  <div className="group flex h-full w-full flex-col rounded-2xl border border-[color:var(--color-outline-variant)]/60 bg-white/60 px-6 py-7 text-left transition-all duration-300 hover:-translate-y-1 hover:border-viking-blue/40 focus-within:border-viking-blue/60 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                    <div className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-white p-4 shadow-sm transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100">
                       {org.logoUrl ? (
                         <img src={org.logoUrl} alt="" className="h-full w-full object-contain" loading="lazy" />
                       ) : (
-                        <span className={`material-symbols-outlined text-4xl ${color}`} aria-hidden="true">
+                        <span className={`material-symbols-outlined text-3xl ${color}`} aria-hidden="true">
                           {org.icon}
                         </span>
                       )}
                     </div>
-                    <span className="text-sm font-semibold text-on-surface group-hover:underline">{org.acronym}</span>
-                    <span className="text-xs leading-snug text-on-surface-variant">{org.fullName}</span>
-                    <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-viking-blue">
+                    <h3 className="mt-4 text-center font-display text-xl text-on-surface">{org.acronym}</h3>
+                    <p className="mt-1 text-center text-xs leading-snug text-on-surface-variant">{org.fullName}</p>
+                    <span className="mx-auto mt-3 rounded-full bg-imperial-gold/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-on-tertiary-container">
+                      {org.scope}
+                    </span>
+                    <p className="mt-5 text-sm leading-relaxed text-on-surface-variant">{org.description}</p>
+                    <p className="mt-4 text-sm leading-relaxed text-on-surface-variant">
+                      <span className="font-semibold text-on-surface">How WWU VSA connects: </span>
+                      {org.connectionDescription}
+                    </p>
+                    <a
+                      href={org.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${org.accessibleLabel} (opens in a new tab)`}
+                      className="mt-6 inline-flex items-center gap-1 self-start rounded-md text-sm font-semibold text-viking-blue hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
+                    >
                       Visit website
                       <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden="true">
                         open_in_new
                       </span>
-                    </span>
-                  </a>
+                    </a>
+                  </div>
                 </li>
               );
             })}
