@@ -65,7 +65,7 @@ export function Header() {
           <span className="font-display text-xl font-bold text-vietnamese-red tracking-tight">WWU VSA</span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+        <div className="hidden min-w-0 items-center gap-8 lg:flex">
           {nav.map((n) => (
             <Link
               key={n.to}
@@ -138,7 +138,7 @@ export function Header() {
         </div>
 
         <button
-          className="md:hidden p-2 text-vietnamese-red"
+          className="p-2 text-vietnamese-red lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -148,7 +148,7 @@ export function Header() {
       </nav>
 
       {open && (
-        <div className="md:hidden border-t border-[color:var(--color-outline-variant)]/40 bg-[color:var(--color-surface)]">
+        <div className="border-t border-[color:var(--color-outline-variant)]/40 bg-[color:var(--color-surface)] lg:hidden">
           <div className="flex flex-col px-5 py-4 gap-1">
             {nav.map((n) => (
               <Link
