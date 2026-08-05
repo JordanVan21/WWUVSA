@@ -102,7 +102,7 @@ function AboutPage() {
               aria-label="Learn more about Viet 101, our language and culture workshop series"
               className="group relative block overflow-hidden rounded-2xl bg-surface-container p-8 transition-shadow hover:shadow-xl md:col-span-3 md:row-span-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
             >
-              <div className="flex h-full flex-col items-start gap-6 md:flex-row md:items-center">
+              <div className="flex h-full flex-col items-start justify-center">
                 <div className="flex-1">
                   <span className="mb-2 inline-block rounded-full bg-imperial-gold/20 px-3 py-1 text-xs font-semibold text-on-tertiary-container">Culture &amp; Language</span>
                   <h3 className="font-display text-2xl">Viet 101</h3>
@@ -111,9 +111,6 @@ function AboutPage() {
                     Learn More
                     <span className="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
                   </span>
-                </div>
-                <div className="grid h-24 w-24 shrink-0 place-items-center rounded-2xl bg-white p-4 shadow-sm">
-                  <span className="material-symbols-outlined text-5xl text-[color:var(--color-imperial-gold)]">translate</span>
                 </div>
               </div>
             </Link>
