@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { MISSION_PARAGRAPHS } from "@/lib/mission";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -98,17 +99,13 @@ function HomePage() {
             <h2 className="dong-son-border font-display text-3xl md:text-4xl text-vietnamese-red">
               Xin Chào &amp; Welcome
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-on-surface-variant">
-              The Vietnamese Student Association at Western Washington University fosters an
-              inclusive space that celebrates Vietnamese identity while empowering students to lead
-              and succeed.
+            <p className="mt-6 text-base md:text-lg leading-relaxed text-on-surface-variant">
+              {MISSION_PARAGRAPHS[0]}
             </p>
-            <p className="mt-4 text-base text-on-surface-variant">
-              Whether you're of Vietnamese descent, part of the diaspora, or simply curious about
-              our culture, VSA is a home away from home — with cultural showcases, professional
-              workshops, and social gatherings throughout the year.
+            <p className="mt-4 text-base leading-relaxed text-on-surface-variant">
+              {MISSION_PARAGRAPHS[1]}
             </p>
-            <Link to="/about" className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-viking-blue">
+            <Link to="/about" hash="executive-board" className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-viking-blue">
               Meet Our Executive Board
               <span className="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">chevron_right</span>
             </Link>
@@ -125,7 +122,7 @@ function HomePage() {
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {[
-              { icon: "diversity_3", title: "Lifelong Friendship", color: "border-imperial-gold", desc: "A supportive network of peers who share your values and experiences — from study sessions to late-night boba runs." },
+              { icon: "diversity_3", title: "Lifelong Friends", color: "border-imperial-gold", desc: "A supportive network of peers who share your values and experiences, from study sessions to late-night boba runs." },
               { icon: "temple_buddhist", title: "Cultural Heritage", color: "border-vietnamese-red", desc: "Reconnect with or discover the beauty of Vietnamese traditions, history, and cuisine through hands-on events." },
               { icon: "military_tech", title: "Leadership Growth", color: "border-viking-blue", desc: "Grow through board roles, event coordination, and regional networking with our NWVSA partners." },
             ].map((c) => (
@@ -154,17 +151,25 @@ function HomePage() {
               Regional Program
             </span>
             <h2 className="dong-son-border font-display text-3xl md:text-4xl text-ink-black">
-              ACCE Mentorship
+              ACCE Family &amp; Mentorship
             </h2>
-            <p className="mt-6 text-lg text-on-surface-variant">
-              The Academic &amp; Cultural Career Excellence (ACCE) program pairs upperclassmen with
-              new students to provide guidance on university life, career goals, and cultural
-              identity.
+            <p className="mt-6 text-base md:text-lg leading-relaxed text-on-surface-variant">
+              ACCE is WWU VSA's family and mentorship program. Members are matched into families
+              that encourage mentorship, friendship, cultural connection, and a welcoming sense of
+              belonging.
             </p>
             <ul className="mt-5 space-y-3 text-base text-on-surface-variant">
-              <li className="flex items-center gap-3"><span className="material-symbols-outlined text-imperial-gold">star</span>Personalized academic support</li>
-              <li className="flex items-center gap-3"><span className="material-symbols-outlined text-imperial-gold">star</span>Networking within the NWVSA circuit</li>
+              <li className="flex items-start gap-3"><span className="material-symbols-outlined text-imperial-gold">star</span>Em (Littles) matched with Anh, Chi, or Chanh who support them all year</li>
+              <li className="flex items-start gap-3"><span className="material-symbols-outlined text-imperial-gold">star</span>Monthly family gatherings, weekly check-ins, and time together at VSA events</li>
             </ul>
+            <Link
+              to="/programs/$slug"
+              params={{ slug: "acce" }}
+              className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-viking-blue"
+            >
+              Learn About ACCE
+              <span className="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">chevron_right</span>
+            </Link>
           </div>
           <div className="order-1 md:order-2">
             <img src={ACCE_IMG} alt="Two students studying together in a modern library" loading="lazy" className="aspect-video w-full rotate-2 rounded-3xl object-cover shadow-lg transition-transform duration-500 hover:rotate-0" />
