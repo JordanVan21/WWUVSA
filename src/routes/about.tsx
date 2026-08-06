@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { BoardCarousel } from "@/components/BoardCarousel";
 import { COMMUNITY_ORGANIZATIONS } from "@/lib/community";
+import { MISSION_PARAGRAPHS } from "@/lib/mission";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -22,6 +24,21 @@ const ACCE_IMG =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCOKt9p1ajL1X_TpC_ppJkAD4lgET5s0Vt88sCQYvqNtkI1j3LioOoBYXnyUk9dKj8qj2Twmwvptb5e5uaMz7w3w7GdfgFCux2_UirR-icKRq3eKtyOgfX8Cn3wrSs58dPoZBbGXQLHv9KFjmxdpmRHHzDq-UyQ1mBXoKuCRWSC9FkCslYy7DKXSroA73DGBk78hYtBF6-enP6G-42KQ9TLUCQcieho4n1lq2j6AklFkhusIQyv2CbGePiMldeUFcrdLUqmQOzcwKKI";
 
 function AboutPage() {
+  const boardHeadingRef = useRef<HTMLHeadingElement | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.location.hash !== "#executive-board") return;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const id = window.setTimeout(() => {
+      const el = document.getElementById("executive-board");
+      if (!el) return;
+      el.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "start" });
+      boardHeadingRef.current?.focus({ preventScroll: true });
+    }, 50);
+    return () => window.clearTimeout(id);
+  }, []);
+
   return (
     <>
       {/* Hero */}
@@ -49,12 +66,14 @@ function AboutPage() {
       <section className="bg-surface-container-low px-5 md:px-20 py-16 md:py-24">
         <div className="mx-auto max-w-4xl text-center">
           <div className="dong-son-divider mx-auto mb-8 h-px w-full" />
-          <h2 className="font-display text-3xl md:text-4xl">Mission &amp; Values</h2>
-          <p className="mt-6 text-lg italic leading-relaxed text-on-surface-variant">
-            "To empower Vietnamese students by fostering a supportive community, preserving our
-            rich cultural heritage, and nurturing future leaders through academic excellence and
-            community engagement."
-          </p>
+          <h2 className="font-display text-3xl md:text-4xl">Purpose, Mission &amp; Values</h2>
+          <div className="mx-auto mt-6 max-w-3xl space-y-4 text-left sm:text-center">
+            {MISSION_PARAGRAPHS.map((p) => (
+              <p key={p.slice(0, 24)} className="text-base md:text-lg leading-relaxed text-on-surface-variant">
+                {p}
+              </p>
+            ))}
+          </div>
           <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
             {[
               { icon: "diversity_3", title: "Community", desc: "Building a family where every student feels seen and heard.", border: "border-vietnamese-red", color: "text-vietnamese-red" },
@@ -139,9 +158,9 @@ function AboutPage() {
       </section>
 
       {/* Board Slider */}
-      <section className="bg-surface px-5 md:px-20 py-16 md:py-24">
+      <section id="executive-board" className="scroll-mt-24 bg-surface px-5 md:px-20 py-16 md:py-24 md:scroll-mt-28">
         <div className="mx-auto max-w-screen-2xl">
-          <BoardCarousel />
+          <BoardCarousel headingRef={boardHeadingRef} />
           <div className="mt-12 text-center">
             <p className="mb-4 text-on-surface-variant">Want to make an impact? Applications for next year's board open in Spring.</p>
           </div>

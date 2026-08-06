@@ -15,6 +15,7 @@ export type Program = {
   participationDetails?: string;
   videoUrl?: string;
   featuredMediaIds?: string[];
+  sections?: { title: string; body?: string[]; bullets?: string[] }[];
 };
 
 export const PROGRAMS: Program[] = [
@@ -23,24 +24,83 @@ export const PROGRAMS: Program[] = [
     name: "ACCE",
     category: "Community & Mentorship",
     shortDescription:
-      "Our family-style mentorship program pairing new students with upperclassmen for the whole year.",
+      "WWU VSA's family and mentorship program, pairing Em with Anh, Chi, and Chanh for the whole year.",
     fullDescription: [
-      "ACCE — A Core Connection Effort — is WWU VSA's mentorship and family system. Members are placed into small, mixed-year \"families\" that stay together through the academic year, giving every new student a handful of familiar faces from their very first meeting.",
-      "We run ACCE because arriving at a large campus can be isolating, especially for students navigating Vietnamese-American identity away from home. A family gives newer members someone to ask about classes, housing, internships, or simply where to find decent phở in Bellingham.",
-      "Participants leave with mentors, friendships that outlast a single quarter, and a low-pressure entry point into the rest of VSA's programming.",
+      "ACCE is WWU VSA's family and mentorship program, designed to help members form meaningful relationships, find support, and become more involved in the VSA community. Participants are matched into families that encourage mentorship, friendship, cultural connection, and a welcoming sense of belonging.",
+      "Littles, also known as \u201cEm,\u201d are paired with experienced family leaders who support them throughout the year. Bigs \u2014 known as Anh, Chi, or Chanh \u2014 serve as mentors, resources, and community builders for their Em. Through monthly ACCE gatherings, weekly communication, VSA events, and time spent together outside of meetings, each family has opportunities to build genuine and lasting relationships.",
+      "ACCE is a meaningful time commitment. Every participant is expected to be active, inclusive, communicative, and mindful of the experiences of their own family and other ACCE families. The program works best when members answer matching questions honestly, participate consistently, and make an intentional effort to connect with one another.",
     ],
     heroImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuCOKt9p1ajL1X_TpC_ppJkAD4lgET5s0Vt88sCQYvqNtkI1j3LioOoBYXnyUk9dKj8qj2Twmwvptb5e5uaMz7w3w7GdfgFCux2_UirR-icKRq3eKtyOgfX8Cn3wrSs58dPoZBbGXQLHv9KFjmxdpmRHHzDq-UyQ1mBXoKuCRWSC9FkCslYy7DKXSroA73DGBk78hYtBF6-enP6G-42KQ9TLUCQcieho4n1lq2j6AklFkhusIQyv2CbGePiMldeUFcrdLUqmQOzcwKKI",
     accentStyle: "image",
     howItWorks: [
-      { title: "Family placement", description: "Members are grouped into family-style teams that mix first-years with returning students." },
-      { title: "Upperclassmen mentors", description: "Experienced members guide their family through campus life, coursework, and VSA traditions." },
-      { title: "Family activities", description: "Families attend socials, competitions, and VSA events together throughout the year." },
-      { title: "Long-term connection", description: "Families carry over between quarters, so relationships build instead of resetting." },
+      { title: "Matching", description: "Em and family leaders complete a matching form so families are built around shared interests, personalities, and experiences." },
+      { title: "Family placement", description: "Each Em is matched with one or more Anh, Chi, or Chanh, forming a family that stays together through the year." },
+      { title: "Monthly gatherings", description: "Every family takes part in monthly ACCE activities, plus regular check-ins between family leaders and the ACCE team." },
+      { title: "Everyday connection", description: "Families keep in touch weekly and spend time together at VSA events and outside of meetings." },
     ],
     audience: "Any WWU student who wants a smaller community inside VSA",
     experienceLevel: "No experience needed — newcomers are the point",
-    typicalSchedule: "Placement happens early in Fall quarter; families meet on their own schedule",
+    typicalSchedule: "Matching happens early in Fall quarter; families gather monthly and stay in touch weekly",
+    participationDetails: "A meaningful year-long commitment — active participation, honest communication, and inclusivity toward every ACCE family",
+    sections: [
+      {
+        title: "Becoming an Em",
+        body: [
+          "Em are members who want to become more connected with WWU VSA through friendship, mentorship, and family activities. Each Em is matched with one or more Anh, Chi, or Chanh based on their interests, personality, experiences, and responses in the matching form.",
+          "Em are expected to:",
+        ],
+        bullets: [
+          "Commit time and effort to the ACCE program",
+          "Build relationships with their Anh, Chi, or Chanh outside of regular VSA and ACCE events",
+          "Participate in monthly ACCE gatherings",
+          "Be active, inclusive, and respectful toward their own family and other ACCE families",
+          "Communicate honestly so the ACCE team can create thoughtful matches",
+          "Have fun and remain open to meeting new people",
+        ],
+      },
+      {
+        title: "Becoming an Anh, Chi, or Chanh",
+        body: [
+          "Anh, Chi, and Chanh serve as ACCE family leaders and mentors. They help their Em feel welcomed, supported, and connected to the WWU VSA community. Family leaders are expected to build genuine relationships, serve as helpful resources, address concerns within their families, and create an inclusive environment where every member feels comfortable participating.",
+          "Applicants should generally:",
+        ],
+        bullets: [
+          "Be in their second year at Western Washington University or beyond",
+          "Have prior experience or familiarity with VSA spaces",
+          "Be prepared to make a meaningful time commitment",
+          "Build relationships with their Em outside of VSA meetings and ACCE events",
+          "Connect with their Em regularly, ideally each week",
+          "Help plan and participate in monthly ACCE activities",
+          "Complete monthly check-ins with the ACCE leadership team and other family leaders",
+          "Be active, inclusive, reliable, and mindful of all ACCE families",
+          "Help create a safe, supportive, and welcoming family environment",
+        ],
+      },
+      {
+        title: "Time commitment and expectations",
+        body: [
+          "ACCE runs across the academic year, and families get the most out of it when everyone shows up consistently. Plan on a monthly family activity, regular weekly contact with your family, and attending VSA events together when you can.",
+          "Beyond scheduling, the expectations are simple: communicate openly, follow through on plans, include everyone in your family, and be considerate of other ACCE families sharing the same space.",
+        ],
+      },
+      {
+        title: "Program activities",
+        bullets: [
+          "Monthly ACCE family gatherings planned by family leaders",
+          "Family reveals and icebreakers at the start of the year",
+          "Attending general meetings, socials, and cultural events together",
+          "Casual hangouts outside of VSA — study sessions, food runs, and game nights",
+          "Monthly check-ins between family leaders and the ACCE team",
+        ],
+      },
+      {
+        title: "Applications and interest",
+        body: [
+          "Em and family leader applications open at the start of the academic year and are announced at general meetings, on our Instagram, and through the WWU VSA calendar. If applications are not currently open, reach out and we'll let you know when the next round begins.",
+        ],
+      },
+    ],
     featuredMediaIds: ["general-meetings-2024-0", "general-meetings-2024-1", "community-events-2024-0"],
   },
   {
