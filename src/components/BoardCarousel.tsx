@@ -10,7 +10,7 @@ function perPageFor(width: number) {
   return 4;
 }
 
-export function BoardCarousel() {
+export function BoardCarousel({ headingRef }: { headingRef?: React.Ref<HTMLHeadingElement> }) {
   const members = BOARD_MEMBERS;
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const [width, setWidth] = useState(0);
@@ -49,7 +49,9 @@ export function BoardCarousel() {
     <div>
       <div className="mb-10 flex items-end justify-between gap-4">
         <div>
-          <h2 className="font-display text-3xl md:text-4xl">Meet the Board</h2>
+          <h2 ref={headingRef} tabIndex={-1} className="font-display text-3xl md:text-4xl focus:outline-none">
+            Meet Our Executive Board
+          </h2>
           <p className="mt-2 text-on-surface-variant">The passionate team behind our current vision.</p>
         </div>
         <div className="flex gap-2">
