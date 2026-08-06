@@ -96,6 +96,34 @@ export function ProgramDetailPage({ program }: { program: Program }) {
 
       {/* Who It Is For */}
       {details.length > 0 && (
+        <>
+        </>
+      )}
+      {program.sections && program.sections.length > 0 && (
+        <motion.section {...fade} className="px-5 md:px-20 py-14 md:py-20">
+          <div className="mx-auto max-w-3xl space-y-12">
+            {program.sections.map((s) => (
+              <div key={s.title}>
+                <h2 className="dong-son-border font-display text-2xl md:text-3xl text-ink-black">{s.title}</h2>
+                {s.body?.map((p) => (
+                  <p key={p.slice(0, 24)} className="mt-4 text-base leading-relaxed text-on-surface-variant">{p}</p>
+                ))}
+                {s.bullets && s.bullets.length > 0 && (
+                  <ul className="mt-4 space-y-3">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-3 text-base leading-relaxed text-on-surface-variant">
+                        <span className="material-symbols-outlined mt-0.5 shrink-0 text-lg text-[color:var(--color-imperial-gold)]" aria-hidden="true">check_circle</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </motion.section>
+      )}
+      {details.length > 0 && (
         <motion.section {...fade} className="px-5 md:px-20 py-14 md:py-20">
           <div className="mx-auto max-w-3xl">
             <h2 className="font-display text-2xl md:text-3xl text-ink-black">Who It Is For</h2>
