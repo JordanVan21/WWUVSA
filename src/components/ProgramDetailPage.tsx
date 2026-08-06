@@ -94,11 +94,7 @@ export function ProgramDetailPage({ program }: { program: Program }) {
         </motion.section>
       )}
 
-      {/* Who It Is For */}
-      {details.length > 0 && (
-        <>
-        </>
-      )}
+      {/* Program sections */}
       {program.sections && program.sections.length > 0 && (
         <motion.section {...fade} className="px-5 md:px-20 py-14 md:py-20">
           <div className="mx-auto max-w-3xl space-y-12">
@@ -123,6 +119,7 @@ export function ProgramDetailPage({ program }: { program: Program }) {
           </div>
         </motion.section>
       )}
+      {/* Who It Is For */}
       {details.length > 0 && (
         <motion.section {...fade} className="px-5 md:px-20 py-14 md:py-20">
           <div className="mx-auto max-w-3xl">
