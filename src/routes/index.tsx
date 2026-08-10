@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { MISSION_PARAGRAPHS } from "@/lib/mission";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -100,10 +99,10 @@ function HomePage() {
               Xin Chào &amp; Welcome
             </h2>
             <p className="mt-6 text-base md:text-lg leading-relaxed text-on-surface-variant">
-              {MISSION_PARAGRAPHS[0]}
+              Welcome to Western Washington University’s Vietnamese Student Association—a community where students can celebrate Vietnamese culture, build meaningful connections, and create lasting memories together.
             </p>
             <p className="mt-4 text-base leading-relaxed text-on-surface-variant">
-              {MISSION_PARAGRAPHS[1]}
+              Whether you are looking to explore your cultural identity, meet new people, attend engaging events, or find a supportive community on campus, WWU VSA welcomes students of all backgrounds and experiences.
             </p>
             <Link to="/about" hash="executive-board" className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-viking-blue">
               Meet Our Executive Board
