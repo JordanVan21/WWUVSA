@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { MISSION_PARAGRAPHS } from "@/lib/mission";
 
 export const Route = createFileRoute("/")({
   head: () => ({
