@@ -99,7 +99,7 @@ function HomePage() {
               Xin Chào &amp; Welcome
             </h2>
             <p className="mt-6 text-base md:text-lg leading-relaxed text-on-surface-variant">
-              Welcome to Western Washington University’s Vietnamese Student Association—a community where students can celebrate Vietnamese culture, build meaningful connections, and create lasting memories together.
+              Welcome to Western Washington University’s Vietnamese Student Association a community where students can celebrate Vietnamese culture, build meaningful connections, and create lasting memories together.
             </p>
             <p className="mt-4 text-base leading-relaxed text-on-surface-variant">
               Whether you are looking to explore your cultural identity, meet new people, attend engaging events, or find a supportive community on campus, WWU VSA welcomes students of all backgrounds and experiences.
