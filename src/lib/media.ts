@@ -85,23 +85,75 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
   tet: {
     slug: "tet",
     name: "Tết",
-    season: "Winter",
+    season: "Around Lunar New Year",
     tagline: "Lunar New Year",
     description:
-      "Our Lunar New Year celebration — bánh chưng, lì xì, traditional games, and the warmth of a family reunion far from home.",
+      "Tết celebrates Vietnamese Lunar New Year through culture, community, tradition, performances, food, and the excitement of welcoming a new year together.",
     happens:
-      "A shared meal of authentic Vietnamese dishes, lion dance from a visiting troupe, red-envelope traditions, and small-group games that pull first-year students right into the community.",
+      "Tết, or Vietnamese Lunar New Year, is one of the most important celebrations in Vietnamese culture. It marks the beginning of the lunar new year and is a time centered around family, community, tradition, good fortune, reflection, and welcoming new beginnings.",
     meaning:
-      "Tết is about belonging. For students spending the new year away from family, this night is how VSA becomes home.",
-    location: "Viking Union Multipurpose Room",
+      "WWU VSA celebrates Tết as an opportunity for members to connect with Vietnamese culture, share traditions, and celebrate with both the campus community and the larger Vietnamese community.",
+    location: "On campus, and with the Vietnamese community in Seattle",
     audience: "Members and guests welcome",
     category: "Cultural Celebration",
     expectations: [
-      { icon: "set_meal", title: "Bánh Chưng & Home Cooking", description: "Traditional New Year dishes prepared with community volunteers." },
-      { icon: "redeem", title: "Lì Xì Tradition", description: "Red envelopes exchanged with wishes for the year ahead." },
-      { icon: "festival", title: "Lion Dance", description: "A visiting troupe opens the night to drums and firecracker energy." },
-      { icon: "casino", title: "Traditional Games", description: "Bầu cua and small-group games that pull newcomers straight in." },
+      { icon: "festival", title: "Cultural Performances", description: "Music, dance, and lion dancing shared by community groups and student performers." },
+      { icon: "set_meal", title: "Food & Vendors", description: "Vietnamese food, treats, and vendor booths throughout the celebration." },
+      { icon: "diversity_3", title: "Community Organizations", description: "Schools, families, and Vietnamese community organizations celebrating together." },
+      { icon: "redeem", title: "New Year Traditions", description: "Lì xì, well-wishes, and traditions that welcome good fortune for the year ahead." },
     ],
+    sections: [
+      {
+        title: "What is Tết?",
+        body: [
+          "Tết, or Vietnamese Lunar New Year, is one of the most important celebrations in Vietnamese culture. It marks the beginning of the lunar new year and is a time centered around family, community, tradition, good fortune, reflection, and welcoming new beginnings.",
+          "Tết is a major Vietnamese cultural celebration in its own right — it is not simply the name of a single event. It is typically observed in February, around Lunar New Year.",
+        ],
+      },
+      {
+        title: "How WWU VSA Celebrates",
+        body: [
+          "WWU VSA celebrates Tết as an opportunity for members to connect with Vietnamese culture, share traditions, and celebrate with both the campus community and the larger Vietnamese community.",
+          "On campus, members gather to share food, learn about New Year customs, and welcome the new year together — whether they grew up celebrating Tết or are experiencing it for the first time.",
+        ],
+      },
+      {
+        title: "Tết in Seattle",
+        body: [
+          "WWU VSA also brings members together to experience Tết with the broader Vietnamese community in Seattle. Tết in Seattle brings community organizations, schools, performers, families, and visitors together for a day filled with Vietnamese and Lunar New Year traditions.",
+          "Attending Tết in Seattle gives members an opportunity to celebrate beyond campus, support Vietnamese community organizations, meet others in the community, and welcome the new year together.",
+        ],
+        bullets: [
+          "Cultural performances, music, and lion dancing",
+          "Food, vendors, and family activities",
+          "Community organizations and other festivities throughout the celebration",
+        ],
+      },
+      {
+        title: "Cultural Performances",
+        body: [
+          "WWU VSA may also participate through cultural performances, giving members an opportunity to represent our organization while sharing Vietnamese culture with the greater community. In some years, WWU VSA members perform as part of the celebration; participation depends on interest and planning each year.",
+          "Performance schedules are part of each year's event information and are announced separately.",
+        ],
+      },
+      {
+        title: "Transportation",
+        body: [
+          "Because Tết in Seattle is typically an all-day experience away from campus, WWU VSA works to coordinate rides for members who want to attend. Participants may be asked to complete an attendance or transportation form in advance so organizers can arrange carpools and transportation as effectively as possible.",
+          "Transportation details, form deadlines, departure times, return plans, and driver assignments are announced separately for each year's event.",
+        ],
+      },
+      {
+        title: "Personal Expenses",
+        body: [
+          "WWU VSA does not charge members admission for attending Tết in Seattle, and rides coordinated by WWU VSA are not a paid transportation service.",
+          "Members should plan for any personal purchases they choose to make during the event, such as food, merchandise, or items from vendors.",
+        ],
+      },
+    ],
+    currentYear: {
+      note: "This year's date, location, performance schedule, transportation form, and deadlines are announced separately each year. Check our meetings and social media for the most current information.",
+    },
     heroImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuDBSCz0w9mRjH5ga5kiObTs4A2oOBYS16rrvyE5IgR6htUTznOMHQ1VnwGa4ZDGpXTgBIm5i9-Bs4jeP8f7xQI5WIEIJwvja4OCNl1uICToVM43DJDo9O8HPCOs_F7tPNkjd7mqpvP71eHWTzyFnvxBIzPv3tCW9jPS8IXAbZM7U0zRGKfN8_5A7JWkiXOXEyddF3qedXH_4xLQV8oqV9ybBdrpSdKlZ7Rfd5F83jrzA7ms7lxNzEd-8GIMWtA2xC9cbotVmAIvvTNT",
     accent: "gold",
@@ -109,23 +161,75 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
   "turkey-bowl": {
     slug: "turkey-bowl",
     name: "Turkey Bowl",
-    season: "Fall",
-    tagline: "Flag Football Classic",
+    season: "Late November",
+    tagline: "Regional Ultimate Frisbee Tournament",
     description:
-      "Our annual flag football tournament that brings VSAs across the region together for a Thanksgiving-week showdown.",
+      "An annual late-November Ultimate Frisbee tournament primarily hosted by Seattle University VSA, bringing VSAs from across the Pacific Northwest together for friendly competition, community, and an evening banquet.",
     happens:
-      "Round-robin flag football on the WWU intramural fields, potluck sideline, and a trophy ceremony hosted by the Turkey Bowl committee.",
+      "Turkey Bowl is an annual Ultimate Frisbee tournament primarily hosted by Seattle University VSA that brings Vietnamese Student Associations from across the Pacific Northwest together around late November, before Thanksgiving. Throughout the tournament, VSA communities compete, meet students from other schools, support one another, and strengthen connections across the region.",
     meaning:
-      "Turkey Bowl is where regional VSA chapters meet as friends first, competitors second. Long-term friendships between schools start on these fields.",
-    location: "WWU Intramural Fields",
-    audience: "Open to VSA members and regional chapters",
+      "Although Ultimate Frisbee is at the center of the tournament, Turkey Bowl is ultimately about bringing different VSA communities together through friendly competition, school spirit, and regional community.",
+    location: "Hosted in the Seattle area by Seattle University VSA",
+    audience: "WWU VSA members of all experience levels",
     category: "Regional Tournament",
     expectations: [
-      { icon: "sports_football", title: "Round-Robin Brackets", description: "Co-ed flag football matches running through the afternoon." },
-      { icon: "groups", title: "Regional Chapters", description: "Teams travel in from VSAs across Washington to play and mingle." },
-      { icon: "lunch_dining", title: "Sideline Potluck", description: "Shared food between games — bring a dish or just bring an appetite." },
-      { icon: "emoji_events", title: "Trophy Ceremony", description: "The Turkey Bowl committee closes the day with awards and photos." },
+      { icon: "sports", title: "Ultimate Frisbee Tournament", description: "Matches run through the day between VSA teams from across the Pacific Northwest." },
+      { icon: "groups", title: "Regional VSA Community", description: "A chance to meet, support, and celebrate with students from other schools." },
+      { icon: "diversity_3", title: "All Experience Levels", description: "WWU VSA may field both a competitive team and a recreational group." },
+      { icon: "restaurant", title: "Turkey Bowl Banquet", description: "An evening celebration with performances, Thanksgiving-style food, and awards." },
     ],
+    sections: [
+      {
+        title: "What is Turkey Bowl?",
+        body: [
+          "Turkey Bowl is an annual Ultimate Frisbee tournament primarily hosted by Seattle University VSA that brings Vietnamese Student Associations from across the Pacific Northwest together around late November, before Thanksgiving.",
+          "Throughout the tournament, VSA communities compete, meet students from other schools, support one another, and strengthen connections across the region.",
+        ],
+      },
+      {
+        title: "Seattle University VSA and the Regional Tournament",
+        body: [
+          "Turkey Bowl is primarily organized by Seattle University VSA. WWU VSA participates as one of the VSA communities attending the regional tournament, alongside chapters from throughout the Pacific Northwest.",
+        ],
+      },
+      {
+        title: "Competitive and Recreational Play",
+        body: [
+          "Turkey Bowl welcomes players with a wide range of experience levels. Players of different experience levels are encouraged to participate. Depending on interest and team organization, WWU VSA may have both competitive and recreational groups so members can participate in the way that feels most comfortable to them.",
+        ],
+        bullets: [
+          "Members who play Ultimate Frisbee competitively",
+          "Members who are just learning the game",
+          "Members who mainly want to participate socially",
+          "Members who want to cheer on WWU VSA and other VSA communities",
+        ],
+      },
+      {
+        title: "Transportation",
+        body: [
+          "WWU VSA works to coordinate rides and carpools for members participating in Turkey Bowl whenever possible. Participants may be asked to complete attendance or transportation information ahead of time so organizers can plan vehicles, drivers, and departure arrangements.",
+          "Transportation details and deadlines are announced separately for each year's tournament.",
+        ],
+      },
+      {
+        title: "Turkey Bowl Banquet",
+        body: [
+          "After the tournament, participating VSA communities traditionally come together for the Turkey Bowl Banquet, an evening celebration that closes out the day.",
+          "The banquet brings students from the participating schools together for performances, Thanksgiving-style food, recognition of each VSA community, celebration of the tournament winners, and time to connect with people from across the Pacific Northwest.",
+          "The banquet makes Turkey Bowl more than an Ultimate Frisbee competition. It ends the event with a regional celebration centered around community, school spirit, friendship, and the relationships built between VSAs.",
+        ],
+      },
+      {
+        title: "Banquet Cost",
+        body: [
+          "Attendance at the Turkey Bowl Banquet typically requires a separate banquet fee. The exact cost and registration information are announced each year, and tournament participation does not automatically include banquet admission.",
+          "Rides coordinated by WWU VSA are not a paid transportation service.",
+        ],
+      },
+    ],
+    currentYear: {
+      note: "This year's tournament date, location, schedule, banquet pricing, registration links, and transportation form are announced each year. Check our meetings and social media for the most current information.",
+    },
     heroImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuCXG1WqjA9jCmAtpoLxz4RHcRzjcdl_VfteJ8TZuzibyWE3AiiJGD6f0oHX5hONSG67IsWw5mCjrr8iVFIXWF50NyT4hPXPfxr2Ov7LkGZKJLG94mNcfCcpsctTqgI15THWNtrhzlO0t8IEF2Q2FueumKl3IViJx3e89MJkfXhRRgvvr69LiJy8KR0RWcDMmr9sBofprbSgyLTAu88vWo9Zt9oHEiEUqze1jkRvY0iRwmHKmFZ2o-Yo3_mxjAf7K82bc7tPtKdnyLmt",
     accent: "blue",
