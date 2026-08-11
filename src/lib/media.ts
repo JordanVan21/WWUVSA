@@ -40,7 +40,22 @@ export type EventMeta = {
   videoTitle?: string;
   videoDescription?: string;
   expectations?: { icon: string; title: string; description: string }[];
+  /** Evergreen, year-independent long-form sections. */
+  sections?: { title: string; body?: string[]; bullets?: string[] }[];
+  /**
+   * Yearly logistics. Board members: edit ONLY this block each year.
+   * Leave `details` empty to show the "announced closer to the event" message.
+   */
+  currentYear?: {
+    note?: string;
+    details?: { label: string; value: string }[];
+    link?: { label: string; url: string };
+  };
 };
+
+/** Shared, site-wide language about how WWU VSA handles rides. */
+export const TRANSPORTATION_POLICY =
+  "WWU VSA works to coordinate transportation and rides so that members who want to participate have a way to attend whenever possible. Transportation details and ride coordination are announced separately for each event.";
 
 export const EVENT_META: Record<EventSlug, EventMeta> = {
   "heritage-night": {
