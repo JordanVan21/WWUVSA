@@ -154,6 +154,79 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
       )}
 
       {/* Featured Video */}
+      {/* Evergreen detail sections */}
+      {event.sections && event.sections.length > 0 && (
+        <section className="mx-auto max-w-screen-2xl px-5 md:px-20 py-14 md:py-20">
+          <div className="mx-auto max-w-3xl space-y-12">
+            {event.sections.map((s) => (
+              <motion.div key={s.title} {...reveal}>
+                <h2 className="dong-son-border font-display text-2xl text-ink-black md:text-3xl">
+                  {s.title}
+                </h2>
+                {s.body?.map((p) => (
+                  <p key={p.slice(0, 24)} className="mt-4 text-base leading-relaxed text-on-surface-variant">
+                    {p}
+                  </p>
+                ))}
+                {s.bullets && s.bullets.length > 0 && (
+                  <ul className="mt-4 space-y-3">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-3 text-base leading-relaxed text-on-surface-variant">
+                        <span
+                          className={`material-symbols-outlined mt-0.5 shrink-0 text-lg ${ACCENT_TEXT[event.accent]}`}
+                          aria-hidden="true"
+                        >
+                          check_circle
+                        </span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Current-year details (edit yearly) */}
+      {event.currentYear && (
+        <section className="mx-auto max-w-screen-2xl px-5 md:px-20 pb-14 md:pb-20">
+          <div className={`mx-auto max-w-3xl rounded-lg border-t-4 ${ACCENT_BORDER[event.accent]} bg-surface-container-low p-6 shadow-sm md:p-8`}>
+            <span className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}>
+              This Year
+            </span>
+            <h2 className="mt-2 font-display text-2xl text-ink-black">Current-Year Details</h2>
+            {event.currentYear.note && (
+              <p className="mt-4 text-on-surface-variant">{event.currentYear.note}</p>
+            )}
+            {event.currentYear.details && event.currentYear.details.length > 0 && (
+              <dl className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {event.currentYear.details.map((d) => (
+                  <div key={d.label}>
+                    <dt className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">
+                      {d.label}
+                    </dt>
+                    <dd className="mt-1 text-sm font-semibold text-ink-black">{d.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+            {event.currentYear.link && (
+              <a
+                href={event.currentYear.link.url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-vietnamese-red px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+              >
+                {event.currentYear.link.label}
+                <span className="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span>
+              </a>
+            )}
+          </div>
+        </section>
+      )}
+
       {event.videoUrl && (
         <section className="mx-auto max-w-screen-2xl px-5 md:px-20 py-14 md:py-20">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
