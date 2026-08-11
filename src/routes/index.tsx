@@ -34,22 +34,25 @@ const VIET_IMG =
 
 const events = [
   {
-    date: "FEB 10",
-    title: "Tết Celebration",
-    desc: "Ring in the Lunar New Year with authentic food, games, and traditional performances.",
+    date: "AROUND LUNAR NEW YEAR",
+    title: "Tết",
+    desc: "Tết celebrates Vietnamese Lunar New Year through culture, community, tradition, performances, food, and the excitement of welcoming a new year together.",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAc_DyIjGrSgSHJZ9apzBNKCwlRWEFPrIR0LKeSeP5trYLWPIm4IpRm-xyxHer4lMisEGgeyi6lf7Ck_r1gp7GkwjrtdIXvytqeNqyxGtKF7EBhFwttMsXzJVQATBMLRXOwjedglhc6mtgMS1PTb9CRsekjEgfLTZWSjBk6QvGmpyoEtzt6trdXvlOaj7P6ZHM9QWGawtJX7U6bwRIgf4Ip7yPOu-JChMmTFQ9Y_FfsX6gIAZ6Gpq2FE-Tj9bJ5ArSbGNOPcIsMz-K-",
+    slug: "tet" as const,
   },
   {
-    date: "MAY 15",
+    date: "LATE SPRING",
     title: "Heritage Night",
     desc: "Our flagship showcase of dance, music, and storytelling across the Vietnamese diaspora.",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDyIv9SdYQQIA-h7Wa9KWUgXH2FFn-d1iOoZMqZ5eJ9tzIeQ-YEXTan99PsnQL-C-4zRlRY1ab-6ngTZG1HJyHxZu1yXgLP1rI88HSqOG4ZNa6iE1SGTlzqdbog23DEuFfD-KDFHQ0hPkIYlNoMqPBClcoCHlBKXcYCmfEAEpCAeZ5s72TmUo7Val-M5YOIJ9jqHYb7Tn23w8eyrOETTi0PEZxTU5dlzvUqROD6l0qgfkxzLGU0u1VmEWy93fQB2cqQHn33cPJrFgIu",
+    slug: "heritage-night" as const,
   },
   {
-    date: "NOV 22",
+    date: "LATE NOVEMBER",
     title: "Turkey Bowl",
-    desc: "Our Thanksgiving-week flag football tournament bringing regional VSA chapters together.",
+    desc: "An annual Ultimate Frisbee tournament primarily hosted by Seattle University VSA, bringing VSAs across the Pacific Northwest together for friendly competition and an evening banquet.",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCXG1WqjA9jCmAtpoLxz4RHcRzjcdl_VfteJ8TZuzibyWE3AiiJGD6f0oHX5hONSG67IsWw5mCjrr8iVFIXWF50NyT4hPXPfxr2Ov7LkGZKJLG94mNcfCcpsctTqgI15THWNtrhzlO0t8IEF2Q2FueumKl3IViJx3e89MJkfXhRRgvvr69LiJy8KR0RWcDMmr9sBofprbSgyLTAu88vWo9Zt9oHEiEUqze1jkRvY0iRwmHKmFZ2o-Yo3_mxjAf7K82bc7tPtKdnyLmt",
+    slug: "turkey-bowl" as const,
   },
 ];
 
@@ -228,8 +231,8 @@ function HomePage() {
             <div className="max-w-xl">
               <h2 className="dong-son-border font-display text-3xl md:text-4xl text-ink-black">Signature Events</h2>
               <p className="mt-4 text-base text-on-surface-variant">
-                Mark your calendar for our most anticipated annual celebrations — from Lunar New
-                Year to our regional conferences, there's always something happening.
+                Our most anticipated annual traditions — from Vietnamese Lunar New Year to
+                regional gatherings with VSAs across the Pacific Northwest.
               </p>
             </div>
             <Link to="/events" className="rounded-full bg-viking-blue px-6 py-3 text-sm font-semibold text-white shadow-md transition hover:opacity-90">
@@ -238,12 +241,12 @@ function HomePage() {
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {events.map((e) => (
-              <div key={e.title} className="group cursor-pointer">
+              <Link key={e.title} to="/events/$slug" params={{ slug: e.slug }} className="group block">
                 <div className="relative mb-4 overflow-hidden rounded-2xl">
                   <div className="aspect-[16/10] w-full overflow-hidden">
                     <img src={e.img} alt={e.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   </div>
-                  <div className="absolute left-4 top-4 rounded bg-white/90 px-3 py-1 text-xs font-bold uppercase text-vietnamese-red backdrop-blur-sm">
+                  <div className="absolute left-4 top-4 rounded bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-vietnamese-red backdrop-blur-sm">
                     {e.date}
                   </div>
                 </div>
@@ -251,7 +254,7 @@ function HomePage() {
                   {e.title}
                 </h3>
                 <p className="mt-2 text-on-surface-variant">{e.desc}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
