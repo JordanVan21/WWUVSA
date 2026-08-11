@@ -19,7 +19,7 @@ const days: Day[] = [
   { d: 3 }, { d: 4 }, { d: 5, event: { label: "GBM @ 6PM", color: "bg-vietnamese-red text-white" } }, { d: 6 }, { d: 7 }, { d: 8, event: { label: "Phở Social", color: "bg-viking-blue text-white" } }, { d: 9 },
   { d: 10 }, { d: 11 }, { d: 12, event: { label: "GBM @ 6PM", color: "bg-vietnamese-red text-white" } }, { d: 13 }, { d: 14, event: { label: "Heritage Night Apps Due", color: "bg-[color:var(--color-imperial-gold)] text-on-tertiary-container" } }, { d: 15 }, { d: 16 },
   { d: 17 }, { d: 18 }, { d: 19, event: { label: "GBM @ 6PM", color: "bg-vietnamese-red text-white" } }, { d: 20 }, { d: 21 }, { d: 22 }, { d: 23 },
-  { d: 24 }, { d: 25 }, { d: 26 }, { d: 27, event: { label: "Turkey Bowl", color: "bg-viking-blue text-white" } }, { d: 28 }, { d: 29 }, { d: 30 },
+  { d: 24 }, { d: 25 }, { d: 26 }, { d: 27 }, { d: 28 }, { d: 29 }, { d: 30 },
 ];
 
 function CalendarPage() {
@@ -65,7 +65,8 @@ function CalendarPage() {
               {[
                 ["translate", "Vietnamese Table", "Bi-weekly language practice socials."],
                 ["settings_accessibility", "Wavy Fan Dance Practice", "Traditional dance rehearsals."],
-                ["sports_kabaddi", "Event Practice", "For Turkey Bowl and SpikeFest."],
+                ["sports_kabaddi", "Event Practice", "Preparation for events such as Turkey Bowl and SpikeFest."],
+                ["directions_car", "Rides & Transportation", "WWU VSA works to coordinate rides so members who want to attend an event have a way to get there whenever possible. Details are announced per event."],
               ].map(([i, t, d]) => (
                 <li key={t} className="flex gap-4">
                   <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-viking-blue/10 text-viking-blue">
@@ -85,7 +86,7 @@ function CalendarPage() {
         <div className="space-y-6 lg:col-span-8">
           <div className="overflow-hidden rounded-2xl border border-[color:var(--color-outline-variant)] bg-white p-1 shadow-lg">
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[color:var(--color-outline-variant)] bg-rice-paper p-6">
-              <h2 className="font-display text-2xl">November 2024</h2>
+              <h2 className="font-display text-2xl">Sample Month</h2>
               <div className="flex items-center gap-3 text-xs font-semibold">
                 <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-vietnamese-red" />GBM</span>
                 <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-viking-blue" />Social</span>
