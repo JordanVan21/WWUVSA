@@ -78,6 +78,18 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
       { icon: "history_edu", title: "Original Storyline", description: "A student-written skit tying the night's performances into one Vietnamese-American story." },
       { icon: "school", title: "Senior Send-Off", description: "A closing tribute to graduating members and the alumni who return for it." },
     ],
+    sections: [
+      {
+        title: "Tickets & Admission",
+        body: [
+          "Heritage Night ticket and admission information is announced each year. Current pricing and registration details can be found in the event's current-year information when available.",
+          "WWU VSA works to coordinate transportation and rides so that members who want to participate have a way to attend whenever possible. Ride coordination is announced separately for each event.",
+        ],
+      },
+    ],
+    currentYear: {
+      note: "This year's date, venue details, and ticket information are announced each year. Check our meetings and social media for the most current information.",
+    },
     heroImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAoVvnWTwHymFaPGud3yjPNzr9LjOz0_xtZpEEe1IwDNfz0KDAjZrkBYHLA9MgC0qCTwfWlr0AoJSzkPNVLc7SBGvTrC0ExneW0-lYtdHJKT9ksPekf7oW0-JZ7KZyFE7MaIJ9K0xwvYMKHQXdLnE7oiKWvbhca2eRXeQ5N1xUKLbirZhX3tmv_bwzzJrnv8E0shtbyx0fbxUIjZ6nralVEfFFn9yHiNZgcuP1XGU51u5NlVBJSIy7GFsGW1KVKCYQwdYt6i1xFC9hd",
     accent: "red",
@@ -356,7 +368,7 @@ function build(slug: EventSlug, urls: string[], year: number, altBase: string): 
 export const MEDIA: MediaItem[] = [
   ...build("heritage-night", IMG.heritage, 2024, "Heritage Night performance"),
   ...build("tet", IMG.tet, 2024, "Tết celebration"),
-  ...build("turkey-bowl", IMG.turkey, 2024, "Turkey Bowl flag football"),
+  ...build("turkey-bowl", IMG.turkey, 2024, "Turkey Bowl Ultimate Frisbee tournament and banquet"),
   ...build("spikefest", IMG.spike, 2025, "SpikeFest volleyball"),
   ...build("general-meetings", IMG.meetings, 2024, "VSA general meeting"),
   ...build("community-events", IMG.community, 2024, "VSA community event"),
