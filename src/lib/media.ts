@@ -442,7 +442,7 @@ export const MEDIA: MediaItem[] = [
   ...build("heritage-night", IMG.heritage, 2024, "Heritage Night performance"),
   ...build("tet", IMG.tet, 2024, "Tết celebration"),
   ...build("turkey-bowl", IMG.turkey, 2024, "Turkey Bowl Ultimate Frisbee tournament and banquet"),
-  ...build("spikefest", IMG.spike, 2025, "SpikeFest volleyball"),
+  ...build("spikefest", IMG.spike, 2025, "SpikeFest volleyball tournament, teams and supporters from Northwest VSA communities"),
   ...build("general-meetings", IMG.meetings, 2024, "VSA general meeting"),
   ...build("community-events", IMG.community, 2024, "VSA community event"),
 ];
