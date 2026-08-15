@@ -16,7 +16,7 @@ export function Footer() {
             <span className="font-display text-xl font-bold text-viking-blue">WWU VSA</span>
           </div>
           <p className="w-full text-sm leading-relaxed text-on-surface-variant sm:max-w-md">
-            Representing the Vietnamese student body at Western Washington University — celebrating
+            Representing the Vietnamese student body at Western Washington University, celebrating
             heritage, empowering leadership, and building community since 1996.
           </p>
           <div className="w-full min-w-0">

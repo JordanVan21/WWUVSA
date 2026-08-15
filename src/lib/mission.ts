@@ -1,6 +1,6 @@
 /**
  * Official WWU VSA purpose and mission statement.
- * Single source of truth — use everywhere the organization's purpose/mission appears.
+ * Single source of truth. Use everywhere the organization's purpose/mission appears.
  */
 export const MISSION_PARAGRAPHS = [
   "WWU VSA's purpose is to strengthen awareness of Vietnamese culture and support fellow Students of Color at Western Washington University and throughout the Bellingham community.",

@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "WWU VSA — Vietnamese Student Association" },
+      { title: "WWU VSA: Vietnamese Student Association" },
       {
         name: "description",
         content:
           "Heritage in heart, horizon in sight. Bridging Vietnamese cultural heritage with university leadership at Western Washington University.",
       },
-      { property: "og:title", content: "WWU VSA — Vietnamese Student Association" },
+      { property: "og:title", content: "WWU VSA: Vietnamese Student Association" },
       {
         property: "og:description",
         content: "Community, culture, and leadership at Western Washington University.",
@@ -189,7 +189,7 @@ function HomePage() {
                 Fan Dance &amp; Performance
               </h2>
               <p className="mt-6 text-lg text-on-surface-variant">
-                Showcase the elegance of Vietnamese arts through our performance troupes — from
+                Showcase the elegance of Vietnamese arts through our performance troupes, from
                 traditional fan dancing to modern choreography brought to the stage each year.
               </p>
               <button className="mt-6 rounded-lg border-2 border-vietnamese-red px-8 py-3 text-sm font-semibold text-vietnamese-red transition hover:bg-vietnamese-red hover:text-white">
@@ -199,7 +199,7 @@ function HomePage() {
           </div>
         </div>
 
-        {/* Viet 101 — no stats cards per updated brief */}
+        {/* Viet 101 - no stats cards per updated brief */}
         <div className="mx-auto mt-16 grid max-w-screen-2xl grid-cols-1 items-center gap-12 px-5 md:grid-cols-2 md:gap-16 md:px-20">
           <div className="order-2 md:order-1">
             <span className="mb-4 inline-block rounded-full bg-viking-blue/15 px-4 py-1 text-xs font-semibold text-viking-blue">
@@ -210,11 +210,11 @@ function HomePage() {
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-on-surface-variant">
               Dive deep into the nuances of Vietnamese history, language, and modern issues. These
-              interactive workshops are designed for everyone — whether you grew up speaking
+              interactive workshops are designed for everyone, whether you grew up speaking
               Vietnamese at home or are hearing your first words of it this quarter.
             </p>
             <p className="mt-4 text-base text-on-surface-variant">
-              Each session is student-led, casual, and pairs conversation with cultural context —
+              Each session is student-led, casual, and pairs conversation with cultural context,
               perfect for building fluency and connection.
             </p>
           </div>
@@ -231,7 +231,7 @@ function HomePage() {
             <div className="max-w-xl">
               <h2 className="dong-son-border font-display text-3xl md:text-4xl text-ink-black">Signature Events</h2>
               <p className="mt-4 text-base text-on-surface-variant">
-                Our most anticipated annual traditions — from Vietnamese Lunar New Year to
+                Our most anticipated annual traditions, from Vietnamese Lunar New Year to
                 regional gatherings with VSAs across the Pacific Northwest.
               </p>
             </div>

@@ -5,7 +5,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact | WWU VSA" },
-      { name: "description", content: "Get in touch with WWU VSA — general body meetings, email, and campus location." },
+      { name: "description", content: "Get in touch with WWU VSA: general body meetings, email, and campus location." },
       { property: "og:title", content: "Contact | WWU VSA" },
       { property: "og:description", content: "Reach the WWU Vietnamese Student Association board and community." },
     ],

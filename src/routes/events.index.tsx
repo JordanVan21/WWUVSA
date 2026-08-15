@@ -5,7 +5,7 @@ export const Route = createFileRoute("/events/")({
   head: () => ({
     meta: [
       { title: "Events | WWU VSA" },
-      { name: "description", content: "Signature annual events — Heritage Night, Tết, Turkey Bowl, SpikeFest, and more from WWU VSA." },
+      { name: "description", content: "Signature annual events: Heritage Night, Tết, Turkey Bowl, SpikeFest, and more from WWU VSA." },
       { property: "og:title", content: "Events | WWU VSA" },
       { property: "og:description", content: "Experience the soul of Vietnam through our annual celebrations at Western Washington University." },
     ],
@@ -97,7 +97,7 @@ function EventsPage() {
             </span>
             <h2 className="mt-2 font-display text-3xl text-ink-black md:text-4xl">ACCE Olympics</h2>
             <p className="mt-4 text-lg text-on-surface-variant">
-              Join us for the WWU VSA Olympics — a day of traditional and modern sporting events
+              Join us for the WWU VSA Olympics, a day of traditional and modern sporting events
               that bring our community together for unity and friendly competition.
             </p>
             <ul className="mt-6 space-y-3">
