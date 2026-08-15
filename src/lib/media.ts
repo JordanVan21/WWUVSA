@@ -250,22 +250,95 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
     slug: "spikefest",
     name: "SpikeFest",
     season: "Spring",
-    tagline: "Volleyball Tournament",
+    tagline: "Regional Volleyball Tournament",
     description:
-      "A competitive volleyball tournament that brings students and alumni together for a spring day of athletic excellence and fun.",
+      "An annual volleyball tournament hosted by VSAUWB that brings Northwest VSA communities together for competitive and casual play, school spirit, and community.",
     happens:
-      "Bracket-style volleyball in Carver Gym, food trucks outside, and a members-vs-alumni exhibition match to close out the day.",
+      "SpikeFest is an annual volleyball tournament hosted by the Vietnamese Student Association at the University of Washington Bothell (VSAUWB) that brings Vietnamese Student Associations and friends of VSA from across the Northwest together for a day of competition, community, and fun. WWU VSA attends as one of the participating VSA communities.",
     meaning:
-      "SpikeFest is our spring homecoming. Alumni return, current members compete, and the community sees VSA at its most spirited.",
-    location: "Carver Gym, WWU",
-    audience: "Members, alumni, and friends",
-    category: "Athletic Tournament",
+      "Teams compete in a tournament environment while players and spectators connect with students from other VSA communities. Whether participants are experienced volleyball players or simply looking to enjoy the game with friends, SpikeFest provides opportunities for different levels of competition.",
+    location: "Hosted by VSAUWB in the greater Seattle area",
+    audience: "Players and spectators from the Northwest VSA community",
+    category: "Regional Tournament",
     expectations: [
-      { icon: "sports_volleyball", title: "Bracket Play", description: "Mixed-skill teams compete through a single-day volleyball bracket." },
-      { icon: "diversity_3", title: "Alumni Match", description: "A members-vs-alumni exhibition game closes out the tournament." },
-      { icon: "storefront", title: "Food Trucks", description: "Local vendors set up outside Carver for the afternoon." },
-      { icon: "volunteer_activism", title: "Fundraising Spirit", description: "Entry proceeds go back into next year's cultural programming." },
+      { icon: "sports_volleyball", title: "Volleyball Tournament", description: "Teams play through a tournament bracket across the day." },
+      { icon: "diversity_3", title: "Northwest VSA Community", description: "VSA communities from across the region come together in one gym." },
+      { icon: "emoji_events", title: "Competitive & Casual Play", description: "Divisions let participants choose the level that fits them best." },
+      { icon: "campaign", title: "School Spirit", description: "Friends and supporters cheer on their schools from the sidelines." },
     ],
+    sections: [
+      {
+        title: "What is SpikeFest?",
+        body: [
+          "SpikeFest is an annual volleyball tournament hosted by the Vietnamese Student Association at the University of Washington Bothell, VSAUWB. It brings Vietnamese Student Associations and friends of VSA from across the Northwest together for a day of competition, community, and fun.",
+          "Teams compete in a tournament environment while players and spectators have the opportunity to connect with students from other VSA communities. WWU VSA participates as one of the attending VSA communities rather than as the host.",
+        ],
+      },
+      {
+        title: "Who Participates?",
+        body: [
+          "SpikeFest welcomes participants who are connected with the Northwest VSA community. Players typically register as part of a team and must meet the current year's age and eligibility requirements.",
+          "Participants are generally expected to be at least 18 years old and affiliated with NWVSA or one of its participating communities. Exact eligibility requirements are confirmed by the organizers each year.",
+        ],
+      },
+      {
+        title: "Competitive and Casual Divisions",
+        body: [
+          "SpikeFest offers different levels of competition so participants can choose an environment that best matches their experience and comfort level.",
+          "More experienced teams may compete in the competitive division, while recreational teams can participate in a more casual environment focused on having fun and enjoying the event. Some team groups may also have flexibility to choose between competitive and casual play depending on tournament organization for that year.",
+        ],
+        bullets: [
+          "A Teams: competitive division",
+          "B Teams: may choose competitive or casual depending on that year's tournament structure",
+          "C Teams: casual division",
+        ],
+      },
+      {
+        title: "Team Format",
+        body: [
+          "Teams are generally made up of six to eight players, allowing groups to rotate players while maintaining a full volleyball lineup throughout the tournament.",
+          "Roster requirements are set by the organizers and can change from year to year, so the current tournament's exact team size appears in the current-year details below.",
+        ],
+      },
+      {
+        title: "Tournament Format",
+        body: [
+          "SpikeFest typically follows a double-elimination format, giving teams another opportunity to continue competing after their first loss.",
+          "Formats can change between years, so the confirmed format for the current tournament is announced with that year's event information.",
+        ],
+      },
+      {
+        title: "Spectators and Community",
+        body: [
+          "Friends, supporters, and members of participating VSA communities are also encouraged to attend and support their schools. SpikeFest is as much about regional VSA community and school spirit as it is about volleyball.",
+          "Members who are not competing can still come along to cheer, meet students from other schools, and be part of the day.",
+        ],
+      },
+      {
+        title: "Registration",
+        body: [
+          "Player registration typically requires a small tournament fee, and teams register together. Current registration pricing, deadlines, and payment details are announced each year by the event organizers.",
+        ],
+      },
+      {
+        title: "Transportation",
+        body: [
+          "WWU VSA does its best to coordinate rides and carpools for members who want to participate in SpikeFest. Participants may be asked to complete attendance or transportation information ahead of time so organizers can coordinate vehicles, drivers, and departure plans.",
+          "Transportation is not guaranteed, and rides coordinated by WWU VSA are not a paid service. Departure and return details are announced separately for each year's event.",
+        ],
+      },
+    ],
+    currentYear: {
+      note: "Details coming soon. This year's date, venue, registration cost and deadline, team-size requirement, division structure, tournament format, and transportation form are announced by the organizers each year.",
+      details: [
+        { label: "Date", value: "TBA" },
+        { label: "Venue", value: "TBA" },
+        { label: "Registration Deadline", value: "TBA" },
+        { label: "Registration Cost", value: "TBA" },
+        { label: "Team Size", value: "TBA" },
+        { label: "Tournament Format", value: "TBA" },
+      ],
+    },
     heroImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAaqqqy1hzZH3qlyScHHBEb4WcPcg-JquOcNB5eBTcFbJ7ZTzpaLUERJhL1-4CuwMQ6DBKtCH_2uPRSIa0oZUQVVsfAySJkTsdcOZoRPrxbod76EgpugDEYzM809w1Z8nmDC0LSnNTYmbH09RehsWltQ0n61L1ubSIzSsRGDWlRyE4lda-_BW5ucxOcuuYLtCNeJcoaGS3BaluNET-zsj2n6NM1BbUF0DQUlUvpOsMdw3IvwH9syWAFEYzBLWTXihFyXl9xYIzhIUAb",
     accent: "red",
