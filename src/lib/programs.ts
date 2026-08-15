@@ -40,9 +40,9 @@ export const PROGRAMS: Program[] = [
       { title: "Everyday connection", description: "Families keep in touch weekly and spend time together at VSA events and outside of meetings." },
     ],
     audience: "Any WWU student who wants a smaller community inside VSA",
-    experienceLevel: "No experience needed — newcomers are the point",
+    experienceLevel: "No experience needed; newcomers are the point",
     typicalSchedule: "Matching happens early in Fall quarter; families gather monthly and stay in touch weekly",
-    participationDetails: "A meaningful year-long commitment — active participation, honest communication, and inclusivity toward every ACCE family",
+    participationDetails: "A meaningful year-long commitment with active participation, honest communication, and inclusivity toward every ACCE family",
     sections: [
       {
         title: "Becoming an Em",
@@ -90,7 +90,7 @@ export const PROGRAMS: Program[] = [
           "Monthly ACCE family gatherings planned by family leaders",
           "Family reveals and icebreakers at the start of the year",
           "Attending general meetings, socials, and cultural events together",
-          "Casual hangouts outside of VSA — study sessions, food runs, and game nights",
+          "Casual hangouts outside of VSA, including study sessions, food runs, and game nights",
           "Monthly check-ins between family leaders and the ACCE team",
         ],
       },
@@ -110,7 +110,7 @@ export const PROGRAMS: Program[] = [
     shortDescription:
       "A casual, student-led workshop series on Vietnamese language, history, and modern identity.",
     fullDescription: [
-      "Viet 101 is a recurring workshop series led by VSA members. Each session focuses on one accessible slice of Vietnamese culture — a handful of phrases, a region's food history, or a conversation about diaspora identity.",
+      "Viet 101 is a recurring workshop series led by VSA members. Each session focuses on one accessible slice of Vietnamese culture: a handful of phrases, a region's food history, or a conversation about diaspora identity.",
       "We offer it because cultural fluency is uneven in our community: some members grew up speaking Vietnamese at home, others are learning their first words at university. Viet 101 is deliberately built so both feel welcome in the same room.",
       "Students walk away with practical vocabulary, pronunciation practice, and historical context that makes VSA's larger cultural events land more deeply.",
     ],
@@ -133,7 +133,7 @@ export const PROGRAMS: Program[] = [
       "Our traditional fan dance troupe, rehearsing together toward the Heritage Night stage.",
     fullDescription: [
       "Wavy Fan Dance is WWU VSA's performance troupe. Members learn traditional fan choreography together over the course of the year, building toward the group's featured set at Heritage Night.",
-      "Performance is one of the clearest ways our community passes culture forward — the movements, music, and costuming carry meaning that a slideshow never could. Teaching it as a group also makes rehearsal a social space, not an audition.",
+      "Performance is one of the clearest ways our community passes culture forward. The movements, music, and costuming carry meaning that a slideshow never could. Teaching it as a group also makes rehearsal a social space, not an audition.",
       "Dancers gain choreography they can perform on a real stage, a rehearsal community that meets consistently, and a hands-on connection to Vietnamese performing arts.",
     ],
     heroImage:
@@ -142,7 +142,7 @@ export const PROGRAMS: Program[] = [
     howItWorks: [
       { title: "Group choreography", description: "Members learn the full routine together across weekly rehearsals." },
       { title: "Built for Heritage Night", description: "Practices are paced toward the troupe's featured performance in late spring." },
-      { title: "Beginners welcome", description: "No prior dance experience is required — most dancers start with none." },
+      { title: "Beginners welcome", description: "No prior dance experience is required, and most dancers start with none." },
       { title: "Culture through movement", description: "Choreography is taught alongside the traditions and music behind it." },
     ],
     audience: "Members who want to perform, at any experience level",

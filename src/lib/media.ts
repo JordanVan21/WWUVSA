@@ -64,7 +64,7 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
     season: "Late Spring",
     tagline: "Roots & Wings",
     description:
-      "Heritage Night is our largest cultural showcase — a night of dance, music, and skits that explore what it means to be Vietnamese-American at Western.",
+      "Heritage Night is our largest cultural showcase: a night of dance, music, and skits that explore what it means to be Vietnamese-American at Western.",
     happens:
       "A full-scale production in the PAC: traditional fan and lion dances, live music, student-written skits, a family-style Vietnamese dinner, and a closing tribute from the graduating class.",
     meaning:
@@ -119,14 +119,14 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
         title: "What is Tết?",
         body: [
           "Tết, or Vietnamese Lunar New Year, is one of the most important celebrations in Vietnamese culture. It marks the beginning of the lunar new year and is a time centered around family, community, tradition, good fortune, reflection, and welcoming new beginnings.",
-          "Tết is a major Vietnamese cultural celebration in its own right — it is not simply the name of a single event. It is typically observed in February, around Lunar New Year.",
+          "Tết is a major Vietnamese cultural celebration in its own right, and it is not simply the name of a single event. It is typically observed in February, around Lunar New Year.",
         ],
       },
       {
         title: "How WWU VSA Celebrates",
         body: [
           "WWU VSA celebrates Tết as an opportunity for members to connect with Vietnamese culture, share traditions, and celebrate with both the campus community and the larger Vietnamese community.",
-          "On campus, members gather to share food, learn about New Year customs, and welcome the new year together — whether they grew up celebrating Tết or are experiencing it for the first time.",
+          "On campus, members gather to share food, learn about New Year customs, and welcome the new year together, whether they grew up celebrating Tết or are experiencing it for the first time.",
         ],
       },
       {

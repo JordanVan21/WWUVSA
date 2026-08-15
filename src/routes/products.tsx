@@ -4,7 +4,7 @@ export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
       { title: "Products | WWU VSA" },
-      { name: "description", content: "Limited edition merch supporting WWU VSA cultural programs — tees, hoodies, pins, and more." },
+      { name: "description", content: "Limited edition merch supporting WWU VSA cultural programs: tees, hoodies, pins, and more." },
       { property: "og:title", content: "Products | WWU VSA" },
       { property: "og:description", content: "Celebrate our heritage and fuel our future. All proceeds support VSA programs." },
     ],
@@ -119,7 +119,7 @@ function ProductsPage() {
               <span className="material-symbols-outlined text-[120px]" style={{ fontVariationSettings: "'FILL' 1" }}>volunteer_activism</span>
             </div>
             <h3 className="font-display text-2xl text-on-surface">Support the Club</h3>
-            <p className="mt-3 text-on-surface-variant">Every purchase is more than a piece of clothing — 100% of proceeds fund Heritage Night, service trips, and cultural workshops throughout the year.</p>
+            <p className="mt-3 text-on-surface-variant">Every purchase is more than a piece of clothing. 100% of proceeds fund Heritage Night, service trips, and cultural workshops throughout the year.</p>
             <div className="mt-6 rounded-lg border border-[color:var(--color-outline-variant)]/40 bg-white/60 p-4 text-xs italic text-on-surface-variant">
               Disclaimer: All sales are final. Sizes are subject to availability. Please contact a board member for exchange inquiries regarding defective items.
             </div>

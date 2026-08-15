@@ -22,7 +22,7 @@ export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
       { title: "Gallery | WWU VSA" },
-      { name: "description", content: "The full WWU VSA media archive — filter by event, year, and media type." },
+      { name: "description", content: "The full WWU VSA media archive: filter by event, year, and media type." },
       { property: "og:title", content: "Gallery | WWU VSA" },
       { property: "og:description", content: "Photos and videos from Heritage Night, Tết, Turkey Bowl, SpikeFest, meetings, and more." },
     ],

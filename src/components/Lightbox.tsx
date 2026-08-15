@@ -41,7 +41,7 @@ export function Lightbox({ items, index, onClose, onIndex }: Props) {
     <div
       role="dialog"
       aria-modal="true"
-      aria-label={`${item.eventName} — ${item.altText}`}
+      aria-label={`${item.eventName}: ${item.altText}`}
       className="fixed inset-0 z-[100] flex items-center justify-center bg-ink-black/95 p-4"
       onClick={onClose}
     >

@@ -107,14 +107,14 @@ function AboutPage() {
               <div className="relative z-20 flex h-full flex-col justify-end">
                 <span className="mb-3 w-fit rounded-full bg-vietnamese-red px-3 py-1 text-xs font-semibold">ACCE (Family System)</span>
                 <h3 className="font-display text-3xl">A Core Connection Effort</h3>
-                <p className="mt-2 max-w-sm opacity-90">Our mentorship program that pairs incoming students with experienced upperclassmen — creating lifelong "families" within VSA.</p>
+                <p className="mt-2 max-w-sm opacity-90">Our mentorship program that pairs incoming students with experienced upperclassmen, creating lifelong "families" within VSA.</p>
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold">
                   Learn More
                   <span className="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
                 </span>
               </div>
             </Link>
-            {/* Viet 101 — no stats cards per brief */}
+            {/* Viet 101 - no stats cards per brief */}
             <Link
               to="/programs/$slug"
               params={{ slug: "viet-101" }}
@@ -167,7 +167,7 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Community Roots — WWU ESC, NWVSA, UNAVSA */}
+      {/* Community Roots - WWU ESC, NWVSA, UNAVSA */}
       <section className="bg-rice-paper px-5 md:px-20 py-16 md:py-24">
         <div className="mx-auto flex max-w-screen-2xl flex-col items-center text-center">
           <h2 className="font-display text-3xl md:text-4xl">Community Roots</h2>

@@ -173,7 +173,7 @@ export function ProgramDetailPage({ program }: { program: Program }) {
       <section className="px-5 md:px-20 py-14 md:py-20">
         <div className="mx-auto max-w-3xl rounded-2xl border border-[color:var(--color-outline-variant)]/40 bg-surface-container-low p-8 text-center shadow-sm">
           <h2 className="font-display text-2xl text-ink-black">Interested in {program.name}?</h2>
-          <p className="mt-2 text-on-surface-variant">Come to a meeting or reach out — we'll point you to the right people.</p>
+          <p className="mt-2 text-on-surface-variant">Come to a meeting or reach out, and we'll point you to the right people.</p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link to="/calendar" className="inline-flex items-center gap-2 rounded-lg bg-vietnamese-red px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-vietnamese-red/25 transition hover:brightness-110">
               View Upcoming Meetings
