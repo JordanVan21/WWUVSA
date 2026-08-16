@@ -21,21 +21,33 @@ const BLUE = "text-viking-blue";
 const GOLD = "text-[color:var(--color-imperial-gold)]";
 const INK = "text-on-surface-variant";
 
+const PLACEHOLDER =
+  "data:image/svg+xml;utf8," +
+  encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500"><rect width="400" height="500" fill="#efeade"/><circle cx="200" cy="205" r="70" fill="#c9c1ad"/><path d="M60 460c0-77 63-140 140-140s140 63 140 140z" fill="#c9c1ad"/></svg>`,
+  );
+
 const raw: Omit<BoardMember, "altText">[] = [
-  { id: "president", name: "Linh Nguyen", role: "President", group: "executive", imageUrl: P1, displayOrder: 1, roleColor: RED, major: "Behavioral Neuroscience", accent: "bg-vietnamese-red/90" },
-  { id: "ivp", name: "Minh Tran", role: "Internal Vice President", group: "executive", imageUrl: P2, displayOrder: 2, roleColor: BLUE, major: "Business Administration", accent: "bg-viking-blue/90" },
-  { id: "evp", name: "Anh Le", role: "External Vice President", group: "executive", imageUrl: P3, displayOrder: 3, roleColor: GOLD, major: "Graphic Design", accent: "bg-imperial-gold/90" },
-  { id: "secretary", name: "Duy Pham", role: "Secretary", group: "executive", imageUrl: P4, displayOrder: 4, roleColor: INK, major: "Computer Science", accent: "bg-ink-black/90" },
-  { id: "treasurer", name: "Mai Vo", role: "Treasurer", group: "board", imageUrl: P3, displayOrder: 5, roleColor: GOLD, major: "Accounting", accent: "bg-imperial-gold/90" },
-  { id: "events", name: "Bao Huynh", role: "Events Coordinator", group: "board", imageUrl: P2, displayOrder: 6, roleColor: BLUE, major: "Communication Studies", accent: "bg-viking-blue/90" },
-  { id: "culture", name: "Thao Dang", role: "Cultural Chair", group: "board", imageUrl: P1, displayOrder: 7, roleColor: RED, major: "Anthropology", accent: "bg-vietnamese-red/90" },
-  { id: "acce", name: "Khanh Bui", role: "ACCE Coordinator", group: "board", imageUrl: P4, displayOrder: 8, roleColor: INK, major: "Psychology", accent: "bg-ink-black/90" },
-  { id: "publicity", name: "Trang Ly", role: "Publicity Chair", group: "board", imageUrl: P3, displayOrder: 9, roleColor: GOLD, major: "Design", accent: "bg-imperial-gold/90" },
-  { id: "historian", name: "Quang Do", role: "Historian", group: "board", imageUrl: P2, displayOrder: 10, roleColor: BLUE, major: "History", accent: "bg-viking-blue/90" },
-  { id: "intern-1", name: "Hà Nguyễn", role: "Board Intern", group: "intern", imageUrl: P1, displayOrder: 11, roleColor: RED, major: "Undeclared", accent: "bg-vietnamese-red/90" },
-  { id: "intern-2", name: "Tuấn Phan", role: "Board Intern", group: "intern", imageUrl: P4, displayOrder: 12, roleColor: INK, major: "Environmental Science", accent: "bg-ink-black/90" },
+  { id: "co-president-1", name: "Kenzie Vu", role: "Co-President", group: "executive", imageUrl: P1, displayOrder: 1, roleColor: RED },
+  { id: "co-president-2", name: "Tommy Ngo", role: "Co-President", group: "executive", imageUrl: P2, displayOrder: 2, roleColor: RED },
+  { id: "vice-president", name: "Elizabeth Kirse", role: "Vice President", group: "executive", imageUrl: P3, displayOrder: 3, roleColor: BLUE },
+  { id: "budget-authority", name: "Kristen Le", role: "Budget Authority", group: "executive", imageUrl: P4, displayOrder: 4, roleColor: GOLD },
+  { id: "public-relations", name: "David Huynh-Nguyen", role: "Public Relations", group: "board", imageUrl: P2, displayOrder: 5, roleColor: BLUE },
+  { id: "secretary", name: "Ellie Nguyen", role: "Secretary", group: "board", imageUrl: P1, displayOrder: 6, roleColor: INK },
+  { id: "visual-content-creator", name: "Khoi Tran", role: "Visual Content Creator", group: "board", imageUrl: P4, displayOrder: 7, roleColor: GOLD },
+  { id: "activities-coordinator", name: "Star Jaravata", role: "Activities Coordinator", group: "board", imageUrl: P3, displayOrder: 8, roleColor: RED },
+  { id: "community-outreach", name: "Amy Huynh", role: "Community Outreach Coordinator", group: "board", imageUrl: P1, displayOrder: 9, roleColor: BLUE },
+  { id: "culture-chair", name: "Brendon Le", role: "Culture Chair", group: "board", imageUrl: P2, displayOrder: 10, roleColor: GOLD },
+  { id: "intern-1", name: "TBD", role: "Board Intern", group: "intern", imageUrl: PLACEHOLDER, displayOrder: 11, roleColor: INK },
+  { id: "intern-2", name: "TBD", role: "Board Intern", group: "intern", imageUrl: PLACEHOLDER, displayOrder: 12, roleColor: INK },
 ];
 
 export const BOARD_MEMBERS: BoardMember[] = raw
-  .map((m) => ({ ...m, altText: `${m.name}, ${m.role} of WWU VSA` }))
+  .map((m) => ({
+    ...m,
+    altText:
+      m.name === "TBD"
+        ? `Placeholder portrait for an open WWU VSA ${m.role} position`
+        : `${m.name}, ${m.role} of WWU VSA`,
+  }))
   .sort((a, b) => a.displayOrder - b.displayOrder);

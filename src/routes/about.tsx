@@ -50,9 +50,10 @@ function AboutPage() {
             </span>
             <h1 className="font-display text-4xl md:text-6xl leading-tight text-on-surface">Our Story</h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-on-surface-variant">
-              Rooted in the heart of Western Washington University, the Vietnamese Student
-              Association has been a home away from home for generations. We weave the vibrant
-              threads of our heritage into the modern tapestry of student life.
+              WWU VSA brings students together through Vietnamese culture, community, and shared
+              experiences at Western. Through cultural celebrations, mentorship, social events, and
+              connections with VSAs across the Pacific Northwest, we create opportunities to build
+              friendships, celebrate identity, and find a welcoming community on and beyond campus.
             </p>
           </motion.div>
           <div className="relative order-1 lg:order-2">
