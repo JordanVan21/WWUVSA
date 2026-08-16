@@ -98,7 +98,7 @@ function EventsPage() {
             <div className="mt-2 flex flex-wrap items-center gap-3">
               <h2 className="font-display text-3xl text-ink-black md:text-4xl">ACCE Olympics</h2>
               <span className="inline-flex items-center rounded-full bg-viking-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-viking-blue">
-                In the Works
+                IN THE WORKS
               </span>
             </div>
             <p className="mt-4 text-lg text-on-surface-variant">
