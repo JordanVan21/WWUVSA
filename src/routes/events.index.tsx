@@ -87,24 +87,28 @@ function EventsPage() {
         <div className="mx-auto grid max-w-screen-2xl grid-cols-1 items-center gap-16 px-5 md:px-20 lg:grid-cols-2">
           <div className="order-2 lg:order-1">
             <div className="relative mx-auto max-w-lg lg:mx-0">
-              <div className="absolute -bottom-2 -right-2 -z-10 h-full w-full translate-x-2 translate-y-2 rounded-lg border-2 border-imperial-gold" />
-              <img src={OLY} alt="Students at a regional ACCE Olympics event" loading="lazy" className="aspect-video w-full rounded-lg object-cover shadow-lg" />
+              <div className="absolute -bottom-2 -right-2 -z-10 hidden h-full w-full translate-x-2 translate-y-2 rounded-lg border-2 border-imperial-gold sm:block" />
+              <img src={OLY} alt="ACCE families gathering together" loading="lazy" className="aspect-video w-full rounded-lg object-cover shadow-lg" />
             </div>
           </div>
           <div className="order-1 lg:order-2">
             <span className="text-xs font-semibold uppercase tracking-[0.25em] text-viking-blue">
-              WWU Campus Event
+              ACCE Program
             </span>
-            <h2 className="mt-2 font-display text-3xl text-ink-black md:text-4xl">ACCE Olympics</h2>
+            <div className="mt-2 flex flex-wrap items-center gap-3">
+              <h2 className="font-display text-3xl text-ink-black md:text-4xl">ACCE Olympics</h2>
+              <span className="inline-flex items-center rounded-full bg-viking-blue/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-viking-blue">
+                In the Works
+              </span>
+            </div>
             <p className="mt-4 text-lg text-on-surface-variant">
-              Join us for the WWU VSA Olympics, a day of traditional and modern sporting events
-              that bring our community together for unity and friendly competition.
+              ACCE Olympics is a developing program idea centered around bringing ACCE families together through team activities, friendly competition, and shared experiences. The goal is to give families another opportunity to bond, connect with one another, and strengthen the ACCE community.
             </p>
             <ul className="mt-6 space-y-3">
               {[
-                ["emoji_events", "Campus Competition"],
-                ["groups", "Peer-to-Peer Networking"],
-                ["favorite", "Community Spirit"],
+                ["emoji_events", "Friendly Competition"],
+                ["favorite", "Family Bonding"],
+                ["groups", "ACCE Community"],
               ].map(([i, l]) => (
                 <li key={l} className="flex items-center gap-3">
                   <span className="material-symbols-outlined text-viking-blue">{i}</span>
@@ -112,6 +116,9 @@ function EventsPage() {
                 </li>
               ))}
             </ul>
+            <p className="mt-6 text-sm text-on-surface-variant">
+              Details are still being developed.
+            </p>
           </div>
         </div>
       </section>
