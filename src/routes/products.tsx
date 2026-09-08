@@ -1,12 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
-      { title: "Products | WWU VSA" },
-      { name: "description", content: "Limited edition merch supporting WWU VSA cultural programs: tees, hoodies, pins, and more." },
-      { property: "og:title", content: "Products | WWU VSA" },
-      { property: "og:description", content: "Celebrate our heritage and fuel our future. All proceeds support VSA programs." },
+      { title: "Merch | WWU VSA" },
+      { name: "description", content: "WWU VSA merchandise: shirts, hoodies, sweatpants, and stickers. DM @wwuvsa for current availability, sizes, and pricing." },
+      { property: "og:title", content: "Merch | WWU VSA" },
+      { property: "og:description", content: "Represent the WWU VSA community. Contact us for current sizes and availability." },
     ],
   }),
   component: ProductsPage,
@@ -14,28 +14,97 @@ export const Route = createFileRoute("/products")({
 
 type Product = {
   title: string;
+  variant?: string;
   tagline: string;
-  price: string;
   border: string;
-  priceColor: string;
+  accent: string;
   badge?: { text: string; color: string };
   img?: string;
+  alt?: string;
   icon?: string;
+  apparel?: boolean;
 };
 
 const products: Product[] = [
-  { title: "'Soi Sang Con Duong' Tee", tagline: "Light the Path. Limited edition essential.", price: "$20", border: "border-vietnamese-red", priceColor: "text-vietnamese-red", badge: { text: "Limited Edition", color: "bg-vietnamese-red" }, img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCTd5w7SlDJRTuL6YD1XjRq7R88i9Lg7juHqqyUK0akTeqszRGLYgNtR5mQOrA0vBvS3xi9C_G4bxJQhgmz_aJAoFmXypD-tDXX98knt0yZtOQ9-o7jHXvOGzoRXVp1lOdNUJFbG_bbmkNOZR0L3JSHWBf4T0Tb6v_Yp8FmCU02b-Y0HSnSsd5pZOySiLHleJz1Bbrlcp3E7s2jEJQl1TTsgim0mipMCcMze9NuLVcKFT7YTXV6k1FE6mFehMEaGDFj26kFF69V11dD" },
-  { title: "WWU VSA Hoodie", tagline: "Premium comfort for campus life.", price: "$45", border: "border-viking-blue", priceColor: "text-viking-blue", badge: { text: "Limited Edition", color: "bg-viking-blue" }, img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDZ35cKNdHcgbF90_m0EgcnVRhSyE3s7vG2HQvFFm58n_c8Dm0eDUx7czIr5kz06M_Gl0q9U5qIGF013BmZHk-IIAUAMVM4ALVkGmHBx2nULMBxQFz4c8jm7jO609AExyzKbvt7pBcBgdlRwhBo9riRX0_xLlnFvl0bOKnLGtYdgusvSuT41rs-qcVgVy6rt-_RBesgs-OSXMMQxe741EGsfEERPhutCvVoC3Cbz8zA-wYxWTc3rpNImhPdRUSiqL4U8M9qGclYxfbE" },
-  { title: "Heritage Enamel Pins", tagline: "A touch of tradition for your bag.", price: "$10", border: "border-imperial-gold", priceColor: "text-[color:var(--color-tertiary)]", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB8UPFJJVE2FJIj0oNMji8qf3Gzi4sR1OCysnC9QBLCkWH1dIrsVSx7XJ1NsOHSvCpYNnuF2Fjj7FNe5iEiPMoim0DM31454xj_7yY0yVXZ2d1LPwozTYjlih2OUq_Xbgr3OjMy3RwW9R46qcywXNp1bq6qeCadFBgDHZI_cosfdwndDUmevCR1C1SzV_9NDP8Id1Q7vOzvg7jPpwPNJQKxL6d2UvYO-2yeXJSZD03YPUwMC-bEaPauwOvB9h4GuK5XJ8zl7LqrqWTB" },
-  { title: "Lotus Crest Stickers", tagline: "Durable vinyl. Perfect for laptops.", price: "$3", border: "border-outline", priceColor: "text-on-surface-variant", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDCTzacWleivIYoyFvvjR3XVbZygu6iUAUFO8xh5IG77KLEMrk71rBQo0P5SSThHNJkz2-uYumqvKFHrgafUwsuTJuQvYonJ_PIeV6VZPx5B5E5-NEkCTGEHeWuGg03fW2qCetGLbdh8IKeAKzLaSSjkK4HpvQmE3cIuBCsSHpL6xUAe6xDqIDCdJP5zXGkQBF291-20TAy-gKdp7xE-HjLqjnN4NCjkt_oClqBrLWleSX1k8-joD8oQQF03zp5c0D-n7pKRT_hdWPl" },
-  { title: "Canvas Tote", tagline: "Eco-friendly cultural carryall.", price: "$15", border: "border-vietnamese-red", priceColor: "text-vietnamese-red", icon: "shopping_bag" },
-  { title: "VSA Dad Hat", tagline: "Embroidered classic fit.", price: "$25", border: "border-viking-blue", priceColor: "text-viking-blue", icon: "hat_graduation" },
-  { title: "Pattern Lanyard", tagline: "Dong Son inspired patterns.", price: "$8", border: "border-imperial-gold", priceColor: "text-[color:var(--color-tertiary)]", icon: "badge" },
-  { title: "Acrylic Keychain", tagline: "Double-sided charm.", price: "$6", border: "border-outline", priceColor: "text-on-surface-variant", icon: "key" },
-  { title: "Heritage Journal", tagline: "Dotted grid for your ideas.", price: "$12", border: "border-vietnamese-red", priceColor: "text-vietnamese-red", icon: "menu_book" },
-  { title: "Ceramic Mug", tagline: "Matte finish with gold logo.", price: "$18", border: "border-viking-blue", priceColor: "text-viking-blue", icon: "coffee" },
-  { title: "Crew Socks", tagline: "Comfortable cultural patterns.", price: "$10", border: "border-imperial-gold", priceColor: "text-[color:var(--color-tertiary)]", icon: "checkroom" },
-  { title: "Art Poster", tagline: "18x24 high-quality print.", price: "$12", border: "border-outline", priceColor: "text-on-surface-variant", icon: "image" },
+  {
+    title: "VSA 24-25 Shirt",
+    tagline: "Featuring our Soi Sáng Con Đường design with Vietnamese lettering and lantern-inspired details.",
+    border: "border-vietnamese-red",
+    accent: "text-vietnamese-red",
+    badge: { text: "Latest Design", color: "bg-vietnamese-red" },
+    img: "https://i.imgur.com/gV5YbD2.png",
+    alt: "WWU VSA 2024-25 shirt",
+    apparel: true,
+  },
+  {
+    title: "VSA 23-24 Hoodie",
+    tagline: "Cozy WWU VSA apparel featuring a bold design made for chilly days, events, and everyday wear.",
+    border: "border-viking-blue",
+    accent: "text-viking-blue",
+    img: "https://i.imgur.com/Bvcezad.png",
+    alt: "WWU VSA 2023-24 hoodie",
+    apparel: true,
+  },
+  {
+    title: "VSA 23-24 Shirt",
+    tagline: "A comfortable WWU VSA shirt celebrating Vietnamese heritage through a bold cultural design.",
+    border: "border-imperial-gold",
+    accent: "text-[color:var(--color-tertiary)]",
+    img: "https://i.imgur.com/9sP9hq2.png",
+    alt: "WWU VSA 2023-24 shirt",
+    apparel: true,
+  },
+  {
+    title: "VSA 25-26 Sweatpants",
+    tagline: "Comfortable WWU VSA sweatpants designed for everyday wear while representing the VSA community.",
+    border: "border-vietnamese-red",
+    accent: "text-vietnamese-red",
+    badge: { text: "New", color: "bg-vietnamese-red" },
+    icon: "checkroom",
+    alt: "WWU VSA 2025-26 sweatpants",
+    apparel: true,
+  },
+  {
+    title: "VSA Sticker",
+    tagline: "A WWU VSA logo sticker representing community, connection, and pride in our organization.",
+    border: "border-viking-blue",
+    accent: "text-viking-blue",
+    img: "https://i.imgur.com/fu1dQgu.png",
+    alt: "WWU VSA logo sticker",
+  },
+  {
+    title: "VSA Phoenix Sticker",
+    tagline: "A vibrant phoenix design inspired by strength, resilience, and Vietnamese cultural pride.",
+    border: "border-imperial-gold",
+    accent: "text-[color:var(--color-tertiary)]",
+    img: "https://i.imgur.com/BuCb7WL.png",
+    alt: "WWU VSA phoenix sticker",
+  },
+  {
+    title: "VSA 23-24 Heritage Night Sticker",
+    tagline: "A limited Heritage Night design celebrating Vietnamese culture, community, and the 2023-24 VSA experience.",
+    border: "border-vietnamese-red",
+    accent: "text-vietnamese-red",
+    icon: "auto_stars",
+    alt: "WWU VSA 2023-24 Heritage Night sticker",
+  },
+  {
+    title: "I Heart VSA Sticker",
+    tagline: "A playful I Heart VSA design made for showing your love and pride for the WWU VSA community.",
+    border: "border-viking-blue",
+    accent: "text-viking-blue",
+    img: "https://i.imgur.com/jL3nFsm.png",
+    alt: "WWU VSA I Heart VSA sticker",
+  },
+  {
+    title: "I Heart VSA Sticker",
+    variant: "Black Version",
+    tagline: "A black variation of our I Heart VSA sticker for another way to represent the WWU VSA community.",
+    border: "border-outline",
+    accent: "text-on-surface-variant",
+    icon: "favorite",
+    alt: "WWU VSA I Heart VSA black sticker",
+  },
 ];
 
 function ProductsPage() {
@@ -44,11 +113,11 @@ function ProductsPage() {
       <header className="relative overflow-hidden bg-rice-paper px-5 md:px-20 pt-16 pb-12">
         <div className="mx-auto max-w-screen-2xl text-center">
           <h1 className="mx-auto max-w-2xl font-display text-4xl leading-tight text-on-surface md:text-6xl">
-            Limited Edition Merch
+            WWU VSA Merch
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-lg text-on-surface-variant">
-            Celebrate our heritage and fuel our future. All proceeds directly support WWU VSA's
-            cultural programs and community initiatives.
+            Celebrate our heritage and represent the community. Every purchase directly supports
+            WWU VSA's cultural programs and events.
           </p>
           <div className="dong-son-divider mx-auto mt-8 h-px w-32" />
         </div>
@@ -56,29 +125,46 @@ function ProductsPage() {
 
       <section className="bg-surface px-5 md:px-20 py-16 md:py-24">
         <div className="mx-auto max-w-screen-2xl">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((p) => (
-              <article key={p.title} className={`group overflow-hidden rounded-2xl border-t-4 ${p.border} bg-white shadow-sm transition-all duration-300 hover:shadow-xl`}>
-                <div className="relative aspect-[4/5] overflow-hidden bg-surface-container">
+              <article key={p.title + (p.variant ?? "")} className={`group flex flex-col overflow-hidden rounded-2xl border-t-4 ${p.border} bg-white shadow-sm transition-all duration-300 hover:shadow-xl`}>
+                <div className="relative aspect-square overflow-hidden bg-surface-container">
                   {p.badge && (
                     <div className={`absolute left-4 top-4 z-10 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-md ${p.badge.color}`}>
                       {p.badge.text}
                     </div>
                   )}
                   {p.img ? (
-                    <img src={p.img} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <img src={p.img} alt={p.alt ?? p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   ) : (
                     <div className="grid h-full w-full place-items-center bg-surface-container-high text-on-surface-variant">
-                      <span className="material-symbols-outlined text-5xl">{p.icon}</span>
+                      <div className="flex flex-col items-center gap-2 px-6 text-center">
+                        <span className="material-symbols-outlined text-5xl">{p.icon}</span>
+                        <span className="text-xs font-medium uppercase tracking-wide">Photo coming soon</span>
+                      </div>
                     </div>
                   )}
                 </div>
-                <div className="space-y-1 p-4">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-display text-xl text-on-surface">{p.title}</h3>
-                    <span className={`shrink-0 text-sm font-bold ${p.priceColor}`}>{p.price}</span>
-                  </div>
+                <div className="flex flex-1 flex-col gap-2 p-5">
+                  <h3 className={`font-display text-xl text-on-surface`}>
+                    {p.title}
+                    {p.variant && <span className={`ml-2 align-middle text-xs font-bold uppercase tracking-wide ${p.accent}`}>{p.variant}</span>}
+                  </h3>
                   <p className="text-sm text-on-surface-variant">{p.tagline}</p>
+                  <div className="mt-auto flex items-center justify-between gap-3 pt-3">
+                    <a
+                      href="https://www.instagram.com/wwuvsa"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-1 text-sm font-semibold ${p.accent} hover:underline`}
+                    >
+                      {p.apparel ? "Ask About Sizes" : "Ask About Availability"}
+                      <span className="material-symbols-outlined text-sm">open_in_new</span>
+                    </a>
+                    <Link to="/contact" className="text-xs font-medium text-on-surface-variant hover:underline">
+                      Contact Us
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
@@ -89,9 +175,9 @@ function ProductsPage() {
       <section className="bg-surface-container px-5 md:px-20 py-16 md:py-24">
         <div className="mx-auto grid max-w-4xl grid-cols-1 items-center gap-10 md:grid-cols-2">
           <div className="space-y-5">
-            <h2 className="font-display text-3xl text-on-surface md:text-4xl">How to Purchase</h2>
+            <h2 className="font-display text-3xl text-on-surface md:text-4xl">How to Get Yours</h2>
             <p className="text-lg text-on-surface-variant">
-              We currently offer two convenient ways to get your hands on our limited edition collection.
+              We offer two easy ways to pick up merch from the current collection.
             </p>
             <div className="space-y-4">
               <div className="flex items-start gap-4">
@@ -100,7 +186,7 @@ function ProductsPage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold uppercase tracking-wide">In-Person at Meetings</h4>
-                  <p className="text-on-surface-variant">Visit our weekly general body meetings to see samples and pay via cash or Venmo.</p>
+                  <p className="text-on-surface-variant">Visit our general body meetings to see items and pay via cash or Venmo.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -109,7 +195,11 @@ function ProductsPage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold uppercase tracking-wide">DM on Instagram</h4>
-                  <p className="text-on-surface-variant">Send a direct message to <span className="font-bold text-viking-blue">@wwuvsa</span> with your order details and size.</p>
+                  <p className="text-on-surface-variant">
+                    Message{" "}
+                    <a href="https://www.instagram.com/wwuvsa" target="_blank" rel="noopener noreferrer" className="font-bold text-viking-blue hover:underline">@wwuvsa</a>{" "}
+                    for current sizes, availability, and pricing.
+                  </p>
                 </div>
               </div>
             </div>
@@ -119,10 +209,12 @@ function ProductsPage() {
               <span className="material-symbols-outlined text-[120px]" style={{ fontVariationSettings: "'FILL' 1" }}>volunteer_activism</span>
             </div>
             <h3 className="font-display text-2xl text-on-surface">Support the Club</h3>
-            <p className="mt-3 text-on-surface-variant">Every purchase is more than a piece of clothing. 100% of proceeds fund Heritage Night, service trips, and cultural workshops throughout the year.</p>
-            <div className="mt-6 rounded-lg border border-[color:var(--color-outline-variant)]/40 bg-white/60 p-4 text-xs italic text-on-surface-variant">
-              Disclaimer: All sales are final. Sizes are subject to availability. Please contact a board member for exchange inquiries regarding defective items.
-            </div>
+            <p className="mt-3 text-on-surface-variant">Every purchase is more than merch. Proceeds help fund Heritage Night, cultural workshops, and community events throughout the year.</p>
+            <p className="mt-6 rounded-lg border border-[color:var(--color-outline-variant)]/40 bg-white/60 p-4 text-xs text-on-surface-variant">
+              Merchandise is not sold directly through this website. For current availability, sizes, and pricing, DM us on Instagram at{" "}
+              <a href="https://www.instagram.com/wwuvsa" target="_blank" rel="noopener noreferrer" className="font-semibold text-viking-blue hover:underline">@wwuvsa</a>{" "}
+              or email <a href="mailto:westernvsa@gmail.com" className="font-semibold text-viking-blue hover:underline">westernvsa@gmail.com</a>.
+            </p>
           </div>
         </div>
       </section>
