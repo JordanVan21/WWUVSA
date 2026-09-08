@@ -43,7 +43,7 @@ const events = [
   {
     date: "LATE SPRING",
     title: "Heritage Night",
-    desc: "Our flagship showcase of dance, music, and storytelling across the Vietnamese diaspora.",
+    desc: "Our cultural showcase at the Viking Union featuring performances, storytelling, community, and celebration of Vietnamese culture.",
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDyIv9SdYQQIA-h7Wa9KWUgXH2FFn-d1iOoZMqZ5eJ9tzIeQ-YEXTan99PsnQL-C-4zRlRY1ab-6ngTZG1HJyHxZu1yXgLP1rI88HSqOG4ZNa6iE1SGTlzqdbog23DEuFfD-KDFHQ0hPkIYlNoMqPBClcoCHlBKXcYCmfEAEpCAeZ5s72TmUo7Val-M5YOIJ9jqHYb7Tn23w8eyrOETTi0PEZxTU5dlzvUqROD6l0qgfkxzLGU0u1VmEWy93fQB2cqQHn33cPJrFgIu",
     slug: "heritage-night" as const,
   },
