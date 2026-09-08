@@ -64,32 +64,53 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
     season: "Late Spring",
     tagline: "Roots & Wings",
     description:
-      "Heritage Night is our largest cultural showcase: a night of dance, music, and skits that explore what it means to be Vietnamese-American at Western.",
+      "WWU VSA's cultural showcase at the Viking Union featuring performances, storytelling, community, and celebration of Vietnamese culture.",
     happens:
-      "A full-scale production in the PAC: traditional fan and lion dances, live music, student-written skits, a family-style Vietnamese dinner, and a closing tribute from the graduating class.",
+      "Hosted at the Viking Union (VU) at Western Washington University: traditional fan and lion dances, live music, student performances and storytelling, Vietnamese food, and a closing tribute to the graduating class.",
     meaning:
       "Heritage Night is where the year's work becomes a shared story. Families travel in, alumni come home, and new members see themselves on stage for the first time.",
-    location: "Performing Arts Center, WWU",
+    location: "Viking Union (VU) at Western Washington University",
     audience: "Open to students, families, and the public",
     category: "Cultural Showcase",
     expectations: [
       { icon: "theater_comedy", title: "Student-Led Performances", description: "Fan dance, lion dance, and modern sets choreographed by members over two quarters." },
-      { icon: "restaurant", title: "Family-Style Dinner", description: "A catered Vietnamese meal served before the show, shared at round tables." },
-      { icon: "history_edu", title: "Original Storyline", description: "A student-written skit tying the night's performances into one Vietnamese-American story." },
+      { icon: "restaurant", title: "Food & Shared Tables", description: "Vietnamese food shared together before and around the show." },
+      { icon: "history_edu", title: "Storytelling", description: "Student-written storytelling that ties the night's performances together." },
       { icon: "school", title: "Senior Send-Off", description: "A closing tribute to graduating members and the alumni who return for it." },
     ],
     sections: [
       {
+        title: "About Heritage Night",
+        body: [
+          "Heritage Night is one of WWU VSA's largest cultural celebrations, bringing students, families, friends, and community members together for an evening centered around Vietnamese culture, storytelling, performances, food, and community.",
+          "Hosted at the Viking Union, Heritage Night gives WWU VSA members an opportunity to share Vietnamese culture through creative performances and experiences while celebrating the work and community built throughout the year.",
+        ],
+      },
+      {
         title: "Tickets & Admission",
         body: [
-          "Heritage Night ticket and admission information is announced each year. Current pricing and registration details can be found in the event's current-year information when available.",
-          "WWU VSA works to coordinate transportation and rides so that members who want to participate have a way to attend whenever possible. Ride coordination is announced separately for each event.",
+          "Heritage Night ticket and admission information is announced each year. Check the current-year event details for pricing and registration information.",
+        ],
+      },
+      {
+        title: "Transportation",
+        body: [
+          "WWU VSA does its best to coordinate rides when transportation assistance is needed. Event-specific transportation details are announced separately when applicable.",
         ],
       },
     ],
     currentYear: {
-      note: "This year's date, venue details, and ticket information are announced each year. Check our meetings and social media for the most current information.",
+      note: "Board members: update this block each year with the exact date, time, Viking Union room, ticket price and link, performance and check-in information, and accessibility or transportation notes.",
+      details: [
+        { label: "Venue", value: "Viking Union (VU), Western Washington University" },
+        { label: "Room", value: "Room details coming soon" },
+        { label: "Date & Time", value: "To be announced" },
+        { label: "Tickets", value: "Ticket and admission information announced each year" },
+        { label: "Check-In", value: "To be announced" },
+        { label: "Accessibility", value: "Accessibility details announced with this year's location" },
+      ],
     },
+
     heroImage:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuAoVvnWTwHymFaPGud3yjPNzr9LjOz0_xtZpEEe1IwDNfz0KDAjZrkBYHLA9MgC0qCTwfWlr0AoJSzkPNVLc7SBGvTrC0ExneW0-lYtdHJKT9ksPekf7oW0-JZ7KZyFE7MaIJ9K0xwvYMKHQXdLnE7oiKWvbhca2eRXeQ5N1xUKLbirZhX3tmv_bwzzJrnv8E0shtbyx0fbxUIjZ6nralVEfFFn9yHiNZgcuP1XGU51u5NlVBJSIy7GFsGW1KVKCYQwdYt6i1xFC9hd",
     accent: "red",
