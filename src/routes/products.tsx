@@ -60,7 +60,7 @@ const products: Product[] = [
     border: "border-vietnamese-red",
     accent: "text-vietnamese-red",
     badge: { text: "New", color: "bg-vietnamese-red" },
-    icon: "checkroom",
+    img: "https://i.imgur.com/4YyTmLR.png",
     alt: "WWU VSA 2025-26 sweatpants",
     apparel: true,
   },
@@ -81,14 +81,6 @@ const products: Product[] = [
     alt: "WWU VSA phoenix sticker",
   },
   {
-    title: "VSA 23-24 Heritage Night Sticker",
-    tagline: "A limited Heritage Night design celebrating Vietnamese culture, community, and the 2023-24 VSA experience.",
-    border: "border-vietnamese-red",
-    accent: "text-vietnamese-red",
-    icon: "auto_stars",
-    alt: "WWU VSA 2023-24 Heritage Night sticker",
-  },
-  {
     title: "I Heart VSA Sticker",
     tagline: "A playful I Heart VSA design made for showing your love and pride for the WWU VSA community.",
     border: "border-viking-blue",
@@ -102,8 +94,8 @@ const products: Product[] = [
     tagline: "A black variation of our I Heart VSA sticker for another way to represent the WWU VSA community.",
     border: "border-outline",
     accent: "text-on-surface-variant",
-    icon: "favorite",
-    alt: "WWU VSA I Heart VSA black sticker",
+    img: "https://i.imgur.com/YA2IwWQ.png",
+    alt: "WWU VSA I Heart VSA sticker black version",
   },
 ];
 
