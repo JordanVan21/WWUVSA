@@ -1,8 +1,18 @@
 import { useCallback, useEffect } from "react";
-import type { MediaItem } from "@/lib/media";
+
+/** Structural shape shared by MediaItem and GalleryItem. */
+export type LightboxItem = {
+  title: string;
+  eventName?: string;
+  categoryLabel?: string;
+  year?: string | number;
+  altText: string;
+  mediaType: "photo" | "video";
+  mediaUrl: string;
+};
 
 type Props = {
-  items: MediaItem[];
+  items: LightboxItem[];
   index: number;
   onClose: () => void;
   onIndex: (i: number) => void;
@@ -41,7 +51,7 @@ export function Lightbox({ items, index, onClose, onIndex }: Props) {
     <div
       role="dialog"
       aria-modal="true"
-      aria-label={`${item.eventName}: ${item.altText}`}
+      aria-label={`${item.eventName ?? item.categoryLabel ?? "WWU VSA"}: ${item.altText}`}
       className="fixed inset-0 z-[100] flex items-center justify-center bg-ink-black/95 p-4"
       onClick={onClose}
     >
@@ -96,7 +106,9 @@ export function Lightbox({ items, index, onClose, onIndex }: Props) {
         <figcaption className="text-center text-sm text-white/80">
           <div className="font-semibold text-white">{item.title}</div>
           <div>
-            {item.eventName} · {item.year} · {index + 1} / {items.length}
+            {[item.eventName ?? item.categoryLabel, item.year].filter(Boolean).join(" · ")}
+            {(item.eventName ?? item.categoryLabel ?? item.year) ? " · " : ""}
+            {index + 1} / {items.length}
           </div>
         </figcaption>
       </figure>
