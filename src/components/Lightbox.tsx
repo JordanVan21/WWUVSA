@@ -1,8 +1,18 @@
 import { useCallback, useEffect } from "react";
-import type { MediaItem } from "@/lib/media";
+
+/** Structural shape shared by MediaItem and GalleryItem. */
+export type LightboxItem = {
+  title: string;
+  eventName?: string;
+  categoryLabel?: string;
+  year?: string | number;
+  altText: string;
+  mediaType: "photo" | "video";
+  mediaUrl: string;
+};
 
 type Props = {
-  items: MediaItem[];
+  items: LightboxItem[];
   index: number;
   onClose: () => void;
   onIndex: (i: number) => void;
