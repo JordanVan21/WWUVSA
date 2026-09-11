@@ -70,7 +70,7 @@ function AboutPage() {
             </p>
           </motion.div>
           <div className="relative order-1 lg:order-2">
-            <div className="absolute -inset-3 -z-10 translate-x-4 translate-y-4 rounded-2xl border-2 border-imperial-gold/40" />
+            <div className="absolute -inset-3 -z-10 translate-x-0 translate-y-4 rounded-2xl border-2 border-imperial-gold/40 md:translate-x-4" />
             <img
               src={HERO_IMG}
               alt="Students laughing together in a warm campus setting"
