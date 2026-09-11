@@ -3,13 +3,15 @@ import { useMemo, useState } from "react";
 import { z } from "zod";
 import { fallback, zodValidator } from "@tanstack/zod-adapter";
 import {
-  AVAILABLE_YEARS,
-  EVENT_META,
-  filterMedia,
-  MEDIA,
-  type EventSlug,
-} from "@/lib/media";
+  GALLERY_CATEGORIES,
+  GALLERY_ITEMS,
+  GALLERY_YEARS,
+  filterGallery,
+  isGalleryCategory,
+  type GalleryCategory,
+} from "@/data/gallery";
 import { Lightbox } from "@/components/Lightbox";
+import { GalleryImage } from "@/components/GalleryImage";
 
 const searchSchema = z.object({
   event: fallback(z.string(), "all").default("all"),
