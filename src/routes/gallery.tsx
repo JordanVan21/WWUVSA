@@ -5,6 +5,7 @@ import { fallback, zodValidator } from "@tanstack/zod-adapter";
 import {
   GALLERY_CATEGORIES,
   GALLERY_ITEMS,
+  GALLERY_USAGE,
   GALLERY_YEARS,
   filterGallery,
   isGalleryCategory,
@@ -24,16 +25,22 @@ export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
       { title: "Gallery | WWU VSA" },
-      { name: "description", content: "The full WWU VSA media archive: filter by event, year, and media type." },
+      {
+        name: "description",
+        content: "The full WWU VSA media archive: filter by event, year, and media type.",
+      },
       { property: "og:title", content: "Gallery | WWU VSA" },
-      { property: "og:description", content: "Photos and videos from Heritage Night, Tết, Turkey Bowl, SpikeFest, meetings, and more." },
+      {
+        property: "og:description",
+        content:
+          "Photos and videos from Heritage Night, Tết, Turkey Bowl, SpikeFest, meetings, and more.",
+      },
     ],
   }),
   component: GalleryPage,
 });
 
-const HERO =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDfX911ngX4FrCv5JghJ27a1rR4XAMci5E2xAuheVNRT58WnLBida3BSK3-icM9g-cpRMH_kqCpXfgH5D-O7MFu1BXbIV10ey6VBwEfun6S9PpUC09u5kTclw7yLzrTsjt1-DZpV4rH297nf8eGUgpN0JYbyWE1kDSfgdy4EaV8-APYwqx41dPLr_j7713bN53Ce0hXj34NVgfbNNT8k37HaFTlOJL8z69QpLFF28IOLz4gLvqxsv-zoFvjNTBLU9y7kORQIXVWC9s2";
+const HERO = GALLERY_USAGE.galleryHero;
 
 const EVENT_FILTERS: { value: "all" | GalleryCategory; label: string }[] = [
   { value: "all", label: "All" },
@@ -55,10 +62,7 @@ function GalleryPage() {
   const year: string | "all" = GALLERY_YEARS.includes(raw.year) ? raw.year : "all";
   const type = raw.type === "photo" || raw.type === "video" ? raw.type : "all";
 
-  const items = useMemo(
-    () => filterGallery({ category: event, year, type }),
-    [event, year, type],
-  );
+  const items = useMemo(() => filterGallery({ category: event, year, type }), [event, year, type]);
 
   const categoryMeta = GALLERY_CATEGORIES.find((c) => c.slug === event);
 
@@ -116,11 +120,7 @@ function GalleryPage() {
                 All
               </FilterChip>
               {GALLERY_YEARS.map((y) => (
-                <FilterChip
-                  key={y}
-                  active={year === y}
-                  onClick={() => setFilter("year", y)}
-                >
+                <FilterChip key={y} active={year === y} onClick={() => setFilter("year", y)}>
                   {y}
                 </FilterChip>
               ))}
@@ -140,7 +140,8 @@ function GalleryPage() {
 
             <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
               <p className="text-sm text-on-surface-variant">
-                Showing <span className="font-semibold text-ink-black">{items.length}</span> of {activeCount} items
+                Showing <span className="font-semibold text-ink-black">{items.length}</span> of{" "}
+                {activeCount} items
               </p>
               <button
                 onClick={reset}
@@ -159,7 +160,9 @@ function GalleryPage() {
                   ? `No photos have been added for ${categoryMeta.label} yet.`
                   : "No media matches these filters."}
               </p>
-              <p className="mt-2 text-on-surface-variant">Try clearing a filter or viewing all media.</p>
+              <p className="mt-2 text-on-surface-variant">
+                Try clearing a filter or viewing all media.
+              </p>
               <button
                 onClick={reset}
                 className="mt-6 inline-flex rounded-full bg-vietnamese-red px-5 py-2 text-sm font-semibold text-white"
