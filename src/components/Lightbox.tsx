@@ -94,13 +94,15 @@ export function Lightbox({ items, index, onClose, onIndex }: Props) {
             src={item.mediaUrl}
             controls
             playsInline
-            className="max-h-[80vh] w-auto max-w-full rounded-lg"
+            preload="metadata"
+            aria-label={item.altText}
+            className="h-auto max-h-[calc(100vh-9rem)] w-auto max-w-full rounded-lg object-contain"
           />
         ) : (
           <img
             src={item.mediaUrl}
             alt={item.altText}
-            className="max-h-[80vh] w-auto max-w-full rounded-lg object-contain"
+            className="h-auto max-h-[calc(100vh-9rem)] w-auto max-w-full rounded-lg object-contain"
           />
         )}
         <figcaption className="text-center text-sm text-white/80">
