@@ -116,6 +116,7 @@ export const CATEGORY_ALIASES: Record<string, GalleryCategory> = {
   "general meetings": "general",
   "community-events": "general",
   other: "general",
+  fundraisers: "general",
 };
 
 /** Resolve a URL value to a real category, following retired aliases. */
