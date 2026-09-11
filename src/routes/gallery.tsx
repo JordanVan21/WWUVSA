@@ -3,13 +3,15 @@ import { useMemo, useState } from "react";
 import { z } from "zod";
 import { fallback, zodValidator } from "@tanstack/zod-adapter";
 import {
-  AVAILABLE_YEARS,
-  EVENT_META,
-  filterMedia,
-  MEDIA,
-  type EventSlug,
-} from "@/lib/media";
+  GALLERY_CATEGORIES,
+  GALLERY_ITEMS,
+  GALLERY_YEARS,
+  filterGallery,
+  isGalleryCategory,
+  type GalleryCategory,
+} from "@/data/gallery";
 import { Lightbox } from "@/components/Lightbox";
+import { GalleryImage } from "@/components/GalleryImage";
 
 const searchSchema = z.object({
   event: fallback(z.string(), "all").default("all"),
@@ -33,16 +35,9 @@ export const Route = createFileRoute("/gallery")({
 const HERO =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuDfX911ngX4FrCv5JghJ27a1rR4XAMci5E2xAuheVNRT58WnLBida3BSK3-icM9g-cpRMH_kqCpXfgH5D-O7MFu1BXbIV10ey6VBwEfun6S9PpUC09u5kTclw7yLzrTsjt1-DZpV4rH297nf8eGUgpN0JYbyWE1kDSfgdy4EaV8-APYwqx41dPLr_j7713bN53Ce0hXj34NVgfbNNT8k37HaFTlOJL8z69QpLFF28IOLz4gLvqxsv-zoFvjNTBLU9y7kORQIXVWC9s2";
 
-const EVENT_FILTERS: { value: "all" | EventSlug; label: string }[] = [
+const EVENT_FILTERS: { value: "all" | GalleryCategory; label: string }[] = [
   { value: "all", label: "All" },
-  { value: "heritage-night", label: "Heritage Night" },
-  { value: "tet", label: "Tết" },
-  { value: "turkey-bowl", label: "Turkey Bowl" },
-  { value: "spikefest", label: "SpikeFest" },
-  { value: "fundraisers", label: "Fundraisers" },
-  { value: "general-meetings", label: "General Meetings" },
-  { value: "community-events", label: "Community Events" },
-  { value: "other", label: "Other" },
+  ...GALLERY_CATEGORIES.map((c) => ({ value: c.slug as GalleryCategory, label: c.label })),
 ];
 
 const TYPE_FILTERS: { value: "all" | "photo" | "video"; label: string }[] = [
@@ -56,18 +51,16 @@ function GalleryPage() {
   const navigate = useNavigate({ from: "/gallery" });
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const event = (EVENT_FILTERS.find((e) => e.value === raw.event)?.value ?? "all") as
-    | "all"
-    | EventSlug;
-  const year: number | "all" =
-    raw.year === "all" ? "all" : AVAILABLE_YEARS.includes(Number(raw.year)) ? Number(raw.year) : "all";
-  const type =
-    raw.type === "photo" || raw.type === "video" ? raw.type : "all";
+  const event: "all" | GalleryCategory = isGalleryCategory(raw.event) ? raw.event : "all";
+  const year: string | "all" = GALLERY_YEARS.includes(raw.year) ? raw.year : "all";
+  const type = raw.type === "photo" || raw.type === "video" ? raw.type : "all";
 
   const items = useMemo(
-    () => filterMedia({ event, year, type }),
+    () => filterGallery({ category: event, year, type }),
     [event, year, type],
   );
+
+  const categoryMeta = GALLERY_CATEGORIES.find((c) => c.slug === event);
 
   const setFilter = (key: "event" | "year" | "type", value: string) => {
     navigate({
@@ -80,7 +73,7 @@ function GalleryPage() {
     navigate({ search: { event: "all", year: "all", type: "all" }, replace: true });
   };
 
-  const activeCount = MEDIA.length;
+  const activeCount = GALLERY_ITEMS.length;
 
   return (
     <>
@@ -91,12 +84,12 @@ function GalleryPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink-black/85 to-transparent" />
         <div className="relative z-10 px-5 text-center">
           <h1 className="font-display text-4xl text-white md:text-6xl">
-            {event === "all" ? "Captured Moments" : `${EVENT_META[event].name} Gallery`}
+            {categoryMeta ? `${categoryMeta.label} Gallery` : "Captured Moments"}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
-            {event === "all"
-              ? "A visual journey through our heritage, community growth, and the vibrant memories we've built together at WWU."
-              : EVENT_META[event].description}
+            {categoryMeta
+              ? categoryMeta.description
+              : "A visual journey through our heritage, community growth, and the vibrant memories we've built together at WWU."}
           </p>
           <div className="dong-son-divider mx-auto mt-6 h-px w-48" />
         </div>
@@ -122,11 +115,11 @@ function GalleryPage() {
               <FilterChip active={year === "all"} onClick={() => setFilter("year", "all")}>
                 All
               </FilterChip>
-              {AVAILABLE_YEARS.map((y) => (
+              {GALLERY_YEARS.map((y) => (
                 <FilterChip
                   key={y}
                   active={year === y}
-                  onClick={() => setFilter("year", String(y))}
+                  onClick={() => setFilter("year", y)}
                 >
                   {y}
                 </FilterChip>
@@ -161,7 +154,11 @@ function GalleryPage() {
 
           {items.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-[color:var(--color-outline-variant)] bg-white/60 p-12 text-center">
-              <p className="font-display text-2xl text-ink-black">No media matches these filters.</p>
+              <p className="font-display text-2xl text-ink-black">
+                {categoryMeta
+                  ? `No photos have been added for ${categoryMeta.label} yet.`
+                  : "No media matches these filters."}
+              </p>
               <p className="mt-2 text-on-surface-variant">Try clearing a filter or viewing all media.</p>
               <button
                 onClick={reset}
@@ -179,14 +176,14 @@ function GalleryPage() {
                   className="group relative aspect-square overflow-hidden rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-vietnamese-red focus:ring-offset-2"
                   aria-label={`Open ${m.altText}`}
                 >
-                  <img
+                  <GalleryImage
                     src={m.thumbnailUrl}
                     alt={m.altText}
-                    loading="lazy"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <span className="absolute left-2 top-2 rounded bg-black/55 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
-                    {m.eventName}
+                    {m.categoryLabel}
                   </span>
                   {m.mediaType === "video" && (
                     <span className="absolute right-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-black/60 text-white">
