@@ -115,11 +115,11 @@ function GalleryPage() {
               <FilterChip active={year === "all"} onClick={() => setFilter("year", "all")}>
                 All
               </FilterChip>
-              {AVAILABLE_YEARS.map((y) => (
+              {GALLERY_YEARS.map((y) => (
                 <FilterChip
                   key={y}
                   active={year === y}
-                  onClick={() => setFilter("year", String(y))}
+                  onClick={() => setFilter("year", y)}
                 >
                   {y}
                 </FilterChip>
@@ -154,7 +154,11 @@ function GalleryPage() {
 
           {items.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-[color:var(--color-outline-variant)] bg-white/60 p-12 text-center">
-              <p className="font-display text-2xl text-ink-black">No media matches these filters.</p>
+              <p className="font-display text-2xl text-ink-black">
+                {categoryMeta
+                  ? `No photos have been added for ${categoryMeta.label} yet.`
+                  : "No media matches these filters."}
+              </p>
               <p className="mt-2 text-on-surface-variant">Try clearing a filter or viewing all media.</p>
               <button
                 onClick={reset}
@@ -172,14 +176,14 @@ function GalleryPage() {
                   className="group relative aspect-square overflow-hidden rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-vietnamese-red focus:ring-offset-2"
                   aria-label={`Open ${m.altText}`}
                 >
-                  <img
+                  <GalleryImage
                     src={m.thumbnailUrl}
                     alt={m.altText}
-                    loading="lazy"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <span className="absolute left-2 top-2 rounded bg-black/55 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
-                    {m.eventName}
+                    {m.categoryLabel}
                   </span>
                   {m.mediaType === "video" && (
                     <span className="absolute right-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-black/60 text-white">
