@@ -149,8 +149,9 @@ function GalleryPage() {
 
             <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
               <p className="text-sm text-on-surface-variant">
-                Showing <span className="font-semibold text-ink-black">{items.length}</span> of{" "}
-                {activeCount} items
+                Showing{" "}
+                <span className="font-semibold text-ink-black">{visibleItems.length}</span> of{" "}
+                {items.length} matching items ({activeCount} in the full archive)
               </p>
               <button
                 onClick={reset}
