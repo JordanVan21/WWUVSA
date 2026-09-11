@@ -11398,18 +11398,18 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
 
 /** Curated real photos used outside the archive. Keep page imagery tied to this registry. */
 export const GALLERY_USAGE = {
-  homeHero: "/images/gallery/general/2026/End of Meeting.png",
+  homeHero: "/images/gallery/general/2025/beat the board meeting.png",
   homeWelcome: "/images/gallery/general/2026/UNC.png",
   homeViet101: "/images/gallery/general/2026/DIY Envelope.png",
-  aboutHero: "/images/gallery/general/2026/EOY4.png",
-  acceCommunity: "/images/gallery/acce/2026/Picture28.png",
-  eventsHero: "/images/gallery/heritage-night/2026/DSC00640.jpg",
-  galleryHero: "/images/gallery/heritage-night/2026/DSC00829.jpg",
-  heritageNightHero: "/images/gallery/heritage-night/2026/_MG_4645.jpg",
-  heritageNightCard: "/images/gallery/heritage-night/2026/DSC00232.jpg",
+  aboutHero: "/images/gallery/acce/2024/IMG_5967.JPG",
+  acceCommunity: "/images/gallery/acce/2024/IMG_5965.JPG",
+  eventsHero: "/images/gallery/heritage-night/2026/DSC00397.jpg",
+  galleryHero: "/images/gallery/heritage-night/2026/_DSC4206.jpg",
+  heritageNightHero: "/images/gallery/heritage-night/2026/DSC00809.jpg",
+  heritageNightCard: "/images/gallery/heritage-night/2026/_DSC4245.jpg",
   fanDance: "/images/gallery/heritage-night/2026/_MG_4716.jpg",
-  turkeyBowlHero: "/images/gallery/turkey-bowl/2025/SUTB2.png",
-  turkeyBowlCard: "/images/gallery/turkey-bowl/2025/SUTB5.png",
+  turkeyBowlHero: "/images/gallery/turkey-bowl/2024/IMG_2303.JPG",
+  turkeyBowlCard: "/images/gallery/turkey-bowl/2024/IMG_2346.JPG",
   spikefestHero: "/images/gallery/spikefest/2026/_DSC4340.jpg",
   spikefestCard: "/images/gallery/spikefest/2026/_DSC4513.jpg",
 } as const;

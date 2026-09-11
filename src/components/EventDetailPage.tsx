@@ -245,17 +245,22 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
         </section>
       )}
 
-      {event.videoUrl && (
+      {featuredVideo && (
         <section className="mx-auto max-w-screen-2xl px-5 md:px-20 py-14 md:py-20">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
-            <div className="overflow-hidden rounded-lg shadow-sm">
+            <div className="overflow-hidden rounded-lg bg-ink-black shadow-sm">
               <video
-                src={event.videoUrl}
+                src={featuredVideo.mediaUrl}
                 controls
                 preload="metadata"
                 playsInline
-                poster={event.heroImage || undefined}
-                className="aspect-video w-full bg-ink-black object-cover"
+                poster={
+                  featuredVideo.thumbnailUrl !== featuredVideo.mediaUrl
+                    ? featuredVideo.thumbnailUrl
+                    : undefined
+                }
+                aria-label={featuredVideo.altText}
+                className="h-auto max-h-[70vh] w-full bg-ink-black object-contain"
               />
             </div>
             <div>
@@ -265,10 +270,22 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
                 Featured Video
               </span>
               <h2 className="mt-2 font-display text-2xl text-ink-black md:text-3xl">
-                {event.videoTitle ?? event.name}
+                {event.videoTitle ?? featuredVideo.title ?? event.name}
               </h2>
-              {event.videoDescription && (
-                <p className="mt-4 max-w-xl text-on-surface-variant">{event.videoDescription}</p>
+              <p className="mt-4 max-w-xl text-on-surface-variant">
+                {event.videoDescription ?? featuredVideo.altText}
+              </p>
+              {otherVideoCount > 0 && (
+                <Link
+                  to={galleryLinkFor(event.slug)}
+                  search={{ type: "video" }}
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-vietnamese-red hover:underline"
+                >
+                  Watch all {event.name} videos
+                  <span className="material-symbols-outlined text-base" aria-hidden="true">
+                    arrow_forward
+                  </span>
+                </Link>
               )}
             </div>
           </div>
