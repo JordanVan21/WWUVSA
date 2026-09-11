@@ -73,7 +73,7 @@ function GalleryPage() {
     navigate({ search: { event: "all", year: "all", type: "all" }, replace: true });
   };
 
-  const activeCount = MEDIA.length;
+  const activeCount = GALLERY_ITEMS.length;
 
   return (
     <>
@@ -84,12 +84,12 @@ function GalleryPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink-black/85 to-transparent" />
         <div className="relative z-10 px-5 text-center">
           <h1 className="font-display text-4xl text-white md:text-6xl">
-            {event === "all" ? "Captured Moments" : `${EVENT_META[event].name} Gallery`}
+            {categoryMeta ? `${categoryMeta.label} Gallery` : "Captured Moments"}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
-            {event === "all"
-              ? "A visual journey through our heritage, community growth, and the vibrant memories we've built together at WWU."
-              : EVENT_META[event].description}
+            {categoryMeta
+              ? categoryMeta.description
+              : "A visual journey through our heritage, community growth, and the vibrant memories we've built together at WWU."}
           </p>
           <div className="dong-son-divider mx-auto mt-6 h-px w-48" />
         </div>
