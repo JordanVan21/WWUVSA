@@ -104,12 +104,6 @@ export const GALLERY_CATEGORIES: {
     folder: "acce",
     description: "ACCE families, mentorship, and gatherings across the program.",
   },
-  {
-    slug: "fundraisers",
-    label: "Fundraisers",
-    folder: "general",
-    description: "Fundraising events run by and for our community.",
-  },
 ];
 
 /**
