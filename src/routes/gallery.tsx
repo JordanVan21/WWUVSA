@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import { fallback, zodValidator } from "@tanstack/zod-adapter";
 import {
@@ -42,6 +42,9 @@ export const Route = createFileRoute("/gallery")({
 
 const HERO = GALLERY_USAGE.galleryHero;
 
+/** How many items to render before the visitor asks for more. */
+const PAGE_SIZE = 60;
+
 const EVENT_FILTERS: { value: "all" | GalleryCategory; label: string }[] = [
   { value: "all", label: "All" },
   ...GALLERY_CATEGORIES.map((c) => ({ value: c.slug as GalleryCategory, label: c.label })),
@@ -63,6 +66,12 @@ function GalleryPage() {
   const type = raw.type === "photo" || raw.type === "video" ? raw.type : "all";
 
   const items = useMemo(() => filterGallery({ category: event, year, type }), [event, year, type]);
+
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [event, year, type]);
+  const visibleItems = useMemo(() => items.slice(0, visibleCount), [items, visibleCount]);
 
   const categoryMeta = GALLERY_CATEGORIES.find((c) => c.slug === event);
 
