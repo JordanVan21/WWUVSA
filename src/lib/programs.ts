@@ -190,7 +190,21 @@ export const PROGRAMS: Program[] = [
     audience: "Members who want to perform, at any experience level",
     experienceLevel: "No prior dance experience required",
     typicalSchedule: "Rehearsals run through Winter and Spring quarter ahead of Heritage Night",
-    featuredMediaIds: getCategoryPreview("heritage-night", { limit: 6 }).map((item) => item.id),
+    // Real fan dance photos only: Heritage Night stage sets and the Tet performance.
+    featuredMediaIds: [
+      "heritage-night-2025-img-2063-53686264544-l",
+      "heritage-night-2025-img-2064-53685899171-l",
+      "heritage-night-2025-img-2065-53685031322-l",
+      "heritage-night-2025-img-2074-53686357415-l",
+      "heritage-night-2025-img-2089-53685031202-l",
+      "heritage-night-2025-img-2090-53686123753-l",
+      "heritage-night-2025-img-2110-53686264334-l",
+      "heritage-night-2025-img-2124-53686357210-l",
+      "tet-2025-dsc09958-54295671111-l",
+      "tet-2025-dsc09959-54294790627-l",
+      "tet-2025-dsc09987-54295671081-l",
+      "tet-2025-dsc09988-54295907924-l",
+    ],
   },
 ];
 
@@ -201,8 +215,9 @@ export function getProgram(slug: string): Program | undefined {
 export function getProgramMedia(program: Program): GalleryItem[] {
   if (!program.featuredMediaIds?.length) return [];
   const media = [
-    ...getCategoryPreview("acce", { limit: 84 }),
-    ...getCategoryPreview("heritage-night", { limit: 183 }),
+    ...getCategoryPreview("acce", { limit: 200 }),
+    ...getCategoryPreview("heritage-night", { limit: 700 }),
+    ...getCategoryPreview("tet", { limit: 50 }),
   ];
   return program.featuredMediaIds
     .map((id) => media.find((item) => item.id === id))

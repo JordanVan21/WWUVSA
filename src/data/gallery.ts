@@ -1891,7 +1891,7 @@ export const GALLERY_USAGE = {
   galleryHero: "/images/gallery/heritage-night/2026/_DSC4206.jpg",
   heritageNightHero: "/images/gallery/heritage-night/2026/DSC00809.jpg",
   heritageNightCard: "/images/gallery/heritage-night/2026/_DSC4245.jpg",
-  fanDance: "/images/gallery/heritage-night/2026/_MG_4716.jpg",
+  fanDance: "/images/gallery/heritage-night/2025/img_2064_53685899171_l.jpg",
   turkeyBowlHero: "/images/gallery/turkey-bowl/2024/IMG_2303.JPG",
   turkeyBowlCard: "/images/gallery/turkey-bowl/2024/IMG_2346.JPG",
   spikefestHero: "/images/gallery/spikefest/2026/_DSC4340.jpg",
