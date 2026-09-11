@@ -11490,13 +11490,19 @@ export function filterGallery(
 /** Featured items first, falling back to everything in the category. */
 export function getCategoryPreview(
   category: GalleryCategory,
-  opts: { year?: string; limit?: number; subtype?: GallerySubtype } = {},
+  opts: {
+    year?: string;
+    limit?: number;
+    subtype?: GallerySubtype;
+    type?: GalleryMediaType | "all";
+  } = {},
 ): GalleryItem[] {
-  const { year, limit = 8, subtype } = opts;
+  const { year, limit = 8, subtype, type = "all" } = opts;
   const pool = filterGallery({
     category,
     year: year ?? "all",
     subtype: subtype ?? "all",
+    type,
   });
   const featured = pool.filter((i) => i.featured);
   return (featured.length > 0 ? featured : pool).slice(0, limit);

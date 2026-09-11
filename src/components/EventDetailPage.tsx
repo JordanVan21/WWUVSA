@@ -280,8 +280,8 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
               </p>
               {otherVideoCount > 0 && (
                 <Link
-                  to={galleryLinkFor(event.slug)}
-                  search={{ type: "video" }}
+                  to="/gallery"
+                  search={{ event: event.slug, year: "all", type: "video" }}
                   className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-vietnamese-red hover:underline"
                 >
                   Watch all {event.name} videos
