@@ -5,6 +5,7 @@ import { fallback, zodValidator } from "@tanstack/zod-adapter";
 import {
   GALLERY_CATEGORIES,
   GALLERY_ITEMS,
+  GALLERY_USAGE,
   GALLERY_YEARS,
   filterGallery,
   isGalleryCategory,
@@ -32,8 +33,7 @@ export const Route = createFileRoute("/gallery")({
   component: GalleryPage,
 });
 
-const HERO =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDfX911ngX4FrCv5JghJ27a1rR4XAMci5E2xAuheVNRT58WnLBida3BSK3-icM9g-cpRMH_kqCpXfgH5D-O7MFu1BXbIV10ey6VBwEfun6S9PpUC09u5kTclw7yLzrTsjt1-DZpV4rH297nf8eGUgpN0JYbyWE1kDSfgdy4EaV8-APYwqx41dPLr_j7713bN53Ce0hXj34NVgfbNNT8k37HaFTlOJL8z69QpLFF28IOLz4gLvqxsv-zoFvjNTBLU9y7kORQIXVWC9s2";
+const HERO = GALLERY_USAGE.galleryHero;
 
 const EVENT_FILTERS: { value: "all" | GalleryCategory; label: string }[] = [
   { value: "all", label: "All" },

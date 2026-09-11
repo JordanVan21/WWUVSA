@@ -1,4 +1,4 @@
-import { MEDIA, type MediaItem } from "@/lib/media";
+import { GALLERY_USAGE, getCategoryPreview, type GalleryItem } from "@/data/gallery";
 
 export type Program = {
   slug: string;
@@ -30,8 +30,7 @@ export const PROGRAMS: Program[] = [
       "Littles, also known as \u201cEm,\u201d are paired with experienced family leaders who support them throughout the year. Bigs \u2014 known as Anh, Chi, or Chanh \u2014 serve as mentors, resources, and community builders for their Em. Through monthly ACCE gatherings, weekly communication, VSA events, and time spent together outside of meetings, each family has opportunities to build genuine and lasting relationships.",
       "ACCE is a meaningful time commitment. Every participant is expected to be active, inclusive, communicative, and mindful of the experiences of their own family and other ACCE families. The program works best when members answer matching questions honestly, participate consistently, and make an intentional effort to connect with one another.",
     ],
-    heroImage:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCOKt9p1ajL1X_TpC_ppJkAD4lgET5s0Vt88sCQYvqNtkI1j3LioOoBYXnyUk9dKj8qj2Twmwvptb5e5uaMz7w3w7GdfgFCux2_UirR-icKRq3eKtyOgfX8Cn3wrSs58dPoZBbGXQLHv9KFjmxdpmRHHzDq-UyQ1mBXoKuCRWSC9FkCslYy7DKXSroA73DGBk78hYtBF6-enP6G-42KQ9TLUCQcieho4n1lq2j6AklFkhusIQyv2CbGePiMldeUFcrdLUqmQOzcwKKI",
+    heroImage: undefined,
     accentStyle: "image",
     howItWorks: [
       { title: "Matching", description: "Em and family leaders complete a matching form so families are built around shared interests, personalities, and experiences." },
@@ -101,7 +100,7 @@ export const PROGRAMS: Program[] = [
         ],
       },
     ],
-    featuredMediaIds: ["general-meetings-2024-0", "general-meetings-2024-1", "community-events-2024-0"],
+    featuredMediaIds: getCategoryPreview("acce", { limit: 8 }).map((item) => item.id),
   },
   {
     slug: "viet-101",
@@ -136,8 +135,7 @@ export const PROGRAMS: Program[] = [
       "Performance is one of the clearest ways our community passes culture forward. The movements, music, and costuming carry meaning that a slideshow never could. Teaching it as a group also makes rehearsal a social space, not an audition.",
       "Dancers gain choreography they can perform on a real stage, a rehearsal community that meets consistently, and a hands-on connection to Vietnamese performing arts.",
     ],
-    heroImage:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuA8taNmeh1Rp_lSUTYkYh4ZFy80TT21x8KIe9ze--W1miMgEl_5iyEOEnUTKTC-HkxN39Hq7-w04vMjjfSkjgemH_2sfHCHKmOtYRfpJ9Rh2cl542iUxDgNqhX9Z0UO15UBk-kj3sPWXHdn6l-CZmxbecyquF7YyR5nDuM6w-Rak_KqYKBO4yseSQTbQLjaE2N2bTv1ONZXW4o9LQR3ZSiZqacFJM-sVzMq5-45pRKx_0DpOms6qsKYyciLGtRAwuSjZMLfyHjv_RsN",
+    heroImage: GALLERY_USAGE.fanDance,
     accentStyle: "blue",
     howItWorks: [
       { title: "Group choreography", description: "Members learn the full routine together across weekly rehearsals." },
@@ -148,14 +146,7 @@ export const PROGRAMS: Program[] = [
     audience: "Members who want to perform, at any experience level",
     experienceLevel: "No prior dance experience required",
     typicalSchedule: "Rehearsals run through Winter and Spring quarter ahead of Heritage Night",
-    featuredMediaIds: [
-      "heritage-night-2024-0",
-      "heritage-night-2024-1",
-      "heritage-night-2024-2",
-      "heritage-night-2024-3",
-      "heritage-night-2024-4",
-      "heritage-night-2024-5",
-    ],
+    featuredMediaIds: getCategoryPreview("heritage-night", { limit: 6 }).map((item) => item.id),
   },
 ];
 
@@ -163,9 +154,13 @@ export function getProgram(slug: string): Program | undefined {
   return PROGRAMS.find((p) => p.slug === slug);
 }
 
-export function getProgramMedia(program: Program): MediaItem[] {
+export function getProgramMedia(program: Program): GalleryItem[] {
   if (!program.featuredMediaIds?.length) return [];
+  const media = [
+    ...getCategoryPreview("acce", { limit: 84 }),
+    ...getCategoryPreview("heritage-night", { limit: 183 }),
+  ];
   return program.featuredMediaIds
-    .map((id) => MEDIA.find((m) => m.id === id))
-    .filter((m): m is MediaItem => Boolean(m));
+    .map((id) => media.find((item) => item.id === id))
+    .filter((item): item is GalleryItem => Boolean(item));
 }

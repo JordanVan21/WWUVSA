@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { GALLERY_USAGE } from "@/data/gallery";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,16 +22,12 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const HERO_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBrG1VQZOamnusybK_XYk8nRln9wSuc2hzmOypzai8Ak8UOW384_Hm89NormpQZLFl9uXPl5Ln8eq_hUyglASS9IMT4r7WPUR7ywwSPPu8g46yb1lJuKS2V9Yv6tilnb1wA-GoynP1F9d2NGb18VuX2HQU6Lxj93Uj3QFUm-cUP-z7bsTZLqqnczKr14srEno91dSPWo_8i-QBzPKO6kxyPKWoli_vMAHUl-iiS_l1_mo0fc7GvOP45tXjx5eFjHJr-tW9DF-bGXsgG";
-const WELCOME_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuAG_c2hqhx_3JvU7NR7CmMsUbWNmPcL20cGKKwUlUb7jJzaLC6HsaFHTXv52TTV87TLG2v2aORcArH5rzp1x4QuI6MdZaWd7CSReNL5dQjPyRYhRZxOdWyYj2LTM5z-BV2LOgz0OuRfRSxKNFdxpkbupq2Mb3r98XaSGIGUvtP_HHK6HMAf6vFHwtL5r1eNJ9oLcdYxedpkfKMYXYOz5jy-Un0M_myOO78PhLabMel97l4biMTzNTnau4XT_WYEr-8pmuHXdf2VbIjx";
+const HERO_IMG = GALLERY_USAGE.homeHero;
+const WELCOME_IMG = GALLERY_USAGE.homeWelcome;
 const ACCE_IMG =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuAfvNsQPY_vy3tadTkiVMCNI3BZBL5dIDsMW3YXyD7BtwYyPLYrnUE8AtGTFED1wr91tQ72KyY1MFWo7NczBzji8l8lRVZV5HqO8Mm2qAHHDvyN4WeaTaHH3hIoDyKnUGs1jNuy3DhsJiAedGqkI6_Cb8w6NVL7dwZ5FeuzJtgXhD4pnjbZ9krQsG_90tZDNAH7o0FzbYphYOY_vkwwHkhIilJnx6gu-hKkl4iAba9h5rlXXS2vTQnpCnZJqv2jugRF_UehGbWulatt";
-const FAN_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuA8taNmeh1Rp_lSUTYkYh4ZFy80TT21x8KIe9ze--W1miMgEl_5iyEOEnUTKTC-HkxN39Hq7-w04vMjjfSkjgemH_2sfHCHKmOtYRfpJ9Rh2cl542iUxDgNqhX9Z0UO15UBk-kj3sPWXHdn6l-CZmxbecyquF7YyR5nDuM6w-Rak_KqYKBO4yseSQTbQLjaE2N2bTv1ONZXW4o9LQR3ZSiZqacFJM-sVzMq5-45pRKx_0DpOms6qsKYyciLGtRAwuSjZMLfyHjv_RsN";
-const VIET_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCIT-lCIIgiejiP0_QDHfDmeFd4F14eCq46vyxtcSSVQSgnulr8qPhiwV6XwXCKxCAUiAS8g4q96DT6UYfRZtIR7DRVEof-_o756-e4FyBtvpgof_Q8mBAIYo0PU0URN6m-VnwPI39TTrswY63Q6r1XcPfdf60bPvRzCcbi4NiYHi99TJkvJrII8QwICEgl4D6Fw0APDfBh7catdK2BLzPVkA764lydsTFzA9_pPqIl24GExVJT59E0LUGK8fml3lAF-L5BtmJT3Klz";
+const FAN_IMG = GALLERY_USAGE.fanDance;
+const VIET_IMG = GALLERY_USAGE.homeViet101;
 
 const events = [
   {
@@ -44,14 +41,14 @@ const events = [
     date: "LATE SPRING",
     title: "Heritage Night",
     desc: "Our cultural showcase at the Viking Union featuring performances, storytelling, community, and celebration of Vietnamese culture.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDyIv9SdYQQIA-h7Wa9KWUgXH2FFn-d1iOoZMqZ5eJ9tzIeQ-YEXTan99PsnQL-C-4zRlRY1ab-6ngTZG1HJyHxZu1yXgLP1rI88HSqOG4ZNa6iE1SGTlzqdbog23DEuFfD-KDFHQ0hPkIYlNoMqPBClcoCHlBKXcYCmfEAEpCAeZ5s72TmUo7Val-M5YOIJ9jqHYb7Tn23w8eyrOETTi0PEZxTU5dlzvUqROD6l0qgfkxzLGU0u1VmEWy93fQB2cqQHn33cPJrFgIu",
+    img: GALLERY_USAGE.heritageNightCard,
     slug: "heritage-night" as const,
   },
   {
     date: "LATE NOVEMBER",
     title: "Turkey Bowl",
     desc: "An annual Ultimate Frisbee tournament primarily hosted by Seattle University VSA, bringing VSAs across the Pacific Northwest together for friendly competition and an evening banquet.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCXG1WqjA9jCmAtpoLxz4RHcRzjcdl_VfteJ8TZuzibyWE3AiiJGD6f0oHX5hONSG67IsWw5mCjrr8iVFIXWF50NyT4hPXPfxr2Ov7LkGZKJLG94mNcfCcpsctTqgI15THWNtrhzlO0t8IEF2Q2FueumKl3IViJx3e89MJkfXhRRgvvr69LiJy8KR0RWcDMmr9sBofprbSgyLTAu88vWo9Zt9oHEiEUqze1jkRvY0iRwmHKmFZ2o-Yo3_mxjAf7K82bc7tPtKdnyLmt",
+    img: GALLERY_USAGE.turkeyBowlCard,
     slug: "turkey-bowl" as const,
   },
 ];

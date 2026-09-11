@@ -2,11 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Lightbox } from "@/components/Lightbox";
-import {
-  getFeaturedEventMedia,
-  getRelatedEvents,
-  type EventMeta,
-} from "@/lib/media";
+import { GalleryImage } from "@/components/GalleryImage";
+import { getCategoryPreview } from "@/data/gallery";
+import { getRelatedEvents, type EventMeta } from "@/lib/media";
 
 const ACCENT_TEXT: Record<EventMeta["accent"], string> = {
   red: "text-vietnamese-red",
@@ -32,7 +30,7 @@ const reveal = {
 };
 
 export function EventDetailPage({ event }: { event: EventMeta }) {
-  const media = getFeaturedEventMedia(event.slug, 12);
+  const media = getCategoryPreview(event.slug, { limit: 12 });
   const related = getRelatedEvents(event.slug, 3);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -278,10 +276,9 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
                   className="group relative aspect-square overflow-hidden rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-vietnamese-red focus:ring-offset-2"
                   aria-label={`Open ${m.altText}`}
                 >
-                  <img
+                  <GalleryImage
                     src={m.thumbnailUrl}
                     alt={m.altText}
-                    loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-vietnamese-red/35 opacity-0 transition-opacity group-hover:opacity-100">

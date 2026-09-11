@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { BoardCarousel } from "@/components/BoardCarousel";
 import { COMMUNITY_ORGANIZATIONS } from "@/lib/community";
 import { MISSION_PARAGRAPHS } from "@/lib/mission";
+import { GALLERY_USAGE } from "@/data/gallery";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -17,8 +18,7 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
-const HERO_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDpMRTz-LT8VWiynjUW6pjt8hq82IywnnbnJZXIkBB5BTEJDE7ZiExEYTMr_OPrf0yO9uXiODRpRHHnR9DfvGdPOmGaW4a2NzNk_oduU3uYGqXR7P15WrCqVrZ9jFKp3kKzqKZQu_N9oMSX0T-a-TGUBi3PcpFLTGs--sKKxjV-kgoCxh4YEBq6yluDbI-33gQ3Ooe_8WDiZzl60Sx0PjMoRteemQMqpJPA_fYDSvFtUE9VuHCBKVBktEdIDqYYYp2DYbd9kphtZSQF";
+const HERO_IMG = GALLERY_USAGE.aboutHero;
 
 const ACCE_IMG =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCOKt9p1ajL1X_TpC_ppJkAD4lgET5s0Vt88sCQYvqNtkI1j3LioOoBYXnyUk9dKj8qj2Twmwvptb5e5uaMz7w3w7GdfgFCux2_UirR-icKRq3eKtyOgfX8Cn3wrSs58dPoZBbGXQLHv9KFjmxdpmRHHzDq-UyQ1mBXoKuCRWSC9FkCslYy7DKXSroA73DGBk78hYtBF6-enP6G-42KQ9TLUCQcieho4n1lq2j6AklFkhusIQyv2CbGePiMldeUFcrdLUqmQOzcwKKI";

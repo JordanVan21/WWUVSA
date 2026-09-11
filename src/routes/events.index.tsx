@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { EVENT_META, MAJOR_EVENT_SLUGS } from "@/lib/media";
+import { GALLERY_USAGE } from "@/data/gallery";
 
 export const Route = createFileRoute("/events/")({
   head: () => ({
@@ -13,8 +14,7 @@ export const Route = createFileRoute("/events/")({
   component: EventsPage,
 });
 
-const HERO =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuC95vjnJOVq3r7-oMEzY8BJtxf8Zzo0XB5vKIxIQl3AoPW7LXXLBDC-JeuIqPOhirOXYds_apFTyBEOcuDfUCuvIWMZGOSPhp4wWCFX94Sz9lk8k07YaclCFS8hc_LjfbDHHVUmpHdiEFKRq0B8j9u0bAr5UfgGlG9pfx_RunHsTfqmHBfFEbFZClEe2Ry8F7IC2jQh_gac0BP3SH6-a8uOXYfFAKBO0pq1PY9LNBEYROg2O0EMRpu8dhkC8cJgnFFz5w21yaBifyDO";
+const HERO = GALLERY_USAGE.eventsHero;
 
 const OLY =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuA4XLGnVWM3FeTaeqnf4fJsGayOR_R8Zg_8Ys40jx-mvYnjTHoVaLr_iEOR4wbizALuIGW2ZvqOjzfDEfK62VPIZ_vVHON2ncM8TLNdxysVgBV0CAjY9ijG0WupQ0eiJqFdhADn1nVoDtkVu4SxoJmxdl1CT5Dj-f03FsbShTgifCkAzBBzMzS8v-nDYa41LnuQPULG5b0VR4AVwqXJ3LOFI3BF4cojBASaIexUNZnHtxvlq51tOsRFXcgCA1PApwe8K871d9DOL-VY";
