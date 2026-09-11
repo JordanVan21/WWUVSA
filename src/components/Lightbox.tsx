@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 
-/** Structural shape shared by MediaItem and GalleryItem. */
+/** Structural shape shared by gallery views and previews. */
 export type LightboxItem = {
   title: string;
   eventName?: string;

@@ -405,15 +405,6 @@ export function isEventSlug(v: string): v is EventSlug {
   return v in EVENT_META;
 }
 
-export function getFeaturedEventMedia(slug: EventSlug, limit = 12): MediaItem[] {
-  const featured = MEDIA.filter((m) => m.eventSlug === slug && m.featured === true);
-  const pool = featured.length > 0 ? featured : MEDIA.filter((m) => m.eventSlug === slug);
-  return pool
-    .slice()
-    .sort((a, b) => (a.displayOrder ?? 0) - (b.displayOrder ?? 0))
-    .slice(0, limit);
-}
-
 export function getRelatedEvents(slug: EventSlug, limit = 3): EventMeta[] {
   return MAJOR_EVENT_SLUGS.filter((s) => s !== slug)
     .slice(0, limit)

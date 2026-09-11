@@ -20,8 +20,7 @@ export const Route = createFileRoute("/about")({
 
 const HERO_IMG = GALLERY_USAGE.aboutHero;
 
-const ACCE_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCOKt9p1ajL1X_TpC_ppJkAD4lgET5s0Vt88sCQYvqNtkI1j3LioOoBYXnyUk9dKj8qj2Twmwvptb5e5uaMz7w3w7GdfgFCux2_UirR-icKRq3eKtyOgfX8Cn3wrSs58dPoZBbGXQLHv9KFjmxdpmRHHzDq-UyQ1mBXoKuCRWSC9FkCslYy7DKXSroA73DGBk78hYtBF6-enP6G-42KQ9TLUCQcieho4n1lq2j6AklFkhusIQyv2CbGePiMldeUFcrdLUqmQOzcwKKI";
+const ACCE_IMG = GALLERY_USAGE.acceCommunity;
 
 function AboutPage() {
   const boardHeadingRef = useRef<HTMLHeadingElement | null>(null);

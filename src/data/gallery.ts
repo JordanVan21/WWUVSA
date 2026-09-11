@@ -3157,6 +3157,7 @@ export const GALLERY_USAGE = {
   homeWelcome: "/images/gallery/general/2026/UNC.png",
   homeViet101: "/images/gallery/general/2026/DIY Envelope.png",
   aboutHero: "/images/gallery/general/2026/EOY4.png",
+  acceCommunity: "/images/gallery/acce/2026/Picture28.png",
   eventsHero: "/images/gallery/heritage-night/2026/DSC00640.jpg",
   galleryHero: "/images/gallery/heritage-night/2026/DSC00829.jpg",
   heritageNightHero: "/images/gallery/heritage-night/2026/_MG_4645.jpg",

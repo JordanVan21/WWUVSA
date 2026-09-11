@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Lightbox } from "@/components/Lightbox";
+import { GalleryImage } from "@/components/GalleryImage";
 import { getProgramMedia, type Program } from "@/lib/programs";
 
 const fade = {
@@ -155,10 +156,9 @@ export function ProgramDetailPage({ program }: { program: Program }) {
                     aria-label={`View photo: ${m.altText}`}
                     className="group overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
                   >
-                    <img
+                    <GalleryImage
                       src={m.thumbnailUrl}
                       alt={m.altText}
-                      loading="lazy"
                       className="aspect-[4/3] w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-105"
                     />
                   </button>
