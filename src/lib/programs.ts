@@ -30,7 +30,7 @@ export const PROGRAMS: Program[] = [
       "Littles, also known as \u201cEm,\u201d are paired with experienced family leaders who support them throughout the year. Bigs \u2014 known as Anh, Chi, or Chanh \u2014 serve as mentors, resources, and community builders for their Em. Through monthly ACCE gatherings, weekly communication, VSA events, and time spent together outside of meetings, each family has opportunities to build genuine and lasting relationships.",
       "ACCE is a meaningful time commitment. Every participant is expected to be active, inclusive, communicative, and mindful of the experiences of their own family and other ACCE families. The program works best when members answer matching questions honestly, participate consistently, and make an intentional effort to connect with one another.",
     ],
-    heroImage: undefined,
+    heroImage: GALLERY_USAGE.acceProgram,
     accentStyle: "image",
     howItWorks: [
       {

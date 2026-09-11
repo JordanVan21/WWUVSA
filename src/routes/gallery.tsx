@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
 import { fallback, zodValidator } from "@tanstack/zod-adapter";
 import {
@@ -42,6 +42,9 @@ export const Route = createFileRoute("/gallery")({
 
 const HERO = GALLERY_USAGE.galleryHero;
 
+/** How many items to render before the visitor asks for more. */
+const PAGE_SIZE = 60;
+
 const EVENT_FILTERS: { value: "all" | GalleryCategory; label: string }[] = [
   { value: "all", label: "All" },
   ...GALLERY_CATEGORIES.map((c) => ({ value: c.slug as GalleryCategory, label: c.label })),
@@ -63,6 +66,12 @@ function GalleryPage() {
   const type = raw.type === "photo" || raw.type === "video" ? raw.type : "all";
 
   const items = useMemo(() => filterGallery({ category: event, year, type }), [event, year, type]);
+
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [event, year, type]);
+  const visibleItems = useMemo(() => items.slice(0, visibleCount), [items, visibleCount]);
 
   const categoryMeta = GALLERY_CATEGORIES.find((c) => c.slug === event);
 
@@ -140,8 +149,8 @@ function GalleryPage() {
 
             <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
               <p className="text-sm text-on-surface-variant">
-                Showing <span className="font-semibold text-ink-black">{items.length}</span> of{" "}
-                {activeCount} items
+                Showing <span className="font-semibold text-ink-black">{visibleItems.length}</span>{" "}
+                of {items.length} matching items ({activeCount} in the full archive)
               </p>
               <button
                 onClick={reset}
@@ -171,34 +180,49 @@ function GalleryPage() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
-              {items.map((m, i) => (
-                <button
-                  key={m.id}
-                  onClick={() => setLightboxIndex(i)}
-                  className="group relative aspect-square overflow-hidden rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-vietnamese-red focus:ring-offset-2"
-                  aria-label={`Open ${m.altText}`}
-                >
-                  <GalleryImage
-                    src={m.thumbnailUrl}
-                    alt={m.altText}
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute left-2 top-2 rounded bg-black/55 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
-                    {m.categoryLabel}
-                  </span>
-                  {m.mediaType === "video" && (
-                    <span className="absolute right-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-black/60 text-white">
-                      <span className="material-symbols-outlined text-base">play_arrow</span>
+            <>
+              <div className="columns-2 gap-3 md:columns-3 md:gap-4 xl:columns-4">
+                {visibleItems.map((m, i) => (
+                  <button
+                    key={m.id}
+                    onClick={() => setLightboxIndex(i)}
+                    className="group relative mb-3 block w-full break-inside-avoid overflow-hidden rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-vietnamese-red focus:ring-offset-2 md:mb-4"
+                    aria-label={`Open ${m.altText}`}
+                  >
+                    <GalleryImage
+                      src={m.thumbnailUrl}
+                      alt={m.altText}
+                      sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw"
+                      className="h-auto w-full max-w-full transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                    <span className="absolute left-2 top-2 rounded bg-black/55 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
+                      {m.categoryLabel}
                     </span>
-                  )}
-                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-vietnamese-red/40 opacity-0 transition-opacity group-hover:opacity-100">
-                    <span className="material-symbols-outlined text-4xl text-white">zoom_in</span>
-                  </span>
-                </button>
-              ))}
-            </div>
+                    {m.mediaType === "video" && (
+                      <span className="absolute right-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-black/60 text-white">
+                        <span className="material-symbols-outlined text-base">play_arrow</span>
+                      </span>
+                    )}
+                    <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-vietnamese-red/40 opacity-0 transition-opacity group-hover:opacity-100">
+                      <span className="material-symbols-outlined text-4xl text-white">zoom_in</span>
+                    </span>
+                  </button>
+                ))}
+              </div>
+              {visibleItems.length < items.length && (
+                <div className="mt-10 text-center">
+                  <button
+                    onClick={() => setVisibleCount((n) => n + PAGE_SIZE)}
+                    className="inline-flex items-center gap-2 rounded-full bg-vietnamese-red px-6 py-3 text-sm font-semibold text-white transition hover:bg-vietnamese-red/90"
+                  >
+                    Load more photos
+                    <span className="material-symbols-outlined text-base" aria-hidden="true">
+                      expand_more
+                    </span>
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>

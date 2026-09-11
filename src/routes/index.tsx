@@ -24,8 +24,7 @@ export const Route = createFileRoute("/")({
 
 const HERO_IMG = GALLERY_USAGE.homeHero;
 const WELCOME_IMG = GALLERY_USAGE.homeWelcome;
-const ACCE_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuAfvNsQPY_vy3tadTkiVMCNI3BZBL5dIDsMW3YXyD7BtwYyPLYrnUE8AtGTFED1wr91tQ72KyY1MFWo7NczBzji8l8lRVZV5HqO8Mm2qAHHDvyN4WeaTaHH3hIoDyKnUGs1jNuy3DhsJiAedGqkI6_Cb8w6NVL7dwZ5FeuzJtgXhD4pnjbZ9krQsG_90tZDNAH7o0FzbYphYOY_vkwwHkhIilJnx6gu-hKkl4iAba9h5rlXXS2vTQnpCnZJqv2jugRF_UehGbWulatt";
+const ACCE_IMG = GALLERY_USAGE.acceCommunity;
 const FAN_IMG = GALLERY_USAGE.fanDance;
 const VIET_IMG = GALLERY_USAGE.homeViet101;
 
@@ -34,7 +33,7 @@ const events = [
     date: "AROUND LUNAR NEW YEAR",
     title: "Tết",
     desc: "Tết celebrates Vietnamese Lunar New Year through culture, community, tradition, performances, food, and the excitement of welcoming a new year together.",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAc_DyIjGrSgSHJZ9apzBNKCwlRWEFPrIR0LKeSeP5trYLWPIm4IpRm-xyxHer4lMisEGgeyi6lf7Ck_r1gp7GkwjrtdIXvytqeNqyxGtKF7EBhFwttMsXzJVQATBMLRXOwjedglhc6mtgMS1PTb9CRsekjEgfLTZWSjBk6QvGmpyoEtzt6trdXvlOaj7P6ZHM9QWGawtJX7U6bwRIgf4Ip7yPOu-JChMmTFQ9Y_FfsX6gIAZ6Gpq2FE-Tj9bJ5ArSbGNOPcIsMz-K-",
+    img: GALLERY_USAGE.tetCard,
     slug: "tet" as const,
   },
   {
