@@ -51,18 +51,16 @@ function GalleryPage() {
   const navigate = useNavigate({ from: "/gallery" });
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const event = (EVENT_FILTERS.find((e) => e.value === raw.event)?.value ?? "all") as
-    | "all"
-    | EventSlug;
-  const year: number | "all" =
-    raw.year === "all" ? "all" : AVAILABLE_YEARS.includes(Number(raw.year)) ? Number(raw.year) : "all";
-  const type =
-    raw.type === "photo" || raw.type === "video" ? raw.type : "all";
+  const event: "all" | GalleryCategory = isGalleryCategory(raw.event) ? raw.event : "all";
+  const year: string | "all" = GALLERY_YEARS.includes(raw.year) ? raw.year : "all";
+  const type = raw.type === "photo" || raw.type === "video" ? raw.type : "all";
 
   const items = useMemo(
-    () => filterMedia({ event, year, type }),
+    () => filterGallery({ category: event, year, type }),
     [event, year, type],
   );
+
+  const categoryMeta = GALLERY_CATEGORIES.find((c) => c.slug === event);
 
   const setFilter = (key: "event" | "year" | "type", value: string) => {
     navigate({
