@@ -1,4 +1,4 @@
-import { GALLERY_USAGE, getCategoryPreview, type GalleryItem } from "@/data/gallery";
+import { GALLERY_ITEMS, GALLERY_USAGE, getCategoryPreview, type GalleryItem } from "@/data/gallery";
 
 export type Program = {
   slug: string;
@@ -214,11 +214,7 @@ export function getProgram(slug: string): Program | undefined {
 
 export function getProgramMedia(program: Program): GalleryItem[] {
   if (!program.featuredMediaIds?.length) return [];
-  const media = [
-    ...getCategoryPreview("acce", { limit: 200 }),
-    ...getCategoryPreview("heritage-night", { limit: 700 }),
-    ...getCategoryPreview("tet", { limit: 50 }),
-  ];
+  const media = GALLERY_ITEMS;
   return program.featuredMediaIds
     .map((id) => media.find((item) => item.id === id))
     .filter((item): item is GalleryItem => Boolean(item));
