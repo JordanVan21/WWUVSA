@@ -70,9 +70,10 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
         description: "Student-written storytelling that ties the night's performances together.",
       },
       {
-        icon: "school",
-        title: "Senior Send-Off",
-        description: "A closing tribute to graduating members and the alumni who return for it.",
+        icon: "campaign",
+        title: "Keynote Speaker",
+        description:
+          "A featured speaker shares reflections on Vietnamese culture, identity, community, and leadership.",
       },
     ],
     sections: [
@@ -87,12 +88,6 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
         title: "Tickets & Admission",
         body: [
           "Heritage Night ticket and admission information is announced each year. Check the current-year event details for pricing and registration information.",
-        ],
-      },
-      {
-        title: "Transportation",
-        body: [
-          "WWU VSA does its best to coordinate rides when transportation assistance is needed. Event-specific transportation details are announced separately when applicable.",
         ],
       },
     ],
