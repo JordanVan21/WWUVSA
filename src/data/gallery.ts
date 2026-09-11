@@ -110,25 +110,27 @@ export const GALLERY_CATEGORIES: {
     folder: "general",
     description: "Fundraising events run by and for our community.",
   },
-  {
-    slug: "general-meetings",
-    label: "General Meetings",
-    folder: "general",
-    description: "Weekly meetings where the community comes together.",
-  },
-  {
-    slug: "community-events",
-    label: "Community Events",
-    folder: "general",
-    description: "Collaborations and gatherings around Bellingham and the region.",
-  },
-  {
-    slug: "other",
-    label: "Other",
-    folder: "general",
-    description: "More moments from the WWU VSA community.",
-  },
 ];
+
+/**
+ * Retired category slugs kept only so old links keep working.
+ * They normalize to the category on the right.
+ */
+export const CATEGORY_ALIASES: Record<string, GalleryCategory> = {
+  meetings: "general",
+  "general-meetings": "general",
+  "general meetings": "general",
+  "community-events": "general",
+  other: "general",
+};
+
+/** Resolve a URL value to a real category, following retired aliases. */
+export function normalizeCategory(value: string): GalleryCategory | "all" {
+  if (value === "all") return "all";
+  if (isGalleryCategory(value)) return value;
+  const key = value.toLowerCase();
+  return CATEGORY_ALIASES[key] ?? "all";
+}
 
 export const CATEGORY_LABEL: Record<string, string> = Object.fromEntries(
   GALLERY_CATEGORIES.map((c) => [c.slug, c.label]),
