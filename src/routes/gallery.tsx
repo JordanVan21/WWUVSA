@@ -8,7 +8,7 @@ import {
   GALLERY_USAGE,
   GALLERY_YEARS,
   filterGallery,
-  isGalleryCategory,
+  normalizeCategory,
   type GalleryCategory,
 } from "@/data/gallery";
 import { Lightbox } from "@/components/Lightbox";
@@ -61,7 +61,7 @@ function GalleryPage() {
   const navigate = useNavigate({ from: "/gallery" });
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const event: "all" | GalleryCategory = isGalleryCategory(raw.event) ? raw.event : "all";
+  const event: "all" | GalleryCategory = normalizeCategory(raw.event);
   const year: string | "all" = GALLERY_YEARS.includes(raw.year) ? raw.year : "all";
   const type = raw.type === "photo" || raw.type === "video" ? raw.type : "all";
 
