@@ -35,16 +35,9 @@ export const Route = createFileRoute("/gallery")({
 const HERO =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuDfX911ngX4FrCv5JghJ27a1rR4XAMci5E2xAuheVNRT58WnLBida3BSK3-icM9g-cpRMH_kqCpXfgH5D-O7MFu1BXbIV10ey6VBwEfun6S9PpUC09u5kTclw7yLzrTsjt1-DZpV4rH297nf8eGUgpN0JYbyWE1kDSfgdy4EaV8-APYwqx41dPLr_j7713bN53Ce0hXj34NVgfbNNT8k37HaFTlOJL8z69QpLFF28IOLz4gLvqxsv-zoFvjNTBLU9y7kORQIXVWC9s2";
 
-const EVENT_FILTERS: { value: "all" | EventSlug; label: string }[] = [
+const EVENT_FILTERS: { value: "all" | GalleryCategory; label: string }[] = [
   { value: "all", label: "All" },
-  { value: "heritage-night", label: "Heritage Night" },
-  { value: "tet", label: "Tết" },
-  { value: "turkey-bowl", label: "Turkey Bowl" },
-  { value: "spikefest", label: "SpikeFest" },
-  { value: "fundraisers", label: "Fundraisers" },
-  { value: "general-meetings", label: "General Meetings" },
-  { value: "community-events", label: "Community Events" },
-  { value: "other", label: "Other" },
+  ...GALLERY_CATEGORIES.map((c) => ({ value: c.slug as GalleryCategory, label: c.label })),
 ];
 
 const TYPE_FILTERS: { value: "all" | "photo" | "video"; label: string }[] = [
