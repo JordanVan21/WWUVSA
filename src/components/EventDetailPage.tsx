@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Lightbox } from "@/components/Lightbox";
 import { GalleryImage } from "@/components/GalleryImage";
-import { getCategoryPreview } from "@/data/gallery";
+import { filterGallery, getCategoryPreview } from "@/data/gallery";
 import { getRelatedEvents, type EventMeta } from "@/lib/media";
 
 const ACCENT_TEXT: Record<EventMeta["accent"], string> = {
@@ -30,7 +30,10 @@ const reveal = {
 };
 
 export function EventDetailPage({ event }: { event: EventMeta }) {
-  const media = getCategoryPreview(event.slug, { limit: 12 });
+  const media = getCategoryPreview(event.slug, { limit: 12, type: "photo" });
+  const videos = filterGallery({ category: event.slug, type: "video" });
+  const featuredVideo = videos[0];
+  const otherVideoCount = Math.max(0, videos.length - 1);
   const related = getRelatedEvents(event.slug, 3);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
