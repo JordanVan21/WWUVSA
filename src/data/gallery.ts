@@ -29,7 +29,7 @@
  * ---------------------------------------------------------------------------
  */
 
-import type { EventSlug } from "@/lib/media";
+import type { EventSlug } from "@/lib/event-types";
 
 /** Gallery categories: the event slugs plus program and organization buckets. */
 export type GalleryCategory = EventSlug | "acce" | "general";

@@ -1,14 +1,7 @@
 import { GALLERY_USAGE } from "@/data/gallery";
+import type { EventSlug } from "@/lib/event-types";
 
-export type EventSlug =
-  | "heritage-night"
-  | "tet"
-  | "turkey-bowl"
-  | "spikefest"
-  | "fundraisers"
-  | "general-meetings"
-  | "community-events"
-  | "other";
+export type { EventSlug } from "@/lib/event-types";
 
 export type EventMeta = {
   slug: EventSlug;
