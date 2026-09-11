@@ -53,10 +53,27 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
     audience: "Open to students, families, and the public",
     category: "Cultural Showcase",
     expectations: [
-      { icon: "theater_comedy", title: "Student-Led Performances", description: "Fan dance, lion dance, and modern sets choreographed by members over two quarters." },
-      { icon: "restaurant", title: "Food & Shared Tables", description: "Vietnamese food shared together before and around the show." },
-      { icon: "history_edu", title: "Storytelling", description: "Student-written storytelling that ties the night's performances together." },
-      { icon: "school", title: "Senior Send-Off", description: "A closing tribute to graduating members and the alumni who return for it." },
+      {
+        icon: "theater_comedy",
+        title: "Student-Led Performances",
+        description:
+          "Fan dance, lion dance, and modern sets choreographed by members over two quarters.",
+      },
+      {
+        icon: "restaurant",
+        title: "Food & Shared Tables",
+        description: "Vietnamese food shared together before and around the show.",
+      },
+      {
+        icon: "history_edu",
+        title: "Storytelling",
+        description: "Student-written storytelling that ties the night's performances together.",
+      },
+      {
+        icon: "school",
+        title: "Senior Send-Off",
+        description: "A closing tribute to graduating members and the alumni who return for it.",
+      },
     ],
     sections: [
       {
@@ -87,7 +104,10 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
         { label: "Date & Time", value: "To be announced" },
         { label: "Tickets", value: "Ticket and admission information announced each year" },
         { label: "Check-In", value: "To be announced" },
-        { label: "Accessibility", value: "Accessibility details announced with this year's location" },
+        {
+          label: "Accessibility",
+          value: "Accessibility details announced with this year's location",
+        },
       ],
     },
 
@@ -109,10 +129,29 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
     audience: "Members and guests welcome",
     category: "Cultural Celebration",
     expectations: [
-      { icon: "festival", title: "Cultural Performances", description: "Music, dance, and lion dancing shared by community groups and student performers." },
-      { icon: "set_meal", title: "Food & Vendors", description: "Vietnamese food, treats, and vendor booths throughout the celebration." },
-      { icon: "diversity_3", title: "Community Organizations", description: "Schools, families, and Vietnamese community organizations celebrating together." },
-      { icon: "redeem", title: "New Year Traditions", description: "Lì xì, well-wishes, and traditions that welcome good fortune for the year ahead." },
+      {
+        icon: "festival",
+        title: "Cultural Performances",
+        description:
+          "Music, dance, and lion dancing shared by community groups and student performers.",
+      },
+      {
+        icon: "set_meal",
+        title: "Food & Vendors",
+        description: "Vietnamese food, treats, and vendor booths throughout the celebration.",
+      },
+      {
+        icon: "diversity_3",
+        title: "Community Organizations",
+        description:
+          "Schools, families, and Vietnamese community organizations celebrating together.",
+      },
+      {
+        icon: "redeem",
+        title: "New Year Traditions",
+        description:
+          "Lì xì, well-wishes, and traditions that welcome good fortune for the year ahead.",
+      },
     ],
     sections: [
       {
@@ -185,10 +224,28 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
     audience: "WWU VSA members of all experience levels",
     category: "Regional Tournament",
     expectations: [
-      { icon: "sports", title: "Ultimate Frisbee Tournament", description: "Matches run through the day between VSA teams from across the Pacific Northwest." },
-      { icon: "groups", title: "Regional VSA Community", description: "A chance to meet, support, and celebrate with students from other schools." },
-      { icon: "diversity_3", title: "All Experience Levels", description: "WWU VSA may field both a competitive team and a recreational group." },
-      { icon: "restaurant", title: "Turkey Bowl Banquet", description: "An evening celebration with performances, Thanksgiving-style food, and awards." },
+      {
+        icon: "sports",
+        title: "Ultimate Frisbee Tournament",
+        description:
+          "Matches run through the day between VSA teams from across the Pacific Northwest.",
+      },
+      {
+        icon: "groups",
+        title: "Regional VSA Community",
+        description: "A chance to meet, support, and celebrate with students from other schools.",
+      },
+      {
+        icon: "diversity_3",
+        title: "All Experience Levels",
+        description: "WWU VSA may field both a competitive team and a recreational group.",
+      },
+      {
+        icon: "restaurant",
+        title: "Turkey Bowl Banquet",
+        description:
+          "An evening celebration with performances, Thanksgiving-style food, and awards.",
+      },
     ],
     sections: [
       {
@@ -260,10 +317,26 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
     audience: "Players and spectators from the Northwest VSA community",
     category: "Regional Tournament",
     expectations: [
-      { icon: "sports_volleyball", title: "Volleyball Tournament", description: "Teams play through a tournament bracket across the day." },
-      { icon: "diversity_3", title: "Northwest VSA Community", description: "VSA communities from across the region come together in one gym." },
-      { icon: "emoji_events", title: "Competitive & Casual Play", description: "Divisions let participants choose the level that fits them best." },
-      { icon: "campaign", title: "School Spirit", description: "Friends and supporters cheer on their schools from the sidelines." },
+      {
+        icon: "sports_volleyball",
+        title: "Volleyball Tournament",
+        description: "Teams play through a tournament bracket across the day.",
+      },
+      {
+        icon: "diversity_3",
+        title: "Northwest VSA Community",
+        description: "VSA communities from across the region come together in one gym.",
+      },
+      {
+        icon: "emoji_events",
+        title: "Competitive & Casual Play",
+        description: "Divisions let participants choose the level that fits them best.",
+      },
+      {
+        icon: "campaign",
+        title: "School Spirit",
+        description: "Friends and supporters cheer on their schools from the sidelines.",
+      },
     ],
     sections: [
       {
@@ -387,12 +460,7 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
   },
 };
 
-export const MAJOR_EVENT_SLUGS: EventSlug[] = [
-  "heritage-night",
-  "tet",
-  "turkey-bowl",
-  "spikefest",
-];
+export const MAJOR_EVENT_SLUGS: EventSlug[] = ["heritage-night", "tet", "turkey-bowl", "spikefest"];
 
 export function isEventSlug(v: string): v is EventSlug {
   return v in EVENT_META;

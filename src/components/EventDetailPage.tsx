@@ -65,7 +65,9 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
             Back to Events
           </Link>
           <div className="mb-3 flex flex-wrap items-center gap-2">
-            <span className={`rounded-full px-3 py-1 text-xs font-semibold ${ACCENT_PILL[event.accent]}`}>
+            <span
+              className={`rounded-full px-3 py-1 text-xs font-semibold ${ACCENT_PILL[event.accent]}`}
+            >
               {event.season}
             </span>
             {event.category && (
@@ -85,10 +87,14 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
       <section className="mx-auto max-w-screen-2xl px-5 md:px-20 py-14 md:py-20">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-14">
           <motion.div {...reveal} className="lg:col-span-2">
-            <span className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}>
+            <span
+              className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}
+            >
               Overview
             </span>
-            <h2 className="mt-2 font-display text-2xl text-ink-black md:text-3xl">About the Event</h2>
+            <h2 className="mt-2 font-display text-2xl text-ink-black md:text-3xl">
+              About the Event
+            </h2>
             <div className="mt-4 max-w-2xl space-y-4 text-on-surface-variant">
               <p>{event.happens}</p>
               <p>{event.meaning}</p>
@@ -121,7 +127,9 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
         <section className="bg-surface-container-low px-5 md:px-20 py-14 md:py-20">
           <div className="mx-auto max-w-screen-2xl">
             <div className="mb-10 flex flex-col items-center">
-              <span className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}>
+              <span
+                className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}
+              >
                 Highlights
               </span>
               <h2 className="mt-2 text-center font-display text-2xl text-ink-black md:text-3xl">
@@ -162,14 +170,20 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
                   {s.title}
                 </h2>
                 {s.body?.map((p) => (
-                  <p key={p.slice(0, 24)} className="mt-4 text-base leading-relaxed text-on-surface-variant">
+                  <p
+                    key={p.slice(0, 24)}
+                    className="mt-4 text-base leading-relaxed text-on-surface-variant"
+                  >
                     {p}
                   </p>
                 ))}
                 {s.bullets && s.bullets.length > 0 && (
                   <ul className="mt-4 space-y-3">
                     {s.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-3 text-base leading-relaxed text-on-surface-variant">
+                      <li
+                        key={b}
+                        className="flex items-start gap-3 text-base leading-relaxed text-on-surface-variant"
+                      >
                         <span
                           className={`material-symbols-outlined mt-0.5 shrink-0 text-lg ${ACCENT_TEXT[event.accent]}`}
                           aria-hidden="true"
@@ -190,8 +204,12 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
       {/* Current-year details (edit yearly) */}
       {event.currentYear && (
         <section className="mx-auto max-w-screen-2xl px-5 md:px-20 pb-14 md:pb-20">
-          <div className={`mx-auto max-w-3xl rounded-lg border-t-4 ${ACCENT_BORDER[event.accent]} bg-surface-container-low p-6 shadow-sm md:p-8`}>
-            <span className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}>
+          <div
+            className={`mx-auto max-w-3xl rounded-lg border-t-4 ${ACCENT_BORDER[event.accent]} bg-surface-container-low p-6 shadow-sm md:p-8`}
+          >
+            <span
+              className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}
+            >
               This Year
             </span>
             <h2 className="mt-2 font-display text-2xl text-ink-black">Current-Year Details</h2>
@@ -218,7 +236,9 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
                 className="mt-6 inline-flex items-center gap-2 rounded-full bg-vietnamese-red px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
               >
                 {event.currentYear.link.label}
-                <span className="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span>
+                <span className="material-symbols-outlined text-base" aria-hidden="true">
+                  open_in_new
+                </span>
               </a>
             )}
           </div>
@@ -239,7 +259,9 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
               />
             </div>
             <div>
-              <span className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}>
+              <span
+                className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}
+              >
                 Featured Video
               </span>
               <h2 className="mt-2 font-display text-2xl text-ink-black md:text-3xl">
@@ -258,7 +280,9 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
         <section className="bg-rice-paper px-5 md:px-20 py-14 md:py-20">
           <div className="mx-auto max-w-screen-2xl">
             <div className="mb-10 flex flex-col items-center">
-              <span className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}>
+              <span
+                className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}
+              >
                 Gallery
               </span>
               <h2 className="mt-2 text-center font-display text-2xl text-ink-black md:text-3xl">
@@ -282,7 +306,10 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-vietnamese-red/35 opacity-0 transition-opacity group-hover:opacity-100">
-                    <span className="material-symbols-outlined text-3xl text-white" aria-hidden="true">
+                    <span
+                      className="material-symbols-outlined text-3xl text-white"
+                      aria-hidden="true"
+                    >
                       zoom_in
                     </span>
                   </span>
@@ -328,7 +355,9 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className={`absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-semibold ${ACCENT_PILL[e.accent]}`}>
+                  <div
+                    className={`absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-semibold ${ACCENT_PILL[e.accent]}`}
+                  >
                     {e.season}
                   </div>
                 </div>

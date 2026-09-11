@@ -33,15 +33,33 @@ export const PROGRAMS: Program[] = [
     heroImage: undefined,
     accentStyle: "image",
     howItWorks: [
-      { title: "Matching", description: "Em and family leaders complete a matching form so families are built around shared interests, personalities, and experiences." },
-      { title: "Family placement", description: "Each Em is matched with one or more Anh, Chi, or Chanh, forming a family that stays together through the year." },
-      { title: "Monthly gatherings", description: "Every family takes part in monthly ACCE activities, plus regular check-ins between family leaders and the ACCE team." },
-      { title: "Everyday connection", description: "Families keep in touch weekly and spend time together at VSA events and outside of meetings." },
+      {
+        title: "Matching",
+        description:
+          "Em and family leaders complete a matching form so families are built around shared interests, personalities, and experiences.",
+      },
+      {
+        title: "Family placement",
+        description:
+          "Each Em is matched with one or more Anh, Chi, or Chanh, forming a family that stays together through the year.",
+      },
+      {
+        title: "Monthly gatherings",
+        description:
+          "Every family takes part in monthly ACCE activities, plus regular check-ins between family leaders and the ACCE team.",
+      },
+      {
+        title: "Everyday connection",
+        description:
+          "Families keep in touch weekly and spend time together at VSA events and outside of meetings.",
+      },
     ],
     audience: "Any WWU student who wants a smaller community inside VSA",
     experienceLevel: "No experience needed; newcomers are the point",
-    typicalSchedule: "Matching happens early in Fall quarter; families gather monthly and stay in touch weekly",
-    participationDetails: "A meaningful year-long commitment with active participation, honest communication, and inclusivity toward every ACCE family",
+    typicalSchedule:
+      "Matching happens early in Fall quarter; families gather monthly and stay in touch weekly",
+    participationDetails:
+      "A meaningful year-long commitment with active participation, honest communication, and inclusivity toward every ACCE family",
     sections: [
       {
         title: "Becoming an Em",
@@ -115,10 +133,24 @@ export const PROGRAMS: Program[] = [
     ],
     accentStyle: "neutral",
     howItWorks: [
-      { title: "Student-led workshops", description: "Sessions are prepared and run by members, not lectured from a syllabus." },
-      { title: "Language & pronunciation", description: "Short, practical vocabulary sets with tone and pronunciation practice." },
-      { title: "History & context", description: "Regional history and cultural background behind the traditions VSA celebrates." },
-      { title: "Open discussion", description: "Casual conversation about modern Vietnamese and Vietnamese-American identity." },
+      {
+        title: "Student-led workshops",
+        description: "Sessions are prepared and run by members, not lectured from a syllabus.",
+      },
+      {
+        title: "Language & pronunciation",
+        description: "Short, practical vocabulary sets with tone and pronunciation practice.",
+      },
+      {
+        title: "History & context",
+        description:
+          "Regional history and cultural background behind the traditions VSA celebrates.",
+      },
+      {
+        title: "Open discussion",
+        description:
+          "Casual conversation about modern Vietnamese and Vietnamese-American identity.",
+      },
     ],
     audience: "Heritage speakers, beginners, and anyone curious about Vietnamese culture",
     experienceLevel: "All levels, including complete beginners",
@@ -138,10 +170,22 @@ export const PROGRAMS: Program[] = [
     heroImage: GALLERY_USAGE.fanDance,
     accentStyle: "blue",
     howItWorks: [
-      { title: "Group choreography", description: "Members learn the full routine together across weekly rehearsals." },
-      { title: "Built for Heritage Night", description: "Practices are paced toward the troupe's featured performance in late spring." },
-      { title: "Beginners welcome", description: "No prior dance experience is required, and most dancers start with none." },
-      { title: "Culture through movement", description: "Choreography is taught alongside the traditions and music behind it." },
+      {
+        title: "Group choreography",
+        description: "Members learn the full routine together across weekly rehearsals.",
+      },
+      {
+        title: "Built for Heritage Night",
+        description: "Practices are paced toward the troupe's featured performance in late spring.",
+      },
+      {
+        title: "Beginners welcome",
+        description: "No prior dance experience is required, and most dancers start with none.",
+      },
+      {
+        title: "Culture through movement",
+        description: "Choreography is taught alongside the traditions and music behind it.",
+      },
     ],
     audience: "Members who want to perform, at any experience level",
     experienceLevel: "No prior dance experience required",

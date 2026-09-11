@@ -70,15 +70,22 @@ export const GALLERY_CATEGORIES: {
     slug: "general",
     label: "General",
     folder: "general",
-    description: "Everyday moments from WWU VSA: hangouts, tabling, and time spent together on campus.",
+    description:
+      "Everyday moments from WWU VSA: hangouts, tabling, and time spent together on campus.",
   },
   {
     slug: "heritage-night",
     label: "Heritage Night",
     folder: "heritage-night",
-    description: "Performances, storytelling, and community from WWU VSA's cultural showcase at the Viking Union.",
+    description:
+      "Performances, storytelling, and community from WWU VSA's cultural showcase at the Viking Union.",
   },
-  { slug: "tet", label: "Tết", folder: "tet", description: "Our Lunar New Year celebration with food, tradition, and community." },
+  {
+    slug: "tet",
+    label: "Tết",
+    folder: "tet",
+    description: "Our Lunar New Year celebration with food, tradition, and community.",
+  },
   {
     slug: "turkey-bowl",
     label: "Turkey Bowl",
@@ -97,10 +104,30 @@ export const GALLERY_CATEGORIES: {
     folder: "acce",
     description: "ACCE families, mentorship, and gatherings across the program.",
   },
-  { slug: "fundraisers", label: "Fundraisers", folder: "general", description: "Fundraising events run by and for our community." },
-  { slug: "general-meetings", label: "General Meetings", folder: "general", description: "Weekly meetings where the community comes together." },
-  { slug: "community-events", label: "Community Events", folder: "general", description: "Collaborations and gatherings around Bellingham and the region." },
-  { slug: "other", label: "Other", folder: "general", description: "More moments from the WWU VSA community." },
+  {
+    slug: "fundraisers",
+    label: "Fundraisers",
+    folder: "general",
+    description: "Fundraising events run by and for our community.",
+  },
+  {
+    slug: "general-meetings",
+    label: "General Meetings",
+    folder: "general",
+    description: "Weekly meetings where the community comes together.",
+  },
+  {
+    slug: "community-events",
+    label: "Community Events",
+    folder: "general",
+    description: "Collaborations and gatherings around Bellingham and the region.",
+  },
+  {
+    slug: "other",
+    label: "Other",
+    folder: "general",
+    description: "More moments from the WWU VSA community.",
+  },
 ];
 
 export const CATEGORY_LABEL: Record<string, string> = Object.fromEntries(
@@ -3224,12 +3251,14 @@ function byOrder(a: GalleryItem, b: GalleryItem) {
   return a.order - b.order;
 }
 
-export function filterGallery(opts: {
-  category?: GalleryCategory | "all";
-  year?: string | "all";
-  type?: GalleryMediaType | "all";
-  subtype?: GallerySubtype | "all";
-} = {}): GalleryItem[] {
+export function filterGallery(
+  opts: {
+    category?: GalleryCategory | "all";
+    year?: string | "all";
+    type?: GalleryMediaType | "all";
+    subtype?: GallerySubtype | "all";
+  } = {},
+): GalleryItem[] {
   const { category = "all", year = "all", type = "all", subtype = "all" } = opts;
   return GALLERY_ITEMS.filter((i) => {
     if (category !== "all" && i.category !== category) return false;
@@ -3256,7 +3285,9 @@ export function getCategoryPreview(
 }
 
 export function getFeaturedItems(limit = 12): GalleryItem[] {
-  return GALLERY_ITEMS.filter((i) => i.featured).sort(byOrder).slice(0, limit);
+  return GALLERY_ITEMS.filter((i) => i.featured)
+    .sort(byOrder)
+    .slice(0, limit);
 }
 
 /** Link to the main gallery with filters applied, e.g. /gallery?event=spikefest&year=2026 */

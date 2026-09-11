@@ -6,9 +6,17 @@ export const Route = createFileRoute("/events/")({
   head: () => ({
     meta: [
       { title: "Events | WWU VSA" },
-      { name: "description", content: "Signature annual events: Heritage Night, Tết, Turkey Bowl, SpikeFest, and more from WWU VSA." },
+      {
+        name: "description",
+        content:
+          "Signature annual events: Heritage Night, Tết, Turkey Bowl, SpikeFest, and more from WWU VSA.",
+      },
       { property: "og:title", content: "Events | WWU VSA" },
-      { property: "og:description", content: "Experience the soul of Vietnam through our annual celebrations at Western Washington University." },
+      {
+        property: "og:description",
+        content:
+          "Experience the soul of Vietnam through our annual celebrations at Western Washington University.",
+      },
     ],
   }),
   component: EventsPage,
@@ -20,16 +28,33 @@ const OLY =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuA4XLGnVWM3FeTaeqnf4fJsGayOR_R8Zg_8Ys40jx-mvYnjTHoVaLr_iEOR4wbizALuIGW2ZvqOjzfDEfK62VPIZ_vVHON2ncM8TLNdxysVgBV0CAjY9ijG0WupQ0eiJqFdhADn1nVoDtkVu4SxoJmxdl1CT5Dj-f03FsbShTgifCkAzBBzMzS8v-nDYa41LnuQPULG5b0VR4AVwqXJ3LOFI3BF4cojBASaIexUNZnHtxvlq51tOsRFXcgCA1PApwe8K871d9DOL-VY";
 
 const ACCENT: Record<"red" | "gold" | "blue", { border: string; pill: string; cta: string }> = {
-  red:  { border: "border-vietnamese-red", pill: "bg-vietnamese-red/90 text-white", cta: "text-vietnamese-red" },
-  gold: { border: "border-imperial-gold", pill: "bg-[color:var(--color-imperial-gold)]/90 text-on-tertiary-container", cta: "text-[color:var(--color-imperial-gold)]" },
-  blue: { border: "border-viking-blue", pill: "bg-viking-blue/90 text-white", cta: "text-viking-blue" },
+  red: {
+    border: "border-vietnamese-red",
+    pill: "bg-vietnamese-red/90 text-white",
+    cta: "text-vietnamese-red",
+  },
+  gold: {
+    border: "border-imperial-gold",
+    pill: "bg-[color:var(--color-imperial-gold)]/90 text-on-tertiary-container",
+    cta: "text-[color:var(--color-imperial-gold)]",
+  },
+  blue: {
+    border: "border-viking-blue",
+    pill: "bg-viking-blue/90 text-white",
+    cta: "text-viking-blue",
+  },
 };
 
 function EventsPage() {
   return (
     <>
       <section className="relative flex h-[62vh] min-h-[440px] w-full items-end overflow-hidden bg-ink-black">
-        <img src={HERO} alt="Vietnamese cultural performance on stage" className="absolute inset-0 h-full w-full object-cover opacity-90" loading="eager" />
+        <img
+          src={HERO}
+          alt="Vietnamese cultural performance on stage"
+          className="absolute inset-0 h-full w-full object-cover opacity-90"
+          loading="eager"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-black/85 via-ink-black/30 to-transparent" />
         <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-5 md:px-20 pb-14">
           <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-imperial-gold">
@@ -62,8 +87,17 @@ function EventsPage() {
                 className={`group flex flex-col overflow-hidden rounded-lg border-t-4 ${a.border} bg-white shadow-sm transition-shadow duration-300 hover:shadow-xl`}
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img src={e.heroImage} alt={e.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                  <div className={`absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-semibold ${a.pill}`}>{e.season}</div>
+                  <img
+                    src={e.heroImage}
+                    alt={e.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div
+                    className={`absolute right-2 top-2 rounded-full px-3 py-1 text-xs font-semibold ${a.pill}`}
+                  >
+                    {e.season}
+                  </div>
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <h3 className="font-display text-2xl text-ink-black">{e.name}</h3>
@@ -88,7 +122,12 @@ function EventsPage() {
           <div className="order-2 lg:order-1">
             <div className="relative mx-auto max-w-lg lg:mx-0">
               <div className="absolute -bottom-2 -right-2 -z-10 hidden h-full w-full translate-x-2 translate-y-2 rounded-lg border-2 border-imperial-gold sm:block" />
-              <img src={OLY} alt="ACCE families gathering together" loading="lazy" className="aspect-video w-full rounded-lg object-cover shadow-lg" />
+              <img
+                src={OLY}
+                alt="ACCE families gathering together"
+                loading="lazy"
+                className="aspect-video w-full rounded-lg object-cover shadow-lg"
+              />
             </div>
           </div>
           <div className="order-1 lg:order-2">
@@ -102,7 +141,10 @@ function EventsPage() {
               </span>
             </div>
             <p className="mt-4 text-lg text-on-surface-variant">
-              ACCE Olympics is a developing program idea centered around bringing ACCE families together through team activities, friendly competition, and shared experiences. The goal is to give families another opportunity to bond, connect with one another, and strengthen the ACCE community.
+              ACCE Olympics is a developing program idea centered around bringing ACCE families
+              together through team activities, friendly competition, and shared experiences. The
+              goal is to give families another opportunity to bond, connect with one another, and
+              strengthen the ACCE community.
             </p>
             <ul className="mt-6 space-y-3">
               {[
