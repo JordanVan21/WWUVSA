@@ -104,31 +104,28 @@ export const GALLERY_CATEGORIES: {
     folder: "acce",
     description: "ACCE families, mentorship, and gatherings across the program.",
   },
-  {
-    slug: "fundraisers",
-    label: "Fundraisers",
-    folder: "general",
-    description: "Fundraising events run by and for our community.",
-  },
-  {
-    slug: "general-meetings",
-    label: "General Meetings",
-    folder: "general",
-    description: "Weekly meetings where the community comes together.",
-  },
-  {
-    slug: "community-events",
-    label: "Community Events",
-    folder: "general",
-    description: "Collaborations and gatherings around Bellingham and the region.",
-  },
-  {
-    slug: "other",
-    label: "Other",
-    folder: "general",
-    description: "More moments from the WWU VSA community.",
-  },
 ];
+
+/**
+ * Retired category slugs kept only so old links keep working.
+ * They normalize to the category on the right.
+ */
+export const CATEGORY_ALIASES: Record<string, GalleryCategory> = {
+  meetings: "general",
+  "general-meetings": "general",
+  "general meetings": "general",
+  "community-events": "general",
+  other: "general",
+  fundraisers: "general",
+};
+
+/** Resolve a URL value to a real category, following retired aliases. */
+export function normalizeCategory(value: string): GalleryCategory | "all" {
+  if (value === "all") return "all";
+  if (isGalleryCategory(value)) return value;
+  const key = value.toLowerCase();
+  return CATEGORY_ALIASES[key] ?? "all";
+}
 
 export const CATEGORY_LABEL: Record<string, string> = Object.fromEntries(
   GALLERY_CATEGORIES.map((c) => [c.slug, c.label]),
@@ -1889,7 +1886,7 @@ export const GALLERY_USAGE = {
   galleryHero: "/images/gallery/heritage-night/2026/_DSC4206.jpg",
   heritageNightHero: "/images/gallery/heritage-night/2026/DSC00809.jpg",
   heritageNightCard: "/images/gallery/heritage-night/2026/_DSC4245.jpg",
-  fanDance: "/images/gallery/heritage-night/2026/_MG_4716.jpg",
+  fanDance: "/images/gallery/heritage-night/2025/img_2064_53685899171_l.jpg",
   turkeyBowlHero: "/images/gallery/turkey-bowl/2024/IMG_2303.JPG",
   turkeyBowlCard: "/images/gallery/turkey-bowl/2024/IMG_2346.JPG",
   spikefestHero: "/images/gallery/spikefest/2026/_DSC4340.jpg",

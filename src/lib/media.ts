@@ -46,7 +46,7 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
     description:
       "WWU VSA's cultural showcase at the Viking Union featuring performances, storytelling, community, and celebration of Vietnamese culture.",
     happens:
-      "Hosted at the Viking Union (VU) at Western Washington University: traditional fan and lion dances, live music, student performances and storytelling, Vietnamese food, and a closing tribute to the graduating class.",
+      "Hosted at the Viking Union (VU) at Western Washington University: traditional fan and lion dances, live music, student performances and storytelling, a keynote speaker, and Vietnamese food.",
     meaning:
       "Heritage Night is where the year's work becomes a shared story. Families travel in, alumni come home, and new members see themselves on stage for the first time.",
     location: "Viking Union (VU) at Western Washington University",
@@ -70,9 +70,10 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
         description: "Student-written storytelling that ties the night's performances together.",
       },
       {
-        icon: "school",
-        title: "Senior Send-Off",
-        description: "A closing tribute to graduating members and the alumni who return for it.",
+        icon: "campaign",
+        title: "Keynote Speaker",
+        description:
+          "A featured speaker shares reflections on Vietnamese culture, identity, community, and leadership.",
       },
     ],
     sections: [
@@ -89,15 +90,9 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
           "Heritage Night ticket and admission information is announced each year. Check the current-year event details for pricing and registration information.",
         ],
       },
-      {
-        title: "Transportation",
-        body: [
-          "WWU VSA does its best to coordinate rides when transportation assistance is needed. Event-specific transportation details are announced separately when applicable.",
-        ],
-      },
     ],
     currentYear: {
-      note: "Board members: update this block each year with the exact date, time, Viking Union room, ticket price and link, performance and check-in information, and accessibility or transportation notes.",
+      note: "Board members: update this block each year with the exact date, time, Viking Union room, ticket price and link, performance and check-in information, and accessibility notes.",
       details: [
         { label: "Venue", value: "Viking Union (VU), Western Washington University" },
         { label: "Room", value: "Room details coming soon" },
