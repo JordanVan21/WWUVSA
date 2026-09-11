@@ -1575,7 +1575,8 @@ const ALT_OVERRIDES: Record<string, string> = {
   "general-2026-animals-game": "WWU VSA members sharing community time in 2026",
   "general-2026-diy-envelope": "WWU VSA members sharing handmade Lunar New Year envelopes",
   "general-2026-diy2": "WWU VSA members sharing community time in 2026",
-  "general-2026-end-of-meeting": "WWU VSA members gathered for a group photo after a general meeting",
+  "general-2026-end-of-meeting":
+    "WWU VSA members gathered for a group photo after a general meeting",
   "general-2026-eoy1": "WWU VSA members sharing community time in 2026",
   "general-2026-eoy2": "WWU VSA members sharing community time in 2026",
   "general-2026-eoy3": "WWU VSA members sharing community time in 2026",
@@ -1595,7 +1596,8 @@ const ALT_OVERRIDES: Record<string, string> = {
   "heritage-night-2026-dsc00174": "WWU VSA members and guests at Heritage Night 2026",
   "heritage-night-2026-dsc00209": "WWU VSA members and guests at Heritage Night 2026",
   "heritage-night-2026-dsc00213": "WWU VSA members and guests at Heritage Night 2026",
-  "heritage-night-2026-dsc00232": "A lion dance performance moving through the Heritage Night audience",
+  "heritage-night-2026-dsc00232":
+    "A lion dance performance moving through the Heritage Night audience",
   "heritage-night-2026-dsc00245": "WWU VSA members and guests at Heritage Night 2026",
   "heritage-night-2026-dsc00250": "WWU VSA members and guests at Heritage Night 2026",
   "heritage-night-2026-dsc00292": "WWU VSA members and guests at Heritage Night 2026",
@@ -1653,7 +1655,8 @@ const ALT_OVERRIDES: Record<string, string> = {
   "heritage-night-2026-dsc00804": "WWU VSA members and guests at Heritage Night 2026",
   "heritage-night-2026-dsc00809": "WWU VSA members and guests at Heritage Night 2026",
   "heritage-night-2026-dsc00822": "WWU VSA members and guests at Heritage Night 2026",
-  "heritage-night-2026-dsc00829": "Performers posing with colorful parasols during Heritage Night 2026",
+  "heritage-night-2026-dsc00829":
+    "Performers posing with colorful parasols during Heritage Night 2026",
   "heritage-night-2026-dsc00859": "WWU VSA members and guests at Heritage Night 2026",
   "heritage-night-2026-dsc00861": "WWU VSA members and guests at Heritage Night 2026",
   "heritage-night-2026-dsc00865": "WWU VSA members and guests at Heritage Night 2026",
@@ -1874,7 +1877,6 @@ const GALLERY_VIDEOS: GalleryPhoto[] = [
 ];
 
 export const GALLERY_PHOTOS: GalleryPhoto[] = [...GALLERY_VIDEOS, ...buildPhotos(PHOTO_SETS)];
-
 
 /** Curated real photos used outside the archive. Keep page imagery tied to this registry. */
 export const GALLERY_USAGE = {
