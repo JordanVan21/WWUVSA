@@ -1892,6 +1892,10 @@ export const GALLERY_USAGE = {
   turkeyBowlCard: "/images/gallery/turkey-bowl/2024/IMG_2346.JPG",
   spikefestHero: "/images/gallery/spikefest/2026/_DSC4340.jpg",
   spikefestCard: "/images/gallery/spikefest/2026/_DSC4513.jpg",
+  tetHero: "/images/gallery/tet/2025/dsc00305_54291368466_l.jpg",
+  tetCard: "/images/gallery/tet/2025/dsc09988_54295907924_l.jpg",
+  acceProgram: "/images/gallery/acce/2024/IMG_1937.JPG",
+  acceOlympics: "/images/gallery/acce/2024/IMG_5971.JPG",
 } as const;
 
 /** Official executive board portraits. Intentionally NOT part of the public gallery feed. */

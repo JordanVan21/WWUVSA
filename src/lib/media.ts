@@ -205,8 +205,7 @@ export const EVENT_META: Record<EventSlug, EventMeta> = {
     currentYear: {
       note: "This year's date, location, performance schedule, transportation form, and deadlines are announced separately each year. Check our meetings and social media for the most current information.",
     },
-    heroImage:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDBSCz0w9mRjH5ga5kiObTs4A2oOBYS16rrvyE5IgR6htUTznOMHQ1VnwGa4ZDGpXTgBIm5i9-Bs4jeP8f7xQI5WIEIJwvja4OCNl1uICToVM43DJDo9O8HPCOs_F7tPNkjd7mqpvP71eHWTzyFnvxBIzPv3tCW9jPS8IXAbZM7U0zRGKfN8_5A7JWkiXOXEyddF3qedXH_4xLQV8oqV9ybBdrpSdKlZ7Rfd5F83jrzA7ms7lxNzEd-8GIMWtA2xC9cbotVmAIvvTNT",
+    heroImage: GALLERY_USAGE.tetHero,
     accent: "gold",
   },
   "turkey-bowl": {

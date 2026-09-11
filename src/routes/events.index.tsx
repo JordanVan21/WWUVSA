@@ -24,8 +24,7 @@ export const Route = createFileRoute("/events/")({
 
 const HERO = GALLERY_USAGE.eventsHero;
 
-const OLY =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuA4XLGnVWM3FeTaeqnf4fJsGayOR_R8Zg_8Ys40jx-mvYnjTHoVaLr_iEOR4wbizALuIGW2ZvqOjzfDEfK62VPIZ_vVHON2ncM8TLNdxysVgBV0CAjY9ijG0WupQ0eiJqFdhADn1nVoDtkVu4SxoJmxdl1CT5Dj-f03FsbShTgifCkAzBBzMzS8v-nDYa41LnuQPULG5b0VR4AVwqXJ3LOFI3BF4cojBASaIexUNZnHtxvlq51tOsRFXcgCA1PApwe8K871d9DOL-VY";
+const OLY = GALLERY_USAGE.acceOlympics;
 
 const ACCENT: Record<"red" | "gold" | "blue", { border: string; pill: string; cta: string }> = {
   red: {
