@@ -61,7 +61,9 @@ export function Header() {
       <nav className="mx-auto flex max-w-screen-2xl items-center justify-between px-5 md:px-20 h-16">
         <Link to="/" className="flex items-center gap-3" aria-label="WWU VSA home">
           <BrandLogo className="h-11 w-11" />
-          <span className="font-display text-xl font-bold text-vietnamese-red tracking-tight">WWU VSA</span>
+          <span className="font-display text-xl font-bold text-vietnamese-red tracking-tight">
+            WWU VSA
+          </span>
         </Link>
 
         <div className="hidden min-w-0 items-center gap-8 lg:flex">
@@ -70,7 +72,9 @@ export function Header() {
               key={n.to}
               to={n.to}
               className="text-sm font-semibold text-on-surface-variant hover:text-vietnamese-red transition-colors"
-              activeProps={{ className: "text-vietnamese-red border-b-2 border-vietnamese-red pb-1" }}
+              activeProps={{
+                className: "text-vietnamese-red border-b-2 border-vietnamese-red pb-1",
+              }}
               activeOptions={{ exact: n.to === "/" }}
             >
               {n.label}
@@ -102,7 +106,10 @@ export function Header() {
                   const content = (
                     <>
                       <span>{item.label}</span>
-                      <span className="material-symbols-outlined text-base text-on-surface-variant" aria-hidden="true">
+                      <span
+                        className="material-symbols-outlined text-base text-on-surface-variant"
+                        aria-hidden="true"
+                      >
                         {icon}
                       </span>
                     </>
@@ -162,10 +169,13 @@ export function Header() {
               </Link>
             ))}
             <div className="my-2 h-px bg-[color:var(--color-outline-variant)]/40" />
-            <p className="px-3 pt-1 text-xs font-semibold uppercase tracking-wide text-on-surface-variant">Join Us</p>
+            <p className="px-3 pt-1 text-xs font-semibold uppercase tracking-wide text-on-surface-variant">
+              Join Us
+            </p>
             {joinLinks.map((item) => {
               const icon = item.type === "external" ? "open_in_new" : "arrow_forward";
-              const classes = "flex items-center justify-between rounded-lg px-3 py-3 text-base font-semibold text-on-surface-variant hover:bg-surface-container hover:text-vietnamese-red";
+              const classes =
+                "flex items-center justify-between rounded-lg px-3 py-3 text-base font-semibold text-on-surface-variant hover:bg-surface-container hover:text-vietnamese-red";
               return item.type === "internal" ? (
                 <Link
                   key={item.label}

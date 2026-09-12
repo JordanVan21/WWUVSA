@@ -49,10 +49,16 @@ export function BoardCarousel({ headingRef }: { headingRef?: React.Ref<HTMLHeadi
     <div>
       <div className="mb-10 flex items-end justify-between gap-4">
         <div>
-          <h2 ref={headingRef} tabIndex={-1} className="font-display text-3xl md:text-4xl focus:outline-none">
+          <h2
+            ref={headingRef}
+            tabIndex={-1}
+            className="font-display text-3xl md:text-4xl focus:outline-none"
+          >
             Meet Our Executive Board
           </h2>
-          <p className="mt-2 text-on-surface-variant">The passionate team behind our current vision.</p>
+          <p className="mt-2 text-on-surface-variant">
+            The passionate team behind our current vision.
+          </p>
         </div>
         <div className="flex gap-2">
           <button
@@ -81,10 +87,18 @@ export function BoardCarousel({ headingRef }: { headingRef?: React.Ref<HTMLHeadi
         aria-label="WWU VSA board members and interns"
         tabIndex={0}
         onKeyDown={(e) => {
-          if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
-          if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            go(1);
+          }
+          if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            go(-1);
+          }
         }}
-        onTouchStart={(e) => { dragStart.current = e.touches[0].clientX; }}
+        onTouchStart={(e) => {
+          dragStart.current = e.touches[0].clientX;
+        }}
         onTouchEnd={(e) => {
           const start = dragStart.current;
           dragStart.current = null;
@@ -121,20 +135,27 @@ export function BoardCarousel({ headingRef }: { headingRef?: React.Ref<HTMLHeadi
                     aria-label={`${m.name}, ${m.role}. Photo not currently available`}
                     className="flex h-full w-full flex-col items-center justify-center gap-3 px-5 text-center text-on-surface-variant"
                   >
-                    <span className="material-symbols-outlined text-5xl text-viking-blue/55" aria-hidden="true">
+                    <span
+                      className="material-symbols-outlined text-5xl text-viking-blue/55"
+                      aria-hidden="true"
+                    >
                       person
                     </span>
                     <span className="text-sm font-semibold">Photo not currently available</span>
                   </div>
                 )}
                 {m.major && (
-                  <div className={`absolute bottom-0 left-0 w-full translate-y-full p-3 text-xs text-white backdrop-blur-sm transition-transform group-hover:translate-y-0 ${m.accent ?? "bg-ink-black/90"}`}>
+                  <div
+                    className={`absolute bottom-0 left-0 w-full translate-y-full p-3 text-xs text-white backdrop-blur-sm transition-transform group-hover:translate-y-0 ${m.accent ?? "bg-ink-black/90"}`}
+                  >
                     Major: {m.major}
                   </div>
                 )}
               </div>
               <h4 className="font-display text-xl text-ink-black">{m.name}</h4>
-              <p className={`text-xs font-semibold uppercase tracking-wider ${m.roleColor ?? "text-on-surface-variant"}`}>
+              <p
+                className={`text-xs font-semibold uppercase tracking-wider ${m.roleColor ?? "text-on-surface-variant"}`}
+              >
                 {m.role}
               </p>
             </div>
@@ -151,13 +172,17 @@ export function BoardCarousel({ headingRef }: { headingRef?: React.Ref<HTMLHeadi
               aria-current={i === page}
               onClick={() => setPage(i)}
               className={`h-2.5 rounded-full transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-viking-blue ${
-                i === page ? "w-6 bg-vietnamese-red" : "w-2.5 bg-on-surface-variant/30 hover:bg-on-surface-variant/60"
+                i === page
+                  ? "w-6 bg-vietnamese-red"
+                  : "w-2.5 bg-on-surface-variant/30 hover:bg-on-surface-variant/60"
               }`}
             />
           ))}
         </div>
       )}
-      <p className="sr-only" aria-live="polite">Board members page {page + 1} of {pageCount}</p>
+      <p className="sr-only" aria-live="polite">
+        Board members page {page + 1} of {pageCount}
+      </p>
     </div>
   );
 }

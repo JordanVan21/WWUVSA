@@ -80,10 +80,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "WWU VSA: Vietnamese Student Association" },
-      { name: "description", content: "The Vietnamese Student Association at Western Washington University, celebrating heritage, community, and leadership." },
+      {
+        name: "description",
+        content:
+          "The Vietnamese Student Association at Western Washington University, celebrating heritage, community, and leadership.",
+      },
       { name: "author", content: "WWU VSA" },
       { property: "og:title", content: "WWU VSA: Vietnamese Student Association" },
-      { property: "og:description", content: "Heritage in heart, horizon in sight. Community, culture, and leadership at Western Washington University." },
+      {
+        property: "og:description",
+        content:
+          "Heritage in heart, horizon in sight. Community, culture, and leadership at Western Washington University.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
