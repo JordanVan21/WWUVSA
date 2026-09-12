@@ -6,7 +6,7 @@
 - [x] Verify Gallery filters, event previews, lightbox, responsiveness, and links
 - [x] Run code quality checks and production build
 
-- [ ] Full media, board, and branding update
-  - [ ] Reconcile all gallery photos and videos
-  - [ ] Install official logo and board portraits
-  - [ ] Verify filters, carousel, responsiveness, and build
+- [x] Full media, board, and branding update
+  - [x] Reconcile all gallery photos and videos
+  - [x] Install official logo and board portraits
+  - [x] Verify filters, carousel, responsiveness, and build
