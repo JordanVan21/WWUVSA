@@ -30,6 +30,11 @@
  */
 
 import type { EventSlug } from "@/lib/event-types";
+import heritageNight2024Video from "@/assets/videos/heritage-night-2024.webm.asset.json";
+import heritageNight2025Video from "@/assets/videos/heritage-night-2025.webm.asset.json";
+import heritageNight2026Video from "@/assets/videos/heritage-night-2026.webm.asset.json";
+import tet2025Video from "@/assets/videos/tet-2025.webm.asset.json";
+import turkeyBowl2024Video from "@/assets/videos/turkey-bowl-2024.webm.asset.json";
 
 /** Gallery categories: the event slugs plus program and organization buckets. */
 export type GalleryCategory = EventSlug | "acce" | "general";
@@ -2448,11 +2453,11 @@ function buildPhotos(sets: PhotoSet[]): GalleryPhoto[] {
   return photos;
 }
 
-/** Locally stored videos. Registered by hand because there are only a few. */
+/** Managed playback copies of the preserved original videos. */
 const GALLERY_VIDEOS: GalleryPhoto[] = [
   {
     id: "heritage-night-2026-recap-video",
-    src: "/images/gallery/heritage-night/2026/VSA%20Heritage%20Night%202026.mp4",
+    src: heritageNight2026Video.url,
     thumbnail: "/images/video-posters/heritage-night-2026.jpg",
     category: "heritage-night",
     year: "2026",
@@ -2464,7 +2469,7 @@ const GALLERY_VIDEOS: GalleryPhoto[] = [
   },
   {
     id: "heritage-night-2025-recap-video",
-    src: "/images/gallery/heritage-night/2025/VSA%20Heritage%20Nigth%202025.mp4",
+    src: heritageNight2025Video.url,
     thumbnail: "/images/video-posters/heritage-night-2025.jpg",
     category: "heritage-night",
     year: "2025",
@@ -2475,7 +2480,7 @@ const GALLERY_VIDEOS: GalleryPhoto[] = [
   },
   {
     id: "heritage-night-2024-recap-video",
-    src: "/images/gallery/heritage-night/2024/VSA%20Heritage%20Night%202024.mp4",
+    src: heritageNight2024Video.url,
     thumbnail: "/images/video-posters/heritage-night-2024.jpg",
     category: "heritage-night",
     year: "2024",
@@ -2486,7 +2491,7 @@ const GALLERY_VIDEOS: GalleryPhoto[] = [
   },
   {
     id: "tet-2025-dance-video",
-    src: "/images/gallery/tet/2025/TetInSeattledance25.mp4",
+    src: tet2025Video.url,
     thumbnail: "/images/video-posters/tet-2025.jpg",
     category: "tet",
     year: "2025",
@@ -2498,7 +2503,7 @@ const GALLERY_VIDEOS: GalleryPhoto[] = [
   },
   {
     id: "turkey-bowl-2024-recap-video",
-    src: "/images/gallery/turkey-bowl/2024/MVI_2305.MP4",
+    src: turkeyBowl2024Video.url,
     thumbnail: "/images/video-posters/turkey-bowl-2024-recap.jpg",
     category: "turkey-bowl",
     year: "2024",
