@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { COMMUNITY_ORGANIZATIONS } from "@/lib/community";
+import { BrandLogo } from "@/components/BrandLogo";
 
 const linkClasses =
   "inline-flex min-h-[32px] items-center text-on-surface-variant transition-colors hover:text-viking-blue hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red rounded-sm";
@@ -10,9 +11,7 @@ export function Footer() {
       <div className="mx-auto grid w-full min-w-0 max-w-screen-2xl grid-cols-1 gap-y-10 px-5 py-12 sm:px-6 md:grid-cols-2 md:gap-x-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,0.75fr)_minmax(0,0.9fr)] lg:gap-x-16 lg:px-8">
         <section className="w-full min-w-0 space-y-4 md:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-vietnamese-red text-white font-display font-bold">
-              V
-            </div>
+            <BrandLogo className="h-12 w-12" />
             <span className="font-display text-xl font-bold text-viking-blue">WWU VSA</span>
           </div>
           <p className="w-full text-sm leading-relaxed text-on-surface-variant sm:max-w-md">

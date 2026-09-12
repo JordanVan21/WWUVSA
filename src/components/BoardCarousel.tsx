@@ -105,15 +105,28 @@ export function BoardCarousel({ headingRef }: { headingRef?: React.Ref<HTMLHeadi
               style={{ width: cardWidth }}
               aria-hidden={undefined}
             >
-              <div className="relative mb-3 overflow-hidden rounded-2xl border-2 border-rice-paper shadow-sm">
-                <img
-                  src={m.imageUrl}
-                  alt={m.altText}
-                  loading="lazy"
-                  width={400}
-                  height={500}
-                  className="aspect-[4/5] w-full object-cover transition-transform motion-safe:group-hover:scale-105"
-                />
+              <div className="relative mb-3 aspect-[4/5] overflow-hidden rounded-2xl border-2 border-rice-paper bg-surface-container shadow-sm">
+                {m.imageUrl ? (
+                  <img
+                    src={m.imageUrl}
+                    alt={m.altText}
+                    loading="lazy"
+                    width={1372}
+                    height={1920}
+                    className="h-full w-full object-cover object-top transition-transform motion-safe:group-hover:scale-105"
+                  />
+                ) : (
+                  <div
+                    role="img"
+                    aria-label={`${m.name}, ${m.role}. Photo not currently available`}
+                    className="flex h-full w-full flex-col items-center justify-center gap-3 px-5 text-center text-on-surface-variant"
+                  >
+                    <span className="material-symbols-outlined text-5xl text-viking-blue/55" aria-hidden="true">
+                      person
+                    </span>
+                    <span className="text-sm font-semibold">Photo not currently available</span>
+                  </div>
+                )}
                 {m.major && (
                   <div className={`absolute bottom-0 left-0 w-full translate-y-full p-3 text-xs text-white backdrop-blur-sm transition-transform group-hover:translate-y-0 ${m.accent ?? "bg-ink-black/90"}`}>
                     Major: {m.major}
@@ -144,6 +157,7 @@ export function BoardCarousel({ headingRef }: { headingRef?: React.Ref<HTMLHeadi
           ))}
         </div>
       )}
+      <p className="sr-only" aria-live="polite">Board members page {page + 1} of {pageCount}</p>
     </div>
   );
 }

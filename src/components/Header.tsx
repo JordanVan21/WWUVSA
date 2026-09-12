@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect, useRef } from "react";
+import { BrandLogo } from "@/components/BrandLogo";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -59,9 +60,7 @@ export function Header() {
     >
       <nav className="mx-auto flex max-w-screen-2xl items-center justify-between px-5 md:px-20 h-16">
         <Link to="/" className="flex items-center gap-3" aria-label="WWU VSA home">
-          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-vietnamese-red text-white font-display font-bold">
-            V
-          </div>
+          <BrandLogo className="h-11 w-11" />
           <span className="font-display text-xl font-bold text-vietnamese-red tracking-tight">WWU VSA</span>
         </Link>
 
