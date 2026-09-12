@@ -235,3 +235,15 @@ export function formatEventTime(event: CalendarEvent): string {
 export function isPastEvent(event: CalendarEvent): boolean {
   return eventEnd(event).getTime() < Date.now();
 }
+
+/** Subscription groups an event belongs to. */
+export function getGroupsFor(event: CalendarEvent): CalendarGroup[] {
+  return (event.groupIds ?? [])
+    .map((id) => CALENDAR_GROUPS.find((g) => g.id === id))
+    .filter((g): g is CalendarGroup => Boolean(g));
+}
+
+/** Turns an https feed URL into a webcal:// subscribe link. */
+export function webcalUrl(url: string): string {
+  return url.replace(/^https?:\/\//, "webcal://");
+}

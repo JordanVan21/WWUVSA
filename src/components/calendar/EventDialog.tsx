@@ -12,7 +12,7 @@ import {
   formatEventTime,
   getGroupsFor,
   type CalendarEvent,
-} from "@/lib/calendar-groups";
+} from "@/lib/calendar";
 
 export function EventDialog({
   event,
