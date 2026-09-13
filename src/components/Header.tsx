@@ -3,15 +3,17 @@ import { useState, useEffect, useRef } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { FEATURES, WWU_VSA_WIN_URL } from "@/lib/site-config";
 
-const nav = [
+const allNav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About Us" },
   { to: "/events", label: "Events" },
   { to: "/gallery", label: "Gallery" },
   { to: "/products", label: "Products" },
-  ...(FEATURES.calendar ? [{ to: "/calendar", label: "Calendar" }] : []),
+  { to: "/calendar", label: "Calendar" },
   { to: "/contact", label: "Contact" },
-] as { to: string; label: string }[];
+] as const;
+
+const nav = allNav.filter((n) => FEATURES.calendar || n.to !== "/calendar");
 
 type JoinLink =
   | { type: "external"; label: string; href: string }
