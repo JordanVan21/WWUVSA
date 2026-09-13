@@ -1,11 +1,18 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 import { useState } from "react";
 import { MonthCalendar } from "@/components/calendar/MonthCalendar";
 import { EventDialog } from "@/components/calendar/EventDialog";
 import { SubscriptionSection } from "@/components/calendar/SubscriptionSection";
 import { todayInZone, type CalendarEvent } from "@/lib/calendar";
+import { FEATURES } from "@/lib/site-config";
 
 export const Route = createFileRoute("/calendar")({
+  // Calendar is hidden while FEATURES.calendar is false; see src/lib/site-config.ts
+  beforeLoad: () => {
+    if (!FEATURES.calendar) {
+      throw redirect({ to: "/events" });
+    }
+  },
   head: () => ({
     meta: [
       { title: "Calendar | WWU VSA" },
