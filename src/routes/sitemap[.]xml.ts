@@ -1,9 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { FEATURES } from "@/lib/site-config";
 
 const BASE_URL = "";
 
-const paths = ["/", "/about", "/events", "/gallery", "/products", "/calendar", "/contact"];
+const paths = [
+  "/",
+  "/about",
+  "/events",
+  "/gallery",
+  "/products",
+  ...(FEATURES.calendar ? ["/calendar"] : []),
+  "/contact",
+];
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
