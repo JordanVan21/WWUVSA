@@ -107,12 +107,21 @@ function HomePage() {
               Get Involved
               <span className="material-symbols-outlined text-base">arrow_forward</span>
             </Link>
-            <Link
-              to="/calendar"
-              className="inline-flex items-center rounded-lg border border-white/40 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
-            >
-              View Calendar
-            </Link>
+            {FEATURES.calendar ? (
+              <Link
+                to="/calendar"
+                className="inline-flex items-center rounded-lg border border-white/40 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
+              >
+                View Calendar
+              </Link>
+            ) : (
+              <Link
+                to="/events"
+                className="inline-flex items-center rounded-lg border border-white/40 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
+              >
+                View Events
+              </Link>
+            )}
           </motion.div>
         </div>
       </section>
