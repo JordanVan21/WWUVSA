@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { COMMUNITY_ORGANIZATIONS } from "@/lib/community";
 import { BrandLogo } from "@/components/BrandLogo";
+import { FEATURES } from "@/lib/site-config";
 
 const linkClasses =
   "inline-flex min-h-[32px] items-center text-on-surface-variant transition-colors hover:text-viking-blue hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red rounded-sm";
