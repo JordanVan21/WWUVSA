@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect, useRef } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
+import { FEATURES, WWU_VSA_WIN_URL } from "@/lib/site-config";
 
-const nav = [
+const allNav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About Us" },
   { to: "/events", label: "Events" },
@@ -12,14 +13,18 @@ const nav = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
+const nav = allNav.filter((n) => FEATURES.calendar || n.to !== "/calendar");
+
 type JoinLink =
   | { type: "external"; label: string; href: string }
   | { type: "internal"; label: string; to: string };
 
 const joinLinks: JoinLink[] = [
-  { type: "external", label: "WWU WIN", href: "#" },
+  { type: "external", label: "WWU WIN", href: WWU_VSA_WIN_URL },
   { type: "external", label: "WWU Instagram", href: "https://instagram.com/wwuvsa" },
-  { type: "internal", label: "Calendar", to: "/calendar" },
+  ...(FEATURES.calendar
+    ? [{ type: "internal" as const, label: "Calendar", to: "/calendar" }]
+    : []),
 ];
 
 export function Header() {

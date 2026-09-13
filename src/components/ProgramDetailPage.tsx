@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Lightbox } from "@/components/Lightbox";
 import { GalleryImage } from "@/components/GalleryImage";
 import { getProgramMedia, type Program } from "@/lib/programs";
+import { FEATURES } from "@/lib/site-config";
 
 const fade = {
   initial: { opacity: 0, y: 20 },
@@ -225,15 +226,21 @@ export function ProgramDetailPage({ program }: { program: Program }) {
             Come to a meeting or reach out, and we'll point you to the right people.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link
-              to="/calendar"
-              className="inline-flex items-center gap-2 rounded-lg bg-vietnamese-red px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-vietnamese-red/25 transition hover:brightness-110"
-            >
-              View Upcoming Meetings
-            </Link>
+            {FEATURES.calendar && (
+              <Link
+                to="/calendar"
+                className="inline-flex items-center gap-2 rounded-lg bg-vietnamese-red px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-vietnamese-red/25 transition hover:brightness-110"
+              >
+                View Upcoming Meetings
+              </Link>
+            )}
             <Link
               to="/contact"
-              className="inline-flex items-center rounded-lg border-2 border-vietnamese-red px-6 py-3 text-sm font-semibold text-vietnamese-red transition hover:bg-vietnamese-red hover:text-white"
+              className={
+                FEATURES.calendar
+                  ? "inline-flex items-center rounded-lg border-2 border-vietnamese-red px-6 py-3 text-sm font-semibold text-vietnamese-red transition hover:bg-vietnamese-red hover:text-white"
+                  : "inline-flex items-center gap-2 rounded-lg bg-vietnamese-red px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-vietnamese-red/25 transition hover:brightness-110"
+              }
             >
               Contact WWU VSA
             </Link>
