@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Lightbox } from "@/components/Lightbox";
 import { GalleryImage } from "@/components/GalleryImage";
 import { getProgramMedia, type Program } from "@/lib/programs";
+import { FEATURES } from "@/lib/site-config";
 
 const fade = {
   initial: { opacity: 0, y: 20 },
