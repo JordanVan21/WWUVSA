@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { GALLERY_USAGE } from "@/data/gallery";
+import { FEATURES } from "@/lib/site-config";
 
 export const Route = createFileRoute("/")({
   head: () => ({
