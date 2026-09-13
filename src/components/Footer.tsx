@@ -83,11 +83,13 @@ export function Footer() {
             Connect
           </h4>
           <ul className="space-y-1 text-sm">
-            <li>
-              <Link to="/calendar" className={linkClasses}>
-                Calendar
-              </Link>
-            </li>
+            {FEATURES.calendar && (
+              <li>
+                <Link to="/calendar" className={linkClasses}>
+                  Calendar
+                </Link>
+              </li>
+            )}
             <li>
               <Link to="/contact" className={linkClasses}>
                 Contact
