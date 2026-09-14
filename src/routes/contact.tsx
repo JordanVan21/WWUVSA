@@ -108,36 +108,68 @@ function ContactPage() {
           {/* Form */}
           <div className="rounded-2xl border-t-4 border-vietnamese-red bg-white p-8 shadow-sm md:p-12 lg:col-span-7">
             <h2 className="mb-6 font-display text-3xl text-ink-black md:text-4xl">Send us a Message</h2>
-            <form className="space-y-6" onSubmit={onSubmit}>
+            <form className="space-y-6" onSubmit={onSubmit} noValidate>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
                   <label htmlFor="name" className="mb-2 block text-sm font-semibold">Name</label>
-                  <input id="name" name="name" type="text" required placeholder="Lê Văn An" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                  <input id="name" name="name" type="text" required maxLength={LIMITS.name} value={values.name} onChange={setField("name")} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} placeholder="Lê Văn An" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                  {errors.name && <FieldError id="name-error">{errors.name}</FieldError>}
                 </div>
                 <div>
                   <label htmlFor="email" className="mb-2 block text-sm font-semibold">Email Address</label>
-                  <input id="email" name="email" type="email" required placeholder="you@wwu.edu" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                  <input id="email" name="email" type="email" required maxLength={LIMITS.email} value={values.email} onChange={setField("email")} aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : undefined} placeholder="you@wwu.edu" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                  {errors.email && <FieldError id="email-error">{errors.email}</FieldError>}
                 </div>
               </div>
               <div>
                 <label htmlFor="subject" className="mb-2 block text-sm font-semibold">Subject</label>
-                <input id="subject" name="subject" type="text" placeholder="General Inquiry" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                <input id="subject" name="subject" type="text" required maxLength={LIMITS.subject} value={values.subject} onChange={setField("subject")} aria-invalid={Boolean(errors.subject)} aria-describedby={errors.subject ? "subject-error" : undefined} placeholder="General Inquiry" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                {errors.subject && <FieldError id="subject-error">{errors.subject}</FieldError>}
               </div>
               <div>
                 <label htmlFor="message" className="mb-2 block text-sm font-semibold">Your Message</label>
-                <textarea id="message" name="message" rows={5} required placeholder="How can we help you?" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                <textarea id="message" name="message" rows={5} required maxLength={LIMITS.message} value={values.message} onChange={setField("message")} aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "message-error" : undefined} placeholder="How can we help you?" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                {errors.message && <FieldError id="message-error">{errors.message}</FieldError>}
               </div>
+
+              {/* Honeypot: hidden from people, tempting to bots. */}
+              <div aria-hidden="true" className="absolute h-0 w-0 overflow-hidden opacity-0">
+                <label htmlFor="website">Website</label>
+                <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+              </div>
+
               <button
                 type="submit"
-                disabled={status !== "idle"}
+                disabled={status === "sending" || !configured}
                 className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-10 py-4 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02] active:scale-95 md:w-auto ${
                   status === "sent" ? "bg-green-600 shadow-green-600/25" : "bg-vietnamese-red shadow-vietnamese-red/25 disabled:opacity-80"
-                }`}
+                } disabled:cursor-not-allowed`}
               >
-                {status === "idle" && (<><span>Send Message</span><span className="material-symbols-outlined">send</span></>)}
+                {(status === "idle" || status === "error") && (<><span>Send Message</span><span className="material-symbols-outlined">send</span></>)}
                 {status === "sending" && (<><span>Sending...</span><span className="material-symbols-outlined animate-spin">sync</span></>)}
                 {status === "sent" && (<><span>Message Sent!</span><span className="material-symbols-outlined">check_circle</span></>)}
               </button>
+
+              <div aria-live="polite" className="space-y-3">
+                {status === "sent" && (
+                  <p className="rounded-lg bg-green-50 px-4 py-3 text-sm text-green-800">
+                    <strong className="block">Message sent!</strong>
+                    Thanks for reaching out. WWU VSA will get back to you as soon as we can.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="rounded-lg bg-vietnamese-red/10 px-4 py-3 text-sm text-vietnamese-red">
+                    We couldn't send your message right now. Please try again later or contact WWU VSA
+                    directly at <a href={`mailto:${WWU_VSA_EMAIL}`} className="underline">{WWU_VSA_EMAIL}</a>.
+                  </p>
+                )}
+                {!configured && (
+                  <p className="rounded-lg bg-surface-container px-4 py-3 text-sm text-on-surface-variant">
+                    Our message form is being set up. In the meantime, please email us at{" "}
+                    <a href={`mailto:${WWU_VSA_EMAIL}`} className="font-semibold text-viking-blue underline">{WWU_VSA_EMAIL}</a>.
+                  </p>
+                )}
+              </div>
             </form>
           </div>
 
