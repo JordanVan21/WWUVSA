@@ -13,17 +13,78 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-function ContactPage() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+type Fields = { name: string; email: string; subject: string; message: string };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+const LIMITS = { name: 100, email: 254, subject: 150, message: 5000 };
+const EMPTY: Fields = { name: "", email: "", subject: "", message: "" };
+
+function validate(values: Fields) {
+  const errors: Partial<Record<keyof Fields, string>> = {};
+  const name = values.name.trim();
+  const email = values.email.trim();
+  const subject = values.subject.trim();
+  const message = values.message.trim();
+
+  if (!name) errors.name = "Please enter your name.";
+  else if (name.length > LIMITS.name) errors.name = `Please keep your name under ${LIMITS.name} characters.`;
+
+  if (!email) errors.email = "Please enter your email address.";
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > LIMITS.email)
+    errors.email = "Please enter a valid email address.";
+
+  if (!subject) errors.subject = "Please enter a subject.";
+  else if (subject.length > LIMITS.subject)
+    errors.subject = `Please keep the subject under ${LIMITS.subject} characters.`;
+
+  if (!message) errors.message = "Please enter a message.";
+  else if (message.length > LIMITS.message)
+    errors.message = `Please keep your message under ${LIMITS.message} characters.`;
+
+  return errors;
+}
+
+function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [values, setValues] = useState<Fields>(EMPTY);
+  const [honeypot, setHoneypot] = useState("");
+  const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
+  const configured = isContactFormConfigured();
+
+  const setField = (key: keyof Fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setValues((prev) => ({ ...prev, [key]: e.target.value }));
+    setErrors((prev) => ({ ...prev, [key]: undefined }));
+    if (status === "error" || status === "sent") setStatus("idle");
+  };
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (status === "sending" || !configured) return;
+
+    const found = validate(values);
+    setErrors(found);
+    if (Object.keys(found).length > 0) return;
+
     setStatus("sending");
-    setTimeout(() => {
+    try {
+      const response = await fetch(CONTACT_FORM_ENDPOINT, {
+        method: "POST",
+        // text/plain keeps this a simple request, so Apps Script needs no preflight.
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          name: values.name.trim(),
+          email: values.email.trim(),
+          subject: values.subject.trim(),
+          message: values.message.trim(),
+          website: honeypot,
+        }),
+      });
+      const result = (await response.json()) as { success?: boolean };
+      if (!response.ok || !result.success) throw new Error("submission_failed");
+      setValues(EMPTY);
       setStatus("sent");
-      (e.currentTarget as HTMLFormElement).reset();
-      setTimeout(() => setStatus("idle"), 2600);
-    }, 900);
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
