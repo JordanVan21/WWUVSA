@@ -17,3 +17,23 @@ export const WWU_VSA_WIN_URL = "https://win.wwu.edu/organization/vietnamese-stud
 export const FEATURES = {
   calendar: false,
 } as const;
+
+/** Public WWU VSA email, used as the direct fallback when the form is unavailable. */
+export const WWU_VSA_EMAIL = "westernvsa@gmail.com";
+
+/**
+ * Deployed Google Apps Script Web App URL that receives Contact form
+ * submissions and appends them to the WWU VSA response spreadsheet.
+ *
+ * PASTE THE DEPLOYED WEB APP URL HERE (it looks like
+ * https://script.google.com/macros/s/AKfy.../exec).
+ *
+ * While this is an empty string the Contact form stays visible but submission
+ * is disabled gracefully and visitors are pointed at the direct email address.
+ * The Apps Script source to deploy lives in docs/apps-script/contact-form.gs.
+ */
+export const CONTACT_FORM_ENDPOINT = "";
+
+/** True once a real Apps Script endpoint has been configured above. */
+export const isContactFormConfigured = () =>
+  CONTACT_FORM_ENDPOINT.startsWith("https://script.google.com/");
