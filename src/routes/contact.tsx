@@ -13,17 +13,78 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-function ContactPage() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+type Fields = { name: string; email: string; subject: string; message: string };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+const LIMITS = { name: 100, email: 254, subject: 150, message: 5000 };
+const EMPTY: Fields = { name: "", email: "", subject: "", message: "" };
+
+function validate(values: Fields) {
+  const errors: Partial<Record<keyof Fields, string>> = {};
+  const name = values.name.trim();
+  const email = values.email.trim();
+  const subject = values.subject.trim();
+  const message = values.message.trim();
+
+  if (!name) errors.name = "Please enter your name.";
+  else if (name.length > LIMITS.name) errors.name = `Please keep your name under ${LIMITS.name} characters.`;
+
+  if (!email) errors.email = "Please enter your email address.";
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > LIMITS.email)
+    errors.email = "Please enter a valid email address.";
+
+  if (!subject) errors.subject = "Please enter a subject.";
+  else if (subject.length > LIMITS.subject)
+    errors.subject = `Please keep the subject under ${LIMITS.subject} characters.`;
+
+  if (!message) errors.message = "Please enter a message.";
+  else if (message.length > LIMITS.message)
+    errors.message = `Please keep your message under ${LIMITS.message} characters.`;
+
+  return errors;
+}
+
+function ContactPage() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [values, setValues] = useState<Fields>(EMPTY);
+  const [honeypot, setHoneypot] = useState("");
+  const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
+  const configured = isContactFormConfigured();
+
+  const setField = (key: keyof Fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setValues((prev) => ({ ...prev, [key]: e.target.value }));
+    setErrors((prev) => ({ ...prev, [key]: undefined }));
+    if (status === "error" || status === "sent") setStatus("idle");
+  };
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (status === "sending" || !configured) return;
+
+    const found = validate(values);
+    setErrors(found);
+    if (Object.keys(found).length > 0) return;
+
     setStatus("sending");
-    setTimeout(() => {
+    try {
+      const response = await fetch(CONTACT_FORM_ENDPOINT, {
+        method: "POST",
+        // text/plain keeps this a simple request, so Apps Script needs no preflight.
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          name: values.name.trim(),
+          email: values.email.trim(),
+          subject: values.subject.trim(),
+          message: values.message.trim(),
+          website: honeypot,
+        }),
+      });
+      const result = (await response.json()) as { success?: boolean };
+      if (!response.ok || !result.success) throw new Error("submission_failed");
+      setValues(EMPTY);
       setStatus("sent");
-      (e.currentTarget as HTMLFormElement).reset();
-      setTimeout(() => setStatus("idle"), 2600);
-    }, 900);
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -47,36 +108,68 @@ function ContactPage() {
           {/* Form */}
           <div className="rounded-2xl border-t-4 border-vietnamese-red bg-white p-8 shadow-sm md:p-12 lg:col-span-7">
             <h2 className="mb-6 font-display text-3xl text-ink-black md:text-4xl">Send us a Message</h2>
-            <form className="space-y-6" onSubmit={onSubmit}>
+            <form className="space-y-6" onSubmit={onSubmit} noValidate>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
                   <label htmlFor="name" className="mb-2 block text-sm font-semibold">Name</label>
-                  <input id="name" name="name" type="text" required placeholder="Lê Văn An" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                  <input id="name" name="name" type="text" required maxLength={LIMITS.name} value={values.name} onChange={setField("name")} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} placeholder="Lê Văn An" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                  {errors.name && <FieldError id="name-error">{errors.name}</FieldError>}
                 </div>
                 <div>
                   <label htmlFor="email" className="mb-2 block text-sm font-semibold">Email Address</label>
-                  <input id="email" name="email" type="email" required placeholder="you@wwu.edu" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                  <input id="email" name="email" type="email" required maxLength={LIMITS.email} value={values.email} onChange={setField("email")} aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : undefined} placeholder="you@wwu.edu" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                  {errors.email && <FieldError id="email-error">{errors.email}</FieldError>}
                 </div>
               </div>
               <div>
                 <label htmlFor="subject" className="mb-2 block text-sm font-semibold">Subject</label>
-                <input id="subject" name="subject" type="text" placeholder="General Inquiry" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                <input id="subject" name="subject" type="text" required maxLength={LIMITS.subject} value={values.subject} onChange={setField("subject")} aria-invalid={Boolean(errors.subject)} aria-describedby={errors.subject ? "subject-error" : undefined} placeholder="General Inquiry" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                {errors.subject && <FieldError id="subject-error">{errors.subject}</FieldError>}
               </div>
               <div>
                 <label htmlFor="message" className="mb-2 block text-sm font-semibold">Your Message</label>
-                <textarea id="message" name="message" rows={5} required placeholder="How can we help you?" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                <textarea id="message" name="message" rows={5} required maxLength={LIMITS.message} value={values.message} onChange={setField("message")} aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "message-error" : undefined} placeholder="How can we help you?" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                {errors.message && <FieldError id="message-error">{errors.message}</FieldError>}
               </div>
+
+              {/* Honeypot: hidden from people, tempting to bots. */}
+              <div aria-hidden="true" className="absolute h-0 w-0 overflow-hidden opacity-0">
+                <label htmlFor="website">Website</label>
+                <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+              </div>
+
               <button
                 type="submit"
-                disabled={status !== "idle"}
+                disabled={status === "sending" || !configured}
                 className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-10 py-4 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02] active:scale-95 md:w-auto ${
                   status === "sent" ? "bg-green-600 shadow-green-600/25" : "bg-vietnamese-red shadow-vietnamese-red/25 disabled:opacity-80"
-                }`}
+                } disabled:cursor-not-allowed`}
               >
-                {status === "idle" && (<><span>Send Message</span><span className="material-symbols-outlined">send</span></>)}
+                {(status === "idle" || status === "error") && (<><span>Send Message</span><span className="material-symbols-outlined">send</span></>)}
                 {status === "sending" && (<><span>Sending...</span><span className="material-symbols-outlined animate-spin">sync</span></>)}
                 {status === "sent" && (<><span>Message Sent!</span><span className="material-symbols-outlined">check_circle</span></>)}
               </button>
+
+              <div aria-live="polite" className="space-y-3">
+                {status === "sent" && (
+                  <p className="rounded-lg bg-green-50 px-4 py-3 text-sm text-green-800">
+                    <strong className="block">Message sent!</strong>
+                    Thanks for reaching out. WWU VSA will get back to you as soon as we can.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="rounded-lg bg-vietnamese-red/10 px-4 py-3 text-sm text-vietnamese-red">
+                    We couldn't send your message right now. Please try again later or contact WWU VSA
+                    directly at <a href={`mailto:${WWU_VSA_EMAIL}`} className="underline">{WWU_VSA_EMAIL}</a>.
+                  </p>
+                )}
+                {!configured && (
+                  <p className="rounded-lg bg-surface-container px-4 py-3 text-sm text-on-surface-variant">
+                    Our message form is being set up. In the meantime, please email us at{" "}
+                    <a href={`mailto:${WWU_VSA_EMAIL}`} className="font-semibold text-viking-blue underline">{WWU_VSA_EMAIL}</a>.
+                  </p>
+                )}
+              </div>
             </form>
           </div>
 
