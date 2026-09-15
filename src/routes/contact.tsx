@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { CONTACT_FORM_ENDPOINT, WWU_VSA_EMAIL, isContactFormConfigured } from "@/lib/site-config";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
