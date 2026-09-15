@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { CONTACT_FORM_ENDPOINT, WWU_VSA_EMAIL, isContactFormConfigured } from "@/lib/site-config";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -231,5 +232,13 @@ function InfoRow({ icon, title, children }: { icon: string; title: string; child
         <div className="text-sm">{children}</div>
       </div>
     </div>
+  );
+}
+function FieldError({ id, children }: { id: string; children: React.ReactNode }) {
+  return (
+    <p id={id} className="mt-2 flex items-center gap-1 text-sm text-vietnamese-red">
+      <span className="material-symbols-outlined text-base" aria-hidden="true">error</span>
+      {children}
+    </p>
   );
 }
