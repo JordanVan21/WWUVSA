@@ -234,3 +234,11 @@ function InfoRow({ icon, title, children }: { icon: string; title: string; child
     </div>
   );
 }
+function FieldError({ id, children }: { id: string; children: React.ReactNode }) {
+  return (
+    <p id={id} className="mt-2 flex items-center gap-1 text-sm text-vietnamese-red">
+      <span className="material-symbols-outlined text-base" aria-hidden="true">error</span>
+      {children}
+    </p>
+  );
+}
