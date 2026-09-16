@@ -54,9 +54,9 @@ export function EditorialFeatureColumns({
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.45, delay: index * 0.06 }}
             className={cn(
-              "group relative min-w-0 border-b border-[color:var(--color-outline-variant)]/55 py-7 last:border-b-0 sm:px-7 sm:first:pl-0 sm:nth-[2]:border-l sm:nth-[2]:border-[color:var(--color-outline-variant)]/55",
+              "group relative min-w-0 border-b border-[color:var(--color-outline-variant)]/55 py-7 last:border-b-0 sm:px-7 sm:first:pl-0 sm:[&:nth-child(2)]:border-l sm:[&:nth-child(2)]:border-[color:var(--color-outline-variant)]/55",
               columns === 3
-                ? "lg:border-b-0 lg:border-l lg:border-[color:var(--color-outline-variant)]/55 lg:first:border-l-0 lg:nth-[2]:border-l"
+                ? "lg:border-b-0 lg:border-l lg:border-[color:var(--color-outline-variant)]/55 lg:first:border-l-0 lg:[&:nth-child(2)]:border-l"
                 : "lg:border-b-0 lg:border-l lg:border-[color:var(--color-outline-variant)]/55 lg:first:border-l-0",
             )}
           >

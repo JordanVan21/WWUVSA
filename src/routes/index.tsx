@@ -183,21 +183,18 @@ function HomePage() {
               {
                 icon: "diversity_3",
                 title: "Lifelong Friends",
-                desc: "A supportive network of peers who share your values and experiences, from study sessions to late-night boba runs.",
                 description: "A supportive network of peers who share your values and experiences, from study sessions to late-night boba runs.",
                 accent: "gold" as const,
               },
               {
                 icon: "temple_buddhist",
                 title: "Cultural Heritage",
-                desc: "Reconnect with or discover the beauty of Vietnamese traditions, history, and cuisine through hands-on events.",
                 description: "Reconnect with or discover the beauty of Vietnamese traditions, history, and cuisine through hands-on events.",
                 accent: "red" as const,
               },
               {
                 icon: "military_tech",
                 title: "Leadership Growth",
-                desc: "Grow through board roles, event coordination, and regional networking with our NWVSA partners.",
                 description: "Grow through board roles, event coordination, and regional networking with our NWVSA partners.",
                 accent: "blue" as const,
               },
