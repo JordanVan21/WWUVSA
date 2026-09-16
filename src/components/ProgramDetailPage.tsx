@@ -23,7 +23,7 @@ export function ProgramDetailPage({ program }: { program: Program }) {
     { label: "Experience level", value: program.experienceLevel },
     { label: "When it runs", value: program.typicalSchedule },
     { label: "Participation", value: program.participationDetails },
-  ].filter((d) => Boolean(d.value));
+  ].filter((d): d is { label: string; value: string } => Boolean(d.value));
 
   const hasImageHero = program.accentStyle === "image" && program.heroImage;
   const isBlue = program.accentStyle === "blue";
