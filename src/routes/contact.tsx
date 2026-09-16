@@ -175,8 +175,8 @@ function ContactPage() {
           </div>
 
           {/* Info sidebar */}
-          <div className="flex flex-col gap-8 lg:col-span-5">
-            <div className="rounded-2xl border-t-4 border-viking-blue bg-white p-8 shadow-sm">
+          <div className="flex flex-col gap-10 lg:col-span-5">
+            <div className="border-y-2 border-viking-blue py-8">
               <h3 className="mb-6 font-display text-2xl text-viking-blue">Contact Information</h3>
               <div className="space-y-6">
                 <InfoRow icon="mail" title="Email Us">
@@ -191,14 +191,14 @@ function ContactPage() {
                   <p className="text-on-surface-variant">Tuesdays at 6:00 PM<br />Viking Union 552</p>
                 </InfoRow>
               </div>
-              <div className="mt-8 rounded-lg bg-surface-container p-4">
+              <div className="mt-8 border-l-2 border-imperial-gold pl-4">
                 <p className="italic text-on-surface-variant">
                   "Building a legacy of heritage and leadership on the WWU campus since 1996."
                 </p>
               </div>
             </div>
 
-            <div className="rounded-2xl border-t-4 border-imperial-gold bg-white p-6 shadow-sm">
+            <div className="border-t border-[color:var(--color-outline-variant)]/60 pt-6">
               <div className="mb-3 flex items-center justify-between px-2">
                 <h3 className="text-sm font-semibold text-on-surface">Find Us at WWU</h3>
                 <span className="material-symbols-outlined text-[color:var(--color-imperial-gold)]">location_on</span>

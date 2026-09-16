@@ -5,6 +5,7 @@ import { BoardCarousel } from "@/components/BoardCarousel";
 import { COMMUNITY_ORGANIZATIONS } from "@/lib/community";
 import { MISSION_PARAGRAPHS } from "@/lib/mission";
 import { GALLERY_USAGE } from "@/data/gallery";
+import { EditorialFeatureColumns } from "@/components/EditorialInfo";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -96,44 +97,29 @@ function AboutPage() {
               </p>
             ))}
           </div>
-          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {[
+          <div className="mt-12">
+            <EditorialFeatureColumns
+              items={[
               {
                 icon: "diversity_3",
                 title: "Community",
-                desc: "Building a family where every student feels seen and heard.",
-                border: "border-vietnamese-red",
-                color: "text-vietnamese-red",
+                description: "Building a family where every student feels seen and heard.",
+                accent: "red" as const,
               },
               {
                 icon: "temple_buddhist",
                 title: "Heritage",
-                desc: "Preserving traditions while creating new memories at WWU.",
-                border: "border-imperial-gold",
-                color: "text-[color:var(--color-imperial-gold)]",
+                description: "Preserving traditions while creating new memories at WWU.",
+                accent: "gold" as const,
               },
               {
                 icon: "school",
                 title: "Leadership",
-                desc: "Preparing the next generation of visionary professionals.",
-                border: "border-viking-blue",
-                color: "text-viking-blue",
+                description: "Preparing the next generation of visionary professionals.",
+                accent: "blue" as const,
               },
-            ].map((v) => (
-              <div
-                key={v.title}
-                className={`rounded-2xl border-t-4 ${v.border} bg-white p-6 text-left shadow-sm`}
-              >
-                <span
-                  className={`material-symbols-outlined text-4xl ${v.color}`}
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  {v.icon}
-                </span>
-                <h3 className="mt-4 font-display text-2xl">{v.title}</h3>
-                <p className="mt-2 text-on-surface-variant">{v.desc}</p>
-              </div>
-            ))}
+              ]}
+            />
           </div>
         </div>
       </section>
@@ -256,7 +242,7 @@ function AboutPage() {
             WWU VSA is connected to a wider network of campus support, regional community, and
             Vietnamese student leadership across North America.
           </p>
-          <ul className="mt-12 grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
+          <ul className="mt-12 grid w-full max-w-6xl grid-cols-1 md:grid-cols-3">
             {COMMUNITY_ORGANIZATIONS.map((org, i) => {
               const color = [
                 "text-vietnamese-red",
@@ -264,9 +250,9 @@ function AboutPage() {
                 "text-[color:var(--color-imperial-gold)]",
               ][i % 3];
               return (
-                <li key={org.id} className="flex">
-                  <div className="group flex h-full w-full flex-col rounded-2xl border border-[color:var(--color-outline-variant)]/60 bg-white/60 px-6 py-7 text-left transition-all duration-300 hover:-translate-y-1 hover:border-viking-blue/40 focus-within:border-viking-blue/60 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-                    <div className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-white p-4 shadow-sm transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100">
+                <li key={org.id} className="group flex border-b border-[color:var(--color-outline-variant)]/60 py-8 last:border-b-0 md:border-b-0 md:border-l md:px-8 md:first:border-l-0">
+                  <div className="flex h-full w-full flex-col text-left">
+                    <div className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-surface p-4 transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100">
                       {org.logoUrl ? (
                         <img
                           src={org.logoUrl}
@@ -289,7 +275,7 @@ function AboutPage() {
                     <p className="mt-1 text-center text-xs leading-snug text-on-surface-variant">
                       {org.fullName}
                     </p>
-                    <span className="mx-auto mt-3 rounded-full bg-imperial-gold/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-on-tertiary-container">
+                    <span className={`mx-auto mt-3 border-b pb-1 text-[11px] font-semibold uppercase tracking-wider ${color}`}>
                       {org.scope}
                     </span>
                     <p className="mt-5 text-sm leading-relaxed text-on-surface-variant">

@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { GALLERY_USAGE } from "@/data/gallery";
 import { FEATURES } from "@/lib/site-config";
+import { EditorialFeatureColumns } from "@/components/EditorialInfo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -176,43 +177,32 @@ function HomePage() {
             </h2>
             <div className="mx-auto mt-4 h-1 w-20 bg-imperial-gold" />
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {[
+          <EditorialFeatureColumns
+            numbered
+            items={[
               {
                 icon: "diversity_3",
                 title: "Lifelong Friends",
-                color: "border-imperial-gold",
                 desc: "A supportive network of peers who share your values and experiences, from study sessions to late-night boba runs.",
+                description: "A supportive network of peers who share your values and experiences, from study sessions to late-night boba runs.",
+                accent: "gold" as const,
               },
               {
                 icon: "temple_buddhist",
                 title: "Cultural Heritage",
-                color: "border-vietnamese-red",
                 desc: "Reconnect with or discover the beauty of Vietnamese traditions, history, and cuisine through hands-on events.",
+                description: "Reconnect with or discover the beauty of Vietnamese traditions, history, and cuisine through hands-on events.",
+                accent: "red" as const,
               },
               {
                 icon: "military_tech",
                 title: "Leadership Growth",
-                color: "border-viking-blue",
                 desc: "Grow through board roles, event coordination, and regional networking with our NWVSA partners.",
+                description: "Grow through board roles, event coordination, and regional networking with our NWVSA partners.",
+                accent: "blue" as const,
               },
-            ].map((c) => (
-              <motion.div
-                key={c.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5 }}
-                className={`rounded-2xl border-t-4 ${c.color} bg-white p-8 shadow-sm transition-shadow hover:shadow-xl`}
-              >
-                <span className="material-symbols-outlined text-4xl text-vietnamese-red">
-                  {c.icon}
-                </span>
-                <h3 className="mt-6 font-display text-2xl text-ink-black">{c.title}</h3>
-                <p className="mt-3 text-base text-on-surface-variant">{c.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+            ]}
+          />
         </div>
       </section>
 
