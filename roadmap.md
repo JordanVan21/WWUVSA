@@ -10,3 +10,11 @@
   - [x] Reconcile all gallery photos and videos
   - [x] Install official logo and board portraits
   - [x] Verify filters, carousel, responsiveness, and build
+
+- [ ] Refresh repetitive informational card sections
+  - [ ] Add reusable editorial information patterns
+  - [ ] Redesign Home benefits and About mission/community sections
+  - [ ] Redesign event and program informational sections
+  - [ ] Refine Contact information without changing the approved form
+  - [ ] Preserve product, board, event, and gallery cards
+  - [ ] Verify responsive layouts, interactions, diagnostics, and build
