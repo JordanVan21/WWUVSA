@@ -5,6 +5,7 @@ import { Lightbox } from "@/components/Lightbox";
 import { GalleryImage } from "@/components/GalleryImage";
 import { getProgramMedia, type Program } from "@/lib/programs";
 import { FEATURES } from "@/lib/site-config";
+import { DividedDetails, EditorialFeatureColumns } from "@/components/EditorialInfo";
 
 const fade = {
   initial: { opacity: 0, y: 20 },
@@ -22,7 +23,7 @@ export function ProgramDetailPage({ program }: { program: Program }) {
     { label: "Experience level", value: program.experienceLevel },
     { label: "When it runs", value: program.typicalSchedule },
     { label: "Participation", value: program.participationDetails },
-  ].filter((d) => Boolean(d.value));
+  ].filter((d): d is { label: string; value: string } => Boolean(d.value));
 
   const hasImageHero = program.accentStyle === "image" && program.heroImage;
   const isBlue = program.accentStyle === "blue";
@@ -104,19 +105,15 @@ export function ProgramDetailPage({ program }: { program: Program }) {
           <div className="mx-auto max-w-screen-2xl">
             <h2 className="font-display text-2xl md:text-3xl text-ink-black">How It Works</h2>
             <div className="mx-auto mt-4 h-1 w-16 bg-imperial-gold" />
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {program.howItWorks.map((step, i) => (
-                <div
-                  key={step.title}
-                  className="rounded-2xl border-t-4 border-vietnamese-red bg-white p-6 shadow-sm transition-shadow hover:shadow-xl"
-                >
-                  <span className="font-display text-2xl text-[color:var(--color-imperial-gold)]">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="mt-3 font-display text-xl text-ink-black">{step.title}</h3>
-                  <p className="mt-2 text-sm text-on-surface-variant">{step.description}</p>
-                </div>
-              ))}
+            <div className="mt-8">
+              <EditorialFeatureColumns
+                numbered
+                columns={4}
+                items={program.howItWorks.map((step, index) => ({
+                  ...step,
+                  accent: (["red", "gold", "blue"] as const)[index % 3],
+                }))}
+              />
             </div>
           </div>
         </motion.section>
@@ -167,16 +164,9 @@ export function ProgramDetailPage({ program }: { program: Program }) {
         <motion.section {...fade} className="px-5 md:px-20 py-14 md:py-20">
           <div className="mx-auto max-w-3xl">
             <h2 className="font-display text-2xl md:text-3xl text-ink-black">Who It Is For</h2>
-            <dl className="mt-6 divide-y divide-[color:var(--color-outline-variant)]/40 rounded-2xl bg-surface-container p-6">
-              {details.map((d) => (
-                <div key={d.label} className="flex flex-col gap-1 py-3 sm:flex-row sm:gap-6">
-                  <dt className="w-48 shrink-0 text-xs font-semibold uppercase tracking-wider text-viking-blue">
-                    {d.label}
-                  </dt>
-                  <dd className="text-base text-on-surface-variant">{d.value}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="mt-6">
+              <DividedDetails items={details} />
+            </div>
           </div>
         </motion.section>
       )}

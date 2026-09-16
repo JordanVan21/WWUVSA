@@ -5,6 +5,7 @@ import { Lightbox } from "@/components/Lightbox";
 import { GalleryImage } from "@/components/GalleryImage";
 import { filterGallery, getCategoryPreview } from "@/data/gallery";
 import { getRelatedEvents, type EventMeta } from "@/lib/media";
+import { DividedDetails, EditorialFeatureColumns } from "@/components/EditorialInfo";
 
 const ACCENT_TEXT: Record<EventMeta["accent"], string> = {
   red: "text-vietnamese-red",
@@ -107,19 +108,12 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
           {facts.length > 0 && (
             <motion.aside
               {...reveal}
-              className={`h-fit rounded-lg border-t-4 ${ACCENT_BORDER[event.accent]} bg-white p-5 shadow-sm md:p-6`}
+              className={`h-fit border-t-2 ${ACCENT_BORDER[event.accent]} pt-5`}
             >
               <h3 className="font-display text-xl text-ink-black">Event Details</h3>
-              <dl className="mt-4 space-y-4">
-                {facts.map((f) => (
-                  <div key={f.label}>
-                    <dt className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">
-                      {f.label}
-                    </dt>
-                    <dd className="mt-1 text-sm font-semibold text-ink-black">{f.value}</dd>
-                  </div>
-                ))}
-              </dl>
+              <div className="mt-4">
+                <DividedDetails items={facts} accent={event.accent} />
+              </div>
             </motion.aside>
           )}
         </div>
@@ -140,24 +134,13 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
               </h2>
               <div className="dong-son-divider mt-6 h-px w-full max-w-md" />
             </div>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {event.expectations.map((x) => (
-                <motion.article
-                  key={x.title}
-                  {...reveal}
-                  className={`flex flex-col rounded-lg border-t-4 ${ACCENT_BORDER[event.accent]} bg-white p-5 shadow-sm transition-shadow duration-300 hover:shadow-md`}
-                >
-                  <span
-                    className={`material-symbols-outlined text-2xl ${ACCENT_TEXT[event.accent]}`}
-                    aria-hidden="true"
-                  >
-                    {x.icon}
-                  </span>
-                  <h3 className="mt-3 font-display text-xl text-ink-black">{x.title}</h3>
-                  <p className="mt-2 text-sm text-on-surface-variant">{x.description}</p>
-                </motion.article>
-              ))}
-            </div>
+            <EditorialFeatureColumns
+              columns={4}
+              items={event.expectations.map((x) => ({
+                ...x,
+                accent: event.accent,
+              }))}
+            />
           </div>
         </section>
       )}
@@ -207,9 +190,7 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
       {/* Current-year details (edit yearly) */}
       {event.currentYear && (
         <section className="mx-auto max-w-screen-2xl px-5 md:px-20 pb-14 md:pb-20">
-          <div
-            className={`mx-auto max-w-3xl rounded-lg border-t-4 ${ACCENT_BORDER[event.accent]} bg-surface-container-low p-6 shadow-sm md:p-8`}
-          >
+          <div className={`mx-auto max-w-3xl border-y-2 ${ACCENT_BORDER[event.accent]} py-7 md:py-9`}>
             <span
               className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}
             >
@@ -220,16 +201,9 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
               <p className="mt-4 text-on-surface-variant">{event.currentYear.note}</p>
             )}
             {event.currentYear.details && event.currentYear.details.length > 0 && (
-              <dl className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {event.currentYear.details.map((d) => (
-                  <div key={d.label}>
-                    <dt className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">
-                      {d.label}
-                    </dt>
-                    <dd className="mt-1 text-sm font-semibold text-ink-black">{d.value}</dd>
-                  </div>
-                ))}
-              </dl>
+              <div className="mt-6">
+                <DividedDetails items={event.currentYear.details} accent={event.accent} />
+              </div>
             )}
             {event.currentYear.link && (
               <a
