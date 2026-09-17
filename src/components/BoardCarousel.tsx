@@ -10,6 +10,37 @@ function perPageFor(width: number) {
   return 4;
 }
 
+function BoardPortrait({ imageUrl, alt, name, role }: { imageUrl?: string; alt: string; name: string; role: string }) {
+  const [failed, setFailed] = useState(false);
+
+  if (!imageUrl || failed) {
+    return (
+      <div
+        role="img"
+        aria-label={`${name}, ${role}. Photo not currently available`}
+        className="flex h-full w-full flex-col items-center justify-center gap-3 px-5 text-center text-on-surface-variant"
+      >
+        <span className="material-symbols-outlined text-5xl text-viking-blue/55" aria-hidden="true">
+          person
+        </span>
+        <span className="text-sm font-semibold">Photo not currently available</span>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={imageUrl}
+      alt={alt}
+      loading="lazy"
+      width={1372}
+      height={1920}
+      onError={() => setFailed(true)}
+      className="h-full w-full object-cover object-top transition-transform motion-safe:group-hover:scale-105"
+    />
+  );
+}
+
 export function BoardCarousel({ headingRef }: { headingRef?: React.Ref<HTMLHeadingElement> }) {
   const members = BOARD_MEMBERS;
   const viewportRef = useRef<HTMLDivElement | null>(null);
@@ -120,30 +151,7 @@ export function BoardCarousel({ headingRef }: { headingRef?: React.Ref<HTMLHeadi
               aria-hidden={undefined}
             >
               <div className="relative mb-3 aspect-[4/5] overflow-hidden rounded-2xl border-2 border-rice-paper bg-surface-container shadow-sm">
-                {m.imageUrl ? (
-                  <img
-                    src={m.imageUrl}
-                    alt={m.altText}
-                    loading="lazy"
-                    width={1372}
-                    height={1920}
-                    className="h-full w-full object-cover object-top transition-transform motion-safe:group-hover:scale-105"
-                  />
-                ) : (
-                  <div
-                    role="img"
-                    aria-label={`${m.name}, ${m.role}. Photo not currently available`}
-                    className="flex h-full w-full flex-col items-center justify-center gap-3 px-5 text-center text-on-surface-variant"
-                  >
-                    <span
-                      className="material-symbols-outlined text-5xl text-viking-blue/55"
-                      aria-hidden="true"
-                    >
-                      person
-                    </span>
-                    <span className="text-sm font-semibold">Photo not currently available</span>
-                  </div>
-                )}
+                <BoardPortrait imageUrl={m.imageUrl} alt={m.altText} name={m.name} role={m.role} />
                 {m.major && (
                   <div
                     className={`absolute bottom-0 left-0 w-full translate-y-full p-3 text-xs text-white backdrop-blur-sm transition-transform group-hover:translate-y-0 ${m.accent ?? "bg-ink-black/90"}`}
@@ -152,9 +160,9 @@ export function BoardCarousel({ headingRef }: { headingRef?: React.Ref<HTMLHeadi
                   </div>
                 )}
               </div>
-              <h4 className="font-display text-xl text-ink-black">{m.name}</h4>
+              <h4 className="font-display text-2xl text-ink-black">{m.name}</h4>
               <p
-                className={`text-xs font-semibold uppercase tracking-wider ${m.roleColor ?? "text-on-surface-variant"}`}
+                className={`text-sm font-semibold uppercase tracking-wider ${m.roleColor ?? "text-on-surface-variant"}`}
               >
                 {m.role}
               </p>

@@ -1,7 +1,3 @@
-import kenziePortrait from "@/assets/kenzie-vu.jpg.asset.json";
-import tommyPortrait from "@/assets/tommy-ngo.jpg.asset.json";
-import elizabethPortrait from "@/assets/elizabeth-kirse.jpg.asset.json";
-
 export type BoardMember = {
   id: string;
   name: string;
@@ -26,7 +22,7 @@ const raw: Omit<BoardMember, "altText">[] = [
     name: "Kenzie Vu",
     role: "Co-President",
     group: "executive",
-    imageUrl: kenziePortrait.url,
+    imageUrl: "/images/board/kenzie-vu.jpg",
     displayOrder: 1,
     roleColor: RED,
   },
@@ -35,7 +31,7 @@ const raw: Omit<BoardMember, "altText">[] = [
     name: "Tommy Ngo",
     role: "Co-President",
     group: "executive",
-    imageUrl: tommyPortrait.url,
+    imageUrl: "/images/board/tommy-ngo.jpg",
     displayOrder: 2,
     roleColor: RED,
   },
@@ -44,7 +40,7 @@ const raw: Omit<BoardMember, "altText">[] = [
     name: "Elizabeth Kirse",
     role: "Vice President",
     group: "executive",
-    imageUrl: elizabethPortrait.url,
+    imageUrl: "/images/board/elizabeth-kirse.jpg",
     displayOrder: 3,
     roleColor: BLUE,
   },

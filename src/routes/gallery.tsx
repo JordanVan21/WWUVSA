@@ -95,7 +95,7 @@ function GalleryPage() {
           <img src={HERO} alt="" className="h-full w-full object-cover" loading="eager" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink-black/85 to-transparent" />
-        <div className="relative z-10 px-5 text-center">
+        <div className="relative z-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 text-center">
           <h1 className="font-display text-4xl text-white md:text-6xl">
             {categoryMeta ? `${categoryMeta.label} Gallery` : "Captured Moments"}
           </h1>
@@ -108,8 +108,8 @@ function GalleryPage() {
         </div>
       </section>
 
-      <section className="bg-rice-paper px-5 md:px-20 py-12 md:py-16">
-        <div className="mx-auto max-w-screen-2xl">
+      <section className="bg-rice-paper px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 md:py-16">
+        <div className="mx-auto max-w-site">
           {/* Filters */}
           <div className="mb-8 space-y-5 rounded-2xl border border-[color:var(--color-outline-variant)]/60 bg-white/70 p-5 md:p-6">
             <FilterRow label="Event">

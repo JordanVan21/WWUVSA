@@ -46,8 +46,8 @@ export function EventGalleryPreview({
   const href = galleryHref ?? galleryLinkFor(event, year);
 
   return (
-    <section className="bg-rice-paper px-5 py-12 md:px-20 md:py-16">
-      <div className="mx-auto max-w-screen-2xl">
+    <section className="bg-rice-paper px-4 py-12 sm:px-6 md:px-8 md:py-16 lg:px-12 xl:px-16">
+      <div className="mx-auto max-w-site">
         <h2 className="font-display text-3xl text-ink-black md:text-4xl">
           {heading ?? `${label} Moments`}
         </h2>

@@ -49,8 +49,8 @@ function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-rice-paper px-5 md:px-20 py-16 md:py-24">
-        <div className="mx-auto grid max-w-screen-2xl grid-cols-1 items-center gap-12 lg:grid-cols-2">
+      <section className="bg-rice-paper px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24">
+        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="bg-surface-container-low px-5 md:px-20 py-16 md:py-24">
+      <section className="bg-surface-container-low px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24">
         <div className="mx-auto max-w-4xl text-center">
           <div className="dong-son-divider mx-auto mb-8 h-px w-full" />
           <h2 className="font-display text-3xl md:text-4xl">Purpose, Mission &amp; Values</h2>
@@ -125,8 +125,8 @@ function AboutPage() {
       </section>
 
       {/* Programs Bento */}
-      <section className="bg-rice-paper px-5 md:px-20 py-16 md:py-24">
-        <div className="mx-auto max-w-screen-2xl">
+      <section className="bg-rice-paper px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24">
+        <div className="mx-auto max-w-site">
           <h2 className="mb-10 text-center font-display text-3xl md:text-4xl">
             Our Signature Programs
           </h2>
@@ -222,9 +222,9 @@ function AboutPage() {
       {/* Board Slider */}
       <section
         id="executive-board"
-        className="scroll-mt-24 bg-surface px-5 md:px-20 py-16 md:py-24 md:scroll-mt-28"
+        className="scroll-mt-28 bg-surface px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24 md:scroll-mt-32 lg:scroll-mt-36"
       >
-        <div className="mx-auto max-w-screen-2xl">
+        <div className="mx-auto max-w-site">
           <BoardCarousel headingRef={boardHeadingRef} />
           <div className="mt-12 text-center">
             <p className="mb-4 text-on-surface-variant">
@@ -235,14 +235,14 @@ function AboutPage() {
       </section>
 
       {/* Community Roots - WWU ESC, NWVSA, UNAVSA */}
-      <section className="bg-rice-paper px-5 md:px-20 py-16 md:py-24">
-        <div className="mx-auto flex max-w-screen-2xl flex-col items-center text-center">
+      <section className="bg-rice-paper px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24">
+        <div className="mx-auto flex max-w-site flex-col items-center text-center">
           <h2 className="font-display text-3xl md:text-4xl">Community Roots</h2>
           <p className="mt-4 max-w-2xl text-lg text-on-surface-variant">
             WWU VSA is connected to a wider network of campus support, regional community, and
             Vietnamese student leadership across North America.
           </p>
-          <ul className="mt-12 grid w-full max-w-6xl grid-cols-1 md:grid-cols-3">
+          <ul className="mt-14 grid w-full max-w-screen-xl grid-cols-1 md:grid-cols-3">
             {COMMUNITY_ORGANIZATIONS.map((org, i) => {
               const color = [
                 "text-vietnamese-red",
@@ -252,10 +252,10 @@ function AboutPage() {
               return (
                 <li
                   key={org.id}
-                  className="group flex border-b border-[color:var(--color-outline-variant)]/60 py-8 last:border-b-0 md:border-b-0 md:border-l md:px-8 md:first:border-l-0"
+                  className="group flex border-b border-[color:var(--color-outline-variant)]/60 py-10 last:border-b-0 md:border-b-0 md:border-l md:px-10 md:first:border-l-0"
                 >
                   <div className="flex h-full w-full flex-col text-left">
-                    <div className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-surface p-4 transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100">
+                    <div className="mx-auto grid h-24 w-24 place-items-center rounded-full bg-surface p-4 transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100">
                       {org.logoUrl ? (
                         <img
                           src={org.logoUrl}
@@ -265,28 +265,28 @@ function AboutPage() {
                         />
                       ) : (
                         <span
-                          className={`material-symbols-outlined text-3xl ${color}`}
+                          className={`material-symbols-outlined text-4xl ${color}`}
                           aria-hidden="true"
                         >
                           {org.icon}
                         </span>
                       )}
                     </div>
-                    <h3 className="mt-4 text-center font-display text-xl text-on-surface">
+                    <h3 className="mt-5 text-center font-display text-2xl text-on-surface">
                       {org.acronym}
                     </h3>
-                    <p className="mt-1 text-center text-xs leading-snug text-on-surface-variant">
+                    <p className="mt-1 text-center text-sm leading-snug text-on-surface-variant">
                       {org.fullName}
                     </p>
                     <span
-                      className={`mx-auto mt-3 border-b pb-1 text-[11px] font-semibold uppercase tracking-wider ${color}`}
+                      className={`mx-auto mt-4 border-b pb-1 text-xs font-semibold uppercase tracking-wider ${color}`}
                     >
                       {org.scope}
                     </span>
-                    <p className="mt-5 text-sm leading-relaxed text-on-surface-variant">
+                    <p className="mt-6 text-base leading-relaxed text-on-surface-variant">
                       {org.description}
                     </p>
-                    <p className="mt-4 text-sm leading-relaxed text-on-surface-variant">
+                    <p className="mt-4 text-base leading-relaxed text-on-surface-variant">
                       <span className="font-semibold text-on-surface">How WWU VSA connects: </span>
                       {org.connectionDescription}
                     </p>
@@ -295,7 +295,7 @@ function AboutPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${org.accessibleLabel} (opens in a new tab)`}
-                      className="mt-6 inline-flex items-center gap-1 self-start rounded-md text-sm font-semibold text-viking-blue hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
+                      className="mt-6 inline-flex items-center gap-1 self-start rounded-md text-base font-semibold text-viking-blue hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
                     >
                       Visit website
                       <span

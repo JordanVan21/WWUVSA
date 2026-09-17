@@ -49,38 +49,38 @@ export function EditorialFeatureColumns({
           <article
             key={item.title}
             className={cn(
-              "group relative min-w-0 border-b border-[color:var(--color-outline-variant)]/55 py-7 last:border-b-0 sm:px-7 sm:first:pl-0 sm:[&:nth-child(2)]:border-l sm:[&:nth-child(2)]:border-[color:var(--color-outline-variant)]/55",
+              "group relative min-w-0 border-b border-[color:var(--color-outline-variant)]/55 py-9 last:border-b-0 sm:px-8 sm:first:pl-0 sm:[&:nth-child(2)]:border-l sm:[&:nth-child(2)]:border-[color:var(--color-outline-variant)]/55",
               columns === 3
                 ? "lg:border-b-0 lg:border-l lg:border-[color:var(--color-outline-variant)]/55 lg:first:border-l-0 lg:[&:nth-child(2)]:border-l"
                 : "lg:border-b-0 lg:border-l lg:border-[color:var(--color-outline-variant)]/55 lg:first:border-l-0",
             )}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               {item.icon && (
                 <span
                   className={cn(
-                    "grid h-10 w-10 shrink-0 place-items-center rounded-full",
+                    "grid h-12 w-12 shrink-0 place-items-center rounded-full",
                     accentSurface[accent],
                     accentText[accent],
                   )}
                   aria-hidden="true"
                 >
-                  <span className="material-symbols-outlined text-xl">{item.icon}</span>
+                  <span className="material-symbols-outlined text-2xl">{item.icon}</span>
                 </span>
               )}
               {numbered && (
-                <span className={cn("font-display text-xl", accentText[accent])} aria-hidden="true">
+                <span className={cn("font-display text-2xl", accentText[accent])} aria-hidden="true">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               )}
             </div>
-            <h3 className="mt-4 font-display text-xl text-ink-black md:text-2xl">{item.title}</h3>
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-on-surface-variant md:text-base">
+            <h3 className="mt-5 font-display text-2xl text-ink-black md:text-3xl">{item.title}</h3>
+            <p className="mt-3 max-w-md text-base leading-relaxed text-on-surface-variant md:text-lg">
               {item.description}
             </p>
             <div
               className={cn(
-                "mt-5 h-px w-full bg-gradient-to-r to-transparent opacity-70 transition-all duration-300 motion-reduce:transition-none",
+                "mt-6 h-px w-full bg-gradient-to-r to-transparent opacity-70 transition-all duration-300 motion-reduce:transition-none",
                 accentRule[accent],
               )}
               aria-hidden="true"

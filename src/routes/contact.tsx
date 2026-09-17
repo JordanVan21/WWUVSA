@@ -98,8 +98,8 @@ function ContactPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-rice-paper px-5 md:px-20 pt-16 pb-14">
-        <div className="relative z-10 mx-auto max-w-screen-2xl">
+      <section className="relative overflow-hidden bg-rice-paper px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-16 pb-14">
+        <div className="relative z-10 mx-auto max-w-site">
           <div className="mb-4 inline-block rounded-full bg-vietnamese-red/10 px-4 py-1 text-xs font-semibold text-vietnamese-red">
             Connect With Us
           </div>
@@ -112,7 +112,7 @@ function ContactPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-screen-2xl px-5 md:px-20 py-16 md:py-20">
+      <section className="mx-auto max-w-site px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-20">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
           {/* Form */}
           <div className="rounded-2xl border-t-4 border-vietnamese-red bg-white p-8 shadow-sm md:p-12 lg:col-span-7">

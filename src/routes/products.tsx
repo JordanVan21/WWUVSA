@@ -102,8 +102,8 @@ const products: Product[] = [
 function ProductsPage() {
   return (
     <>
-      <header className="relative overflow-hidden bg-rice-paper px-5 md:px-20 pt-16 pb-12">
-        <div className="mx-auto max-w-screen-2xl text-center">
+      <header className="relative overflow-hidden bg-rice-paper px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pt-16 pb-12">
+        <div className="mx-auto max-w-site text-center">
           <h1 className="mx-auto max-w-2xl font-display text-4xl leading-tight text-on-surface md:text-6xl">
             WWU VSA Merch
           </h1>
@@ -115,8 +115,8 @@ function ProductsPage() {
         </div>
       </header>
 
-      <section className="bg-surface px-5 md:px-20 py-16 md:py-24">
-        <div className="mx-auto max-w-screen-2xl">
+      <section className="bg-surface px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24">
+        <div className="mx-auto max-w-site">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((p) => (
               <article key={p.title + (p.variant ?? "")} className={`group flex flex-col overflow-hidden rounded-2xl border-t-4 ${p.border} bg-white shadow-sm transition-all duration-300 hover:shadow-xl`}>
@@ -164,7 +164,7 @@ function ProductsPage() {
         </div>
       </section>
 
-      <section className="bg-surface-container px-5 md:px-20 py-16 md:py-24">
+      <section className="bg-surface-container px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24">
         <div className="mx-auto grid max-w-4xl grid-cols-1 items-center gap-10 md:grid-cols-2">
           <div className="space-y-5">
             <h2 className="font-display text-3xl text-on-surface md:text-4xl">How to Get Yours</h2>

@@ -55,7 +55,7 @@ function EventsPage() {
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-black/85 via-ink-black/30 to-transparent" />
-        <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-5 md:px-20 pb-14">
+        <div className="relative z-10 mx-auto w-full max-w-site px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-14">
           <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.25em] text-imperial-gold">
             Cultural Legacy
           </span>
@@ -69,7 +69,7 @@ function EventsPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-screen-2xl px-5 md:px-20 py-16 md:py-24">
+      <section className="mx-auto max-w-site px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24">
         <div className="mb-12 flex flex-col items-center">
           <h2 className="text-center font-display text-3xl text-vietnamese-red md:text-4xl">
             Our Annual Traditions
@@ -117,7 +117,7 @@ function EventsPage() {
       </section>
 
       <section className="overflow-hidden bg-surface-container-low py-16 md:py-24">
-        <div className="mx-auto grid max-w-screen-2xl grid-cols-1 items-center gap-16 px-5 md:px-20 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-16 px-4 sm:px-6 md:px-8 lg:grid-cols-2 lg:px-12 xl:px-16">
           <div className="order-2 lg:order-1">
             <div className="relative mx-auto max-w-lg lg:mx-0">
               <div className="absolute -bottom-2 -right-2 -z-10 hidden h-full w-full translate-x-2 translate-y-2 rounded-lg border-2 border-imperial-gold sm:block" />

@@ -63,20 +63,20 @@ export function Header() {
         scrolled ? "shadow-md" : "shadow-sm"
       }`}
     >
-      <nav className="mx-auto flex max-w-screen-2xl items-center justify-between px-5 md:px-20 h-16">
+      <nav className="mx-auto flex max-w-site items-center justify-between px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 h-20 lg:h-24">
         <Link to="/" className="flex items-center gap-3" aria-label="WWU VSA home">
-          <BrandLogo className="h-11 w-11" />
-          <span className="font-display text-xl font-bold text-vietnamese-red tracking-tight">
+          <BrandLogo className="h-12 w-12 lg:h-14 lg:w-14" />
+          <span className="font-display text-2xl font-bold text-vietnamese-red tracking-tight">
             WWU VSA
           </span>
         </Link>
 
-        <div className="hidden min-w-0 items-center gap-8 lg:flex">
+        <div className="hidden min-w-0 items-center gap-9 lg:flex">
           {nav.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-sm font-semibold text-on-surface-variant hover:text-vietnamese-red transition-colors"
+              className="text-base font-semibold text-on-surface-variant hover:text-vietnamese-red transition-colors"
               activeProps={{
                 className: "text-vietnamese-red border-b-2 border-vietnamese-red pb-1",
               }}
@@ -91,7 +91,7 @@ export function Header() {
               aria-expanded={joinOpen}
               aria-haspopup="menu"
               aria-controls="join-us-menu"
-              className="inline-flex items-center gap-1 rounded-full bg-vietnamese-red px-5 py-2 text-sm font-semibold text-white shadow-md shadow-vietnamese-red/25 hover:scale-105 active:scale-95 transition-transform"
+              className="inline-flex items-center gap-1.5 rounded-full bg-vietnamese-red px-6 py-3 text-base font-semibold text-white shadow-md shadow-vietnamese-red/25 hover:scale-105 active:scale-95 transition-transform"
             >
               Join Us
               <span className="material-symbols-outlined text-base" aria-hidden="true">
@@ -154,13 +154,13 @@ export function Header() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
-          <span className="material-symbols-outlined">{open ? "close" : "menu"}</span>
+          <span className="material-symbols-outlined text-3xl">{open ? "close" : "menu"}</span>
         </button>
       </nav>
 
       {open && (
         <div className="border-t border-[color:var(--color-outline-variant)]/40 bg-[color:var(--color-surface)] lg:hidden">
-          <div className="flex flex-col px-5 py-4 gap-1">
+          <div className="flex flex-col px-4 sm:px-6 md:px-8 py-4 gap-1">
             {nav.map((n) => (
               <Link
                 key={n.to}

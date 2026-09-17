@@ -68,7 +68,7 @@ function HomePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-ink-black/85 via-ink-black/45 to-transparent" />
         </div>
-        <div className="relative z-10 w-full max-w-5xl px-5 md:px-20">
+        <div className="relative z-10 w-full max-w-5xl px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -129,8 +129,8 @@ function HomePage() {
       </section>
 
       {/* Xin Chào */}
-      <section className="lotus-pattern px-5 md:px-20 py-16 md:py-24">
-        <div className="mx-auto grid max-w-screen-2xl grid-cols-1 items-center gap-14 md:grid-cols-2">
+      <section className="lotus-pattern px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24">
+        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-14 md:grid-cols-2">
           <div className="relative">
             <img
               src={WELCOME_IMG}
@@ -169,8 +169,8 @@ function HomePage() {
       </section>
 
       {/* Why Join */}
-      <section className="bg-surface-container-low px-5 md:px-20 py-16 md:py-24">
-        <div className="mx-auto max-w-screen-2xl">
+      <section className="bg-surface-container-low px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24">
+        <div className="mx-auto max-w-site">
           <div className="mx-auto mb-14 max-w-2xl text-center">
             <h2 className="font-display text-3xl md:text-4xl text-ink-black">
               A Community Built for You
@@ -208,7 +208,7 @@ function HomePage() {
 
       {/* Programs Alternating */}
       <section className="py-16 md:py-24">
-        <div className="mx-auto grid max-w-screen-2xl grid-cols-1 items-center gap-12 px-5 md:grid-cols-2 md:gap-16 md:px-20">
+        <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-12 px-4 sm:px-6 md:grid-cols-2 md:gap-16 md:px-8 lg:px-12 xl:px-16">
           <div className="order-2 md:order-1">
             <span className="mb-4 inline-block rounded-full bg-imperial-gold/20 px-4 py-1 text-xs font-semibold text-[color:var(--color-tertiary)]">
               Regional Program
@@ -253,7 +253,7 @@ function HomePage() {
         </div>
 
         <div className="mt-16 bg-surface-container py-16 md:py-20">
-          <div className="mx-auto grid max-w-screen-2xl grid-cols-1 items-center gap-12 px-5 md:grid-cols-2 md:gap-16 md:px-20">
+          <div className="mx-auto grid max-w-site grid-cols-1 items-center gap-12 px-4 sm:px-6 md:grid-cols-2 md:gap-16 md:px-8 lg:px-12 xl:px-16">
             <img
               src={FAN_IMG}
               alt="Traditional Vietnamese fan dance performance"
@@ -279,7 +279,7 @@ function HomePage() {
         </div>
 
         {/* Viet 101 - no stats cards per updated brief */}
-        <div className="mx-auto mt-16 grid max-w-screen-2xl grid-cols-1 items-center gap-12 px-5 md:grid-cols-2 md:gap-16 md:px-20">
+        <div className="mx-auto mt-16 grid max-w-site grid-cols-1 items-center gap-12 px-4 sm:px-6 md:grid-cols-2 md:gap-16 md:px-8 lg:px-12 xl:px-16">
           <div className="order-2 md:order-1">
             <span className="mb-4 inline-block rounded-full bg-viking-blue/15 px-4 py-1 text-xs font-semibold text-viking-blue">
               Educational Series
@@ -309,8 +309,8 @@ function HomePage() {
       </section>
 
       {/* Signature Events */}
-      <section className="lotus-pattern px-5 md:px-20 py-16 md:py-24">
-        <div className="mx-auto max-w-screen-2xl">
+      <section className="lotus-pattern px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24">
+        <div className="mx-auto max-w-site">
           <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-xl">
               <h2 className="dong-son-border font-display text-3xl md:text-4xl text-ink-black">
@@ -360,8 +360,8 @@ function HomePage() {
       </section>
 
       {/* Support / Products preview */}
-      <section className="px-5 md:px-20 py-16 md:py-24">
-        <div className="mx-auto max-w-screen-2xl text-center">
+      <section className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24">
+        <div className="mx-auto max-w-site text-center">
           <h2 className="dong-son-border mx-auto inline-block font-display text-3xl md:text-4xl text-ink-black">
             Support the Association
           </h2>

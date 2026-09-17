@@ -64,7 +64,7 @@ function CalendarPage() {
     });
 
   return (
-    <main className="mx-auto max-w-screen-2xl px-5 md:px-20 py-16 md:py-24">
+    <main className="mx-auto max-w-site px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-16 md:py-24">
       <header className="mb-12 flex flex-col gap-2">
         <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[color:var(--color-imperial-gold)]">
           Our Schedule

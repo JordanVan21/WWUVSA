@@ -58,7 +58,7 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-ink-black/90 via-ink-black/45 to-transparent" />
-        <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-5 md:px-20 pb-10 md:pb-14">
+        <div className="relative z-10 mx-auto w-full max-w-site px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-10 md:pb-14">
           <Link
             to="/events"
             className="mb-4 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.25em] text-imperial-gold hover:underline"
@@ -88,7 +88,7 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
       </section>
 
       {/* Overview */}
-      <section className="mx-auto max-w-screen-2xl px-5 md:px-20 py-14 md:py-20">
+      <section className="mx-auto max-w-site px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-14 md:py-20">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-14">
           <motion.div {...reveal} className="lg:col-span-2">
             <span
@@ -121,8 +121,8 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
 
       {/* What to Expect */}
       {event.expectations && event.expectations.length > 0 && (
-        <section className="bg-surface-container-low px-5 md:px-20 py-14 md:py-20">
-          <div className="mx-auto max-w-screen-2xl">
+        <section className="bg-surface-container-low px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-14 md:py-20">
+          <div className="mx-auto max-w-site">
             <div className="mb-10 flex flex-col items-center">
               <span
                 className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}
@@ -148,8 +148,8 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
       {/* Featured Video */}
       {/* Evergreen detail sections */}
       {event.sections && event.sections.length > 0 && (
-        <section className="mx-auto max-w-screen-2xl px-5 md:px-20 py-14 md:py-20">
-          <div className="mx-auto max-w-3xl space-y-12">
+        <section className="mx-auto max-w-site px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-14 md:py-20">
+          <div className="mx-auto max-w-4xl space-y-12">
             {event.sections.map((s) => (
               <motion.div key={s.title} {...reveal}>
                 <h2 className="dong-son-border font-display text-2xl text-ink-black md:text-3xl">
@@ -189,9 +189,9 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
 
       {/* Current-year details (edit yearly) */}
       {event.currentYear && (
-        <section className="mx-auto max-w-screen-2xl px-5 md:px-20 pb-14 md:pb-20">
+        <section className="mx-auto max-w-site px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 pb-14 md:pb-20">
           <div
-            className={`mx-auto max-w-3xl border-y-2 ${ACCENT_BORDER[event.accent]} py-7 md:py-9`}
+            className={`mx-auto max-w-4xl border-y-2 ${ACCENT_BORDER[event.accent]} py-7 md:py-9`}
           >
             <span
               className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}
@@ -225,7 +225,7 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
       )}
 
       {featuredVideo && (
-        <section className="mx-auto max-w-screen-2xl px-5 md:px-20 py-14 md:py-20">
+        <section className="mx-auto max-w-site px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-14 md:py-20">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
             <div className="overflow-hidden rounded-lg bg-ink-black shadow-sm">
               <video
@@ -273,8 +273,8 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
 
       {/* Featured Moments */}
       {media.length > 0 && (
-        <section className="bg-rice-paper px-5 md:px-20 py-14 md:py-20">
-          <div className="mx-auto max-w-screen-2xl">
+        <section className="bg-rice-paper px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-14 md:py-20">
+          <div className="mx-auto max-w-site">
             <div className="mb-10 flex flex-col items-center">
               <span
                 className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}
@@ -331,7 +331,7 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
 
       {/* Explore More Events */}
       {related.length > 0 && (
-        <section className="mx-auto max-w-screen-2xl px-5 md:px-20 py-14 md:py-20">
+        <section className="mx-auto max-w-site px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-14 md:py-20">
           <div className="mb-10 flex flex-col items-center">
             <h2 className="text-center font-display text-2xl text-vietnamese-red md:text-3xl">
               Explore More Events

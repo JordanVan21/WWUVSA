@@ -9,21 +9,21 @@ const linkClasses =
 export function Footer() {
   return (
     <footer className="col-span-full w-full min-w-0 border-t border-[color:var(--color-outline-variant)]/60 bg-rice-paper">
-      <div className="mx-auto grid w-full min-w-0 max-w-screen-2xl grid-cols-1 gap-y-10 px-5 py-12 sm:px-6 md:grid-cols-2 md:gap-x-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,0.75fr)_minmax(0,0.9fr)] lg:gap-x-16 lg:px-8">
-        <section className="w-full min-w-0 space-y-4 md:col-span-2 lg:col-span-1">
+      <div className="mx-auto grid w-full min-w-0 max-w-site grid-cols-1 gap-y-14 px-4 py-16 sm:px-6 md:grid-cols-2 md:gap-x-14 md:px-8 md:py-20 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,0.75fr)_minmax(0,0.9fr)] lg:gap-x-20 lg:px-12 xl:px-16">
+        <section className="w-full min-w-0 space-y-5 md:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-3">
-            <BrandLogo className="h-12 w-12" />
-            <span className="font-display text-xl font-bold text-viking-blue">WWU VSA</span>
+            <BrandLogo className="h-14 w-14" />
+            <span className="font-display text-2xl font-bold text-viking-blue">WWU VSA</span>
           </div>
-          <p className="w-full text-sm leading-relaxed text-on-surface-variant sm:max-w-md">
+          <p className="w-full text-base leading-relaxed text-on-surface-variant sm:max-w-md">
             Representing the Vietnamese student body at Western Washington University, celebrating
             heritage, empowering leadership, and building community since 1996.
           </p>
           <div className="w-full min-w-0">
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-ink-black">
+            <h4 className="mb-5 text-sm font-semibold uppercase tracking-widest text-ink-black">
               Part of the Community
             </h4>
-            <ul className="grid w-full min-w-0 grid-cols-1 items-start gap-5 sm:grid-cols-3">
+            <ul className="grid w-full min-w-0 grid-cols-1 items-start gap-6 sm:grid-cols-3">
               {COMMUNITY_ORGANIZATIONS.map((org) => (
                 <li key={org.id} className="w-full min-w-0">
                   <a
@@ -31,17 +31,17 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${org.accessibleLabel} (opens in a new tab)`}
-                    className="group flex w-full min-w-0 flex-col items-center gap-1 rounded-lg p-1 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
+                    className="group flex w-full min-w-0 flex-col items-center gap-1.5 rounded-lg p-1 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
                   >
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[color:var(--color-outline-variant)] bg-white text-viking-blue transition-colors group-hover:border-viking-blue">
-                      <span className="material-symbols-outlined text-xl" aria-hidden="true">
+                    <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-[color:var(--color-outline-variant)] bg-white text-viking-blue transition-colors group-hover:border-viking-blue">
+                      <span className="material-symbols-outlined text-2xl" aria-hidden="true">
                         {org.icon}
                       </span>
                     </span>
-                    <span className="break-words text-sm font-bold text-on-surface-variant group-hover:text-viking-blue group-hover:underline">
+                    <span className="break-words text-base font-bold text-on-surface-variant group-hover:text-viking-blue group-hover:underline">
                       {org.acronym}
                     </span>
-                    <span className="max-w-full break-words text-[11px] leading-tight text-on-surface-variant [overflow-wrap:anywhere]">
+                    <span className="max-w-full break-words text-xs leading-tight text-on-surface-variant [overflow-wrap:anywhere]">
                       {org.shortName.replace(/\n/g, " ")}
                     </span>
                   </a>
@@ -52,10 +52,10 @@ export function Footer() {
         </section>
 
         <nav aria-label="Explore" className="w-full min-w-0">
-          <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-vietnamese-red">
+          <h4 className="mb-5 text-sm font-semibold uppercase tracking-widest text-vietnamese-red">
             Explore
           </h4>
-          <ul className="space-y-1 text-sm">
+          <ul className="space-y-2 text-base">
             <li>
               <Link to="/about" className={linkClasses}>
                 About Us
@@ -80,10 +80,10 @@ export function Footer() {
         </nav>
 
         <section className="w-full min-w-0">
-          <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-vietnamese-red">
+          <h4 className="mb-5 text-sm font-semibold uppercase tracking-widest text-vietnamese-red">
             Connect
           </h4>
-          <ul className="space-y-1 text-sm">
+          <ul className="space-y-2 text-base">
             {FEATURES.calendar && (
               <li>
                 <Link to="/calendar" className={linkClasses}>
@@ -102,28 +102,28 @@ export function Footer() {
               </a>
             </li>
           </ul>
-          <div className="mt-4 flex gap-3">
+          <div className="mt-5 flex gap-4">
             <a
               href="https://instagram.com/wwuvsa"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WWU VSA on Instagram (opens in a new tab)"
-              className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--color-outline-variant)] text-on-surface-variant transition-colors hover:border-viking-blue hover:text-viking-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
+              className="grid h-14 w-14 place-items-center rounded-full border border-[color:var(--color-outline-variant)] text-on-surface-variant transition-colors hover:border-viking-blue hover:text-viking-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
             >
-              <span className="material-symbols-outlined text-lg">alternate_email</span>
+              <span className="material-symbols-outlined text-xl">alternate_email</span>
             </a>
             <a
               href="mailto:westernvsa@gmail.com"
               aria-label="Email WWU VSA"
-              className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--color-outline-variant)] text-on-surface-variant transition-colors hover:border-viking-blue hover:text-viking-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
+              className="grid h-14 w-14 place-items-center rounded-full border border-[color:var(--color-outline-variant)] text-on-surface-variant transition-colors hover:border-viking-blue hover:text-viking-blue focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-vietnamese-red"
             >
-              <span className="material-symbols-outlined text-lg">mail</span>
+              <span className="material-symbols-outlined text-xl">mail</span>
             </a>
           </div>
         </section>
       </div>
       <div className="w-full border-t border-[color:var(--color-outline-variant)]/40">
-        <div className="mx-auto w-full max-w-screen-2xl px-5 py-5 text-center text-xs text-on-surface-variant sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-site px-4 py-6 text-center text-sm text-on-surface-variant sm:px-6 md:px-8 lg:px-12 xl:px-16">
           © {new Date().getFullYear()} WWU Vietnamese Student Association. Heritage &amp; Future.
         </div>
       </div>

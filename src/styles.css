@@ -78,6 +78,11 @@
   --spacing-stack-sm: 0.5rem;
   --spacing-stack-md: 1.5rem;
   --spacing-stack-lg: 3rem;
+
+  /* Shared site-wide content container. Used site-wide via `max-w-site`
+     instead of `max-w-screen-2xl` so the value isn't tied to the `2xl`
+     responsive breakpoint. */
+  --container-site: 112.5rem;
 }
 
 :root {

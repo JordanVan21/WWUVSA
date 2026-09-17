@@ -51,7 +51,7 @@ export function ProgramDetailPage({ program }: { program: Program }) {
             <div className="absolute inset-0 bg-gradient-to-r from-ink-black/85 via-ink-black/60 to-ink-black/30" />
           </>
         )}
-        <div className="relative z-10 mx-auto max-w-screen-2xl px-5 py-10 md:px-20 md:py-14">
+        <div className="relative z-10 mx-auto max-w-site px-4 py-10 sm:px-6 md:px-8 md:py-14 lg:px-12 xl:px-16">
           <Link
             to="/about"
             className="group inline-flex items-center gap-1 text-sm font-semibold opacity-90 transition hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2"
@@ -84,8 +84,8 @@ export function ProgramDetailPage({ program }: { program: Program }) {
       </section>
 
       {/* About the Program */}
-      <motion.section {...fade} className="px-5 md:px-20 py-14 md:py-20">
-        <div className="mx-auto max-w-3xl">
+      <motion.section {...fade} className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-14 md:py-20">
+        <div className="mx-auto max-w-4xl">
           <h2 className="dong-son-border font-display text-2xl md:text-3xl text-ink-black">
             About the Program
           </h2>
@@ -101,8 +101,8 @@ export function ProgramDetailPage({ program }: { program: Program }) {
 
       {/* How It Works */}
       {program.howItWorks && program.howItWorks.length > 0 && (
-        <motion.section {...fade} className="bg-surface-container-low px-5 md:px-20 py-14 md:py-20">
-          <div className="mx-auto max-w-screen-2xl">
+        <motion.section {...fade} className="bg-surface-container-low px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-14 md:py-20">
+          <div className="mx-auto max-w-site">
             <h2 className="font-display text-2xl md:text-3xl text-ink-black">How It Works</h2>
             <div className="mx-auto mt-4 h-1 w-16 bg-imperial-gold" />
             <div className="mt-8">
@@ -121,8 +121,8 @@ export function ProgramDetailPage({ program }: { program: Program }) {
 
       {/* Program sections */}
       {program.sections && program.sections.length > 0 && (
-        <motion.section {...fade} className="px-5 md:px-20 py-14 md:py-20">
-          <div className="mx-auto max-w-3xl space-y-12">
+        <motion.section {...fade} className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-14 md:py-20">
+          <div className="mx-auto max-w-4xl space-y-12">
             {program.sections.map((s) => (
               <div key={s.title}>
                 <h2 className="dong-son-border font-display text-2xl md:text-3xl text-ink-black">
@@ -161,8 +161,8 @@ export function ProgramDetailPage({ program }: { program: Program }) {
       )}
       {/* Who It Is For */}
       {details.length > 0 && (
-        <motion.section {...fade} className="px-5 md:px-20 py-14 md:py-20">
-          <div className="mx-auto max-w-3xl">
+        <motion.section {...fade} className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-14 md:py-20">
+          <div className="mx-auto max-w-4xl">
             <h2 className="font-display text-2xl md:text-3xl text-ink-black">Who It Is For</h2>
             <div className="mt-6">
               <DividedDetails items={details} />
@@ -173,8 +173,8 @@ export function ProgramDetailPage({ program }: { program: Program }) {
 
       {/* Featured media */}
       {(program.videoUrl || media.length > 0) && (
-        <motion.section {...fade} className="lotus-pattern px-5 md:px-20 py-14 md:py-20">
-          <div className="mx-auto max-w-screen-2xl">
+        <motion.section {...fade} className="lotus-pattern px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-14 md:py-20">
+          <div className="mx-auto max-w-site">
             <h2 className="font-display text-2xl md:text-3xl text-ink-black">Featured Media</h2>
             {program.videoUrl && (
               <div className="mt-8 aspect-video w-full overflow-hidden rounded-2xl shadow-lg">
@@ -209,8 +209,8 @@ export function ProgramDetailPage({ program }: { program: Program }) {
       )}
 
       {/* Participation CTA */}
-      <section className="px-5 md:px-20 py-14 md:py-20">
-        <div className="mx-auto max-w-3xl rounded-2xl border border-[color:var(--color-outline-variant)]/40 bg-surface-container-low p-8 text-center shadow-sm">
+      <section className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-14 md:py-20">
+        <div className="mx-auto max-w-4xl rounded-2xl border border-[color:var(--color-outline-variant)]/40 bg-surface-container-low p-8 text-center shadow-sm">
           <h2 className="font-display text-2xl text-ink-black">Interested in {program.name}?</h2>
           <p className="mt-2 text-on-surface-variant">
             Come to a meeting or reach out, and we'll point you to the right people.
