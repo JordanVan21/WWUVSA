@@ -6,7 +6,7 @@
  * src/lib/site-config.ts on the website.
  */
 
-var SPREADSHEET_ID = '1KUDk45RtHkYwuNEDVTiNuzJWs6vojzHloDOvxGRz9oI';
+var SPREADSHEET_ID = '1ezXrEa8pp1zrLJI5uRsd53g7CUSCaJGkhye4yNTQocY';
 var SHEET_NAME = 'Form Responses'; // change if your tab has a different name
 var TIME_ZONE = 'America/Los_Angeles';
 var HEADERS = ['Timestamp', 'Name', 'Email Address', 'Subject', 'Message'];
