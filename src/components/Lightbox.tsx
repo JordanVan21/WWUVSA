@@ -61,7 +61,7 @@ export function Lightbox({ items, index, onClose, onIndex }: Props) {
           onClose();
         }}
         aria-label="Close viewer"
-        className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
+        className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
       >
         <span className="material-symbols-outlined">close</span>
       </button>
@@ -71,7 +71,7 @@ export function Lightbox({ items, index, onClose, onIndex }: Props) {
           prev();
         }}
         aria-label="Previous"
-        className="absolute left-4 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
+        className="absolute left-4 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
       >
         <span className="material-symbols-outlined">chevron_left</span>
       </button>
@@ -81,7 +81,7 @@ export function Lightbox({ items, index, onClose, onIndex }: Props) {
           next();
         }}
         aria-label="Next"
-        className="absolute right-4 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
+        className="absolute right-4 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
       >
         <span className="material-symbols-outlined">chevron_right</span>
       </button>

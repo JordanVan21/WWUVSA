@@ -58,7 +58,7 @@ function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[600px] h-[88vh] items-center overflow-hidden">
+      <section className="relative flex h-[70vh] max-h-[560px] min-h-[420px] items-center overflow-hidden md:h-[88vh] md:max-h-none md:min-h-[600px]">
         <div className="absolute inset-0 z-0">
           <img
             src={HERO_IMG}
