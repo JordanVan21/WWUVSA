@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BOARD_MEMBERS } from "@/lib/board";
+import { assetPath } from "@/lib/assetPath";
 
 const GAP = 24;
 
@@ -30,7 +31,7 @@ function BoardPortrait({ imageUrl, alt, name, role }: { imageUrl?: string; alt: 
 
   return (
     <img
-      src={imageUrl}
+      src={assetPath(imageUrl)}
       alt={alt}
       loading="lazy"
       width={1372}

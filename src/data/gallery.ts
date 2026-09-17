@@ -30,11 +30,7 @@
  */
 
 import type { EventSlug } from "@/lib/event-types";
-import heritageNight2024Video from "@/assets/videos/heritage-night-2024.webm.asset.json";
-import heritageNight2025Video from "@/assets/videos/heritage-night-2025.webm.asset.json";
-import heritageNight2026Video from "@/assets/videos/heritage-night-2026.webm.asset.json";
-import tet2025Video from "@/assets/videos/tet-2025.webm.asset.json";
-import turkeyBowl2024Video from "@/assets/videos/turkey-bowl-2024.webm.asset.json";
+import { assetPath } from "@/lib/assetPath";
 
 /** Gallery categories: the event slugs plus program and organization buckets. */
 export type GalleryCategory = EventSlug | "acce" | "general";
@@ -2457,7 +2453,7 @@ function buildPhotos(sets: PhotoSet[]): GalleryPhoto[] {
 const GALLERY_VIDEOS: GalleryPhoto[] = [
   {
     id: "heritage-night-2026-recap-video",
-    src: heritageNight2026Video.url,
+    src: "/images/gallery/heritage-night/2026/VSA Heritage Night 2026.mp4",
     thumbnail: "/images/video-posters/heritage-night-2026.jpg",
     category: "heritage-night",
     year: "2026",
@@ -2469,7 +2465,7 @@ const GALLERY_VIDEOS: GalleryPhoto[] = [
   },
   {
     id: "heritage-night-2025-recap-video",
-    src: heritageNight2025Video.url,
+    src: "/images/gallery/heritage-night/2025/VSA Heritage Nigth 2025.mp4",
     thumbnail: "/images/video-posters/heritage-night-2025.jpg",
     category: "heritage-night",
     year: "2025",
@@ -2480,7 +2476,7 @@ const GALLERY_VIDEOS: GalleryPhoto[] = [
   },
   {
     id: "heritage-night-2024-recap-video",
-    src: heritageNight2024Video.url,
+    src: "/images/gallery/heritage-night/2024/VSA Heritage Night 2024.mp4",
     thumbnail: "/images/video-posters/heritage-night-2024.jpg",
     category: "heritage-night",
     year: "2024",
@@ -2491,7 +2487,7 @@ const GALLERY_VIDEOS: GalleryPhoto[] = [
   },
   {
     id: "tet-2025-dance-video",
-    src: tet2025Video.url,
+    src: "/images/gallery/tet/2025/TetInSeattledance25.mp4",
     thumbnail: "/images/video-posters/tet-2025.jpg",
     category: "tet",
     year: "2025",
@@ -2503,7 +2499,7 @@ const GALLERY_VIDEOS: GalleryPhoto[] = [
   },
   {
     id: "turkey-bowl-2024-recap-video",
-    src: turkeyBowl2024Video.url,
+    src: "/images/gallery/turkey-bowl/2024/MVI_2305.MP4",
     thumbnail: "/images/video-posters/turkey-bowl-2024-recap.jpg",
     category: "turkey-bowl",
     year: "2024",
@@ -2519,7 +2515,7 @@ const GALLERY_VIDEOS: GalleryPhoto[] = [
 export const GALLERY_PHOTOS: GalleryPhoto[] = [...GALLERY_VIDEOS, ...buildPhotos(PHOTO_SETS)];
 
 /** Curated real photos used outside the archive. Keep page imagery tied to this registry. */
-export const GALLERY_USAGE = {
+const GALLERY_USAGE_PATHS = {
   homeHero: "/images/gallery/general/2025/beat the board meeting.png",
   homeWelcome: "/images/gallery/general/2026/UNC.png",
   homeViet101: "/images/gallery/general/2026/DIY Envelope.png",
@@ -2539,6 +2535,10 @@ export const GALLERY_USAGE = {
   acceProgram: "/images/gallery/acce/2024/IMG_1937.JPG",
   acceOlympics: "/images/gallery/acce/2024/IMG_5971.JPG",
 } as const;
+
+export const GALLERY_USAGE = Object.fromEntries(
+  Object.entries(GALLERY_USAGE_PATHS).map(([key, value]) => [key, assetPath(value)]),
+) as Record<keyof typeof GALLERY_USAGE_PATHS, string>;
 
 /** Official executive board portraits. Intentionally NOT part of the public gallery feed. */
 export const BOARD_PHOTOS: GalleryPhoto[] = [];
@@ -2570,8 +2570,8 @@ function fromGalleryPhoto(p: GalleryPhoto, index: number): GalleryItem {
     year: p.year,
     mediaType: p.type,
     subtype: p.subtype,
-    thumbnailUrl: p.thumbnail ?? p.src,
-    mediaUrl: p.src,
+    thumbnailUrl: assetPath(p.thumbnail ?? p.src),
+    mediaUrl: assetPath(p.src),
     altText: p.alt,
     featured: p.featured ?? false,
     order: p.order ?? index,
