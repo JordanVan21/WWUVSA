@@ -190,7 +190,9 @@ export function EventDetailPage({ event }: { event: EventMeta }) {
       {/* Current-year details (edit yearly) */}
       {event.currentYear && (
         <section className="mx-auto max-w-screen-2xl px-5 md:px-20 pb-14 md:pb-20">
-          <div className={`mx-auto max-w-3xl border-y-2 ${ACCENT_BORDER[event.accent]} py-7 md:py-9`}>
+          <div
+            className={`mx-auto max-w-3xl border-y-2 ${ACCENT_BORDER[event.accent]} py-7 md:py-9`}
+          >
             <span
               className={`text-xs font-semibold uppercase tracking-[0.25em] ${ACCENT_TEXT[event.accent]}`}
             >

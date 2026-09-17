@@ -6,9 +6,15 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact | WWU VSA" },
-      { name: "description", content: "Get in touch with WWU VSA: general body meetings, email, and campus location." },
+      {
+        name: "description",
+        content: "Get in touch with WWU VSA: general body meetings, email, and campus location.",
+      },
       { property: "og:title", content: "Contact | WWU VSA" },
-      { property: "og:description", content: "Reach the WWU Vietnamese Student Association board and community." },
+      {
+        property: "og:description",
+        content: "Reach the WWU Vietnamese Student Association board and community.",
+      },
     ],
   }),
   component: ContactPage,
@@ -27,7 +33,8 @@ function validate(values: Fields) {
   const message = values.message.trim();
 
   if (!name) errors.name = "Please enter your name.";
-  else if (name.length > LIMITS.name) errors.name = `Please keep your name under ${LIMITS.name} characters.`;
+  else if (name.length > LIMITS.name)
+    errors.name = `Please keep your name under ${LIMITS.name} characters.`;
 
   if (!email) errors.email = "Please enter your email address.";
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > LIMITS.email)
@@ -51,11 +58,12 @@ function ContactPage() {
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
   const configured = isContactFormConfigured();
 
-  const setField = (key: keyof Fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setValues((prev) => ({ ...prev, [key]: e.target.value }));
-    setErrors((prev) => ({ ...prev, [key]: undefined }));
-    if (status === "error" || status === "sent") setStatus("idle");
-  };
+  const setField =
+    (key: keyof Fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setValues((prev) => ({ ...prev, [key]: e.target.value }));
+      setErrors((prev) => ({ ...prev, [key]: undefined }));
+      if (status === "error" || status === "sent") setStatus("idle");
+    };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -108,47 +116,130 @@ function ContactPage() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
           {/* Form */}
           <div className="rounded-2xl border-t-4 border-vietnamese-red bg-white p-8 shadow-sm md:p-12 lg:col-span-7">
-            <h2 className="mb-6 font-display text-3xl text-ink-black md:text-4xl">Send us a Message</h2>
+            <h2 className="mb-6 font-display text-3xl text-ink-black md:text-4xl">
+              Send us a Message
+            </h2>
             <form className="space-y-6" onSubmit={onSubmit} noValidate>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
-                  <label htmlFor="name" className="mb-2 block text-sm font-semibold">Name</label>
-                  <input id="name" name="name" type="text" required maxLength={LIMITS.name} value={values.name} onChange={setField("name")} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} placeholder="Lê Văn An" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                  <label htmlFor="name" className="mb-2 block text-sm font-semibold">
+                    Name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    maxLength={LIMITS.name}
+                    value={values.name}
+                    onChange={setField("name")}
+                    aria-invalid={Boolean(errors.name)}
+                    aria-describedby={errors.name ? "name-error" : undefined}
+                    placeholder="Lê Văn An"
+                    className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10"
+                  />
                   {errors.name && <FieldError id="name-error">{errors.name}</FieldError>}
                 </div>
                 <div>
-                  <label htmlFor="email" className="mb-2 block text-sm font-semibold">Email Address</label>
-                  <input id="email" name="email" type="email" required maxLength={LIMITS.email} value={values.email} onChange={setField("email")} aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : undefined} placeholder="you@wwu.edu" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                  <label htmlFor="email" className="mb-2 block text-sm font-semibold">
+                    Email Address
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    maxLength={LIMITS.email}
+                    value={values.email}
+                    onChange={setField("email")}
+                    aria-invalid={Boolean(errors.email)}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                    placeholder="you@wwu.edu"
+                    className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10"
+                  />
                   {errors.email && <FieldError id="email-error">{errors.email}</FieldError>}
                 </div>
               </div>
               <div>
-                <label htmlFor="subject" className="mb-2 block text-sm font-semibold">Subject</label>
-                <input id="subject" name="subject" type="text" required maxLength={LIMITS.subject} value={values.subject} onChange={setField("subject")} aria-invalid={Boolean(errors.subject)} aria-describedby={errors.subject ? "subject-error" : undefined} placeholder="General Inquiry" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                <label htmlFor="subject" className="mb-2 block text-sm font-semibold">
+                  Subject
+                </label>
+                <input
+                  id="subject"
+                  name="subject"
+                  type="text"
+                  required
+                  maxLength={LIMITS.subject}
+                  value={values.subject}
+                  onChange={setField("subject")}
+                  aria-invalid={Boolean(errors.subject)}
+                  aria-describedby={errors.subject ? "subject-error" : undefined}
+                  placeholder="General Inquiry"
+                  className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10"
+                />
                 {errors.subject && <FieldError id="subject-error">{errors.subject}</FieldError>}
               </div>
               <div>
-                <label htmlFor="message" className="mb-2 block text-sm font-semibold">Your Message</label>
-                <textarea id="message" name="message" rows={5} required maxLength={LIMITS.message} value={values.message} onChange={setField("message")} aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "message-error" : undefined} placeholder="How can we help you?" className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10" />
+                <label htmlFor="message" className="mb-2 block text-sm font-semibold">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  required
+                  maxLength={LIMITS.message}
+                  value={values.message}
+                  onChange={setField("message")}
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={errors.message ? "message-error" : undefined}
+                  placeholder="How can we help you?"
+                  className="w-full rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-low px-4 py-3 outline-none transition focus:border-vietnamese-red focus:ring-4 focus:ring-vietnamese-red/10"
+                />
                 {errors.message && <FieldError id="message-error">{errors.message}</FieldError>}
               </div>
 
               {/* Honeypot: hidden from people, tempting to bots. */}
               <div aria-hidden="true" className="absolute h-0 w-0 overflow-hidden opacity-0">
                 <label htmlFor="website">Website</label>
-                <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
               </div>
 
               <button
                 type="submit"
                 disabled={status === "sending" || !configured}
                 className={`inline-flex w-full items-center justify-center gap-2 rounded-full px-10 py-4 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02] active:scale-95 md:w-auto ${
-                  status === "sent" ? "bg-green-600 shadow-green-600/25" : "bg-vietnamese-red shadow-vietnamese-red/25 disabled:opacity-80"
+                  status === "sent"
+                    ? "bg-green-600 shadow-green-600/25"
+                    : "bg-vietnamese-red shadow-vietnamese-red/25 disabled:opacity-80"
                 } disabled:cursor-not-allowed`}
               >
-                {(status === "idle" || status === "error") && (<><span>Send Message</span><span className="material-symbols-outlined">send</span></>)}
-                {status === "sending" && (<><span>Sending...</span><span className="material-symbols-outlined animate-spin">sync</span></>)}
-                {status === "sent" && (<><span>Message Sent!</span><span className="material-symbols-outlined">check_circle</span></>)}
+                {(status === "idle" || status === "error") && (
+                  <>
+                    <span>Send Message</span>
+                    <span className="material-symbols-outlined">send</span>
+                  </>
+                )}
+                {status === "sending" && (
+                  <>
+                    <span>Sending...</span>
+                    <span className="material-symbols-outlined animate-spin">sync</span>
+                  </>
+                )}
+                {status === "sent" && (
+                  <>
+                    <span>Message Sent!</span>
+                    <span className="material-symbols-outlined">check_circle</span>
+                  </>
+                )}
               </button>
 
               <div aria-live="polite" className="space-y-3">
@@ -160,14 +251,24 @@ function ContactPage() {
                 )}
                 {status === "error" && (
                   <p className="rounded-lg bg-vietnamese-red/10 px-4 py-3 text-sm text-vietnamese-red">
-                    We couldn't send your message right now. Please try again later or contact WWU VSA
-                    directly at <a href={`mailto:${WWU_VSA_EMAIL}`} className="underline">{WWU_VSA_EMAIL}</a>.
+                    We couldn't send your message right now. Please try again later or contact WWU
+                    VSA directly at{" "}
+                    <a href={`mailto:${WWU_VSA_EMAIL}`} className="underline">
+                      {WWU_VSA_EMAIL}
+                    </a>
+                    .
                   </p>
                 )}
                 {!configured && (
                   <p className="rounded-lg bg-surface-container px-4 py-3 text-sm text-on-surface-variant">
                     Our message form is being set up. In the meantime, please email us at{" "}
-                    <a href={`mailto:${WWU_VSA_EMAIL}`} className="font-semibold text-viking-blue underline">{WWU_VSA_EMAIL}</a>.
+                    <a
+                      href={`mailto:${WWU_VSA_EMAIL}`}
+                      className="font-semibold text-viking-blue underline"
+                    >
+                      {WWU_VSA_EMAIL}
+                    </a>
+                    .
                   </p>
                 )}
               </div>
@@ -180,15 +281,27 @@ function ContactPage() {
               <h3 className="mb-6 font-display text-2xl text-viking-blue">Contact Information</h3>
               <div className="space-y-6">
                 <InfoRow icon="mail" title="Email Us">
-                  <a href="mailto:westernvsa@gmail.com" className="text-viking-blue hover:underline">westernvsa@gmail.com</a>
+                  <a
+                    href="mailto:westernvsa@gmail.com"
+                    className="text-viking-blue hover:underline"
+                  >
+                    westernvsa@gmail.com
+                  </a>
                 </InfoRow>
                 <InfoRow icon="account_circle" title="Follow our Journey">
-                  <a href="#" className="inline-flex items-center gap-1 text-viking-blue hover:underline">
+                  <a
+                    href="#"
+                    className="inline-flex items-center gap-1 text-viking-blue hover:underline"
+                  >
                     @wwuvsa <span className="material-symbols-outlined text-sm">open_in_new</span>
                   </a>
                 </InfoRow>
                 <InfoRow icon="calendar_today" title="General Body Meetings">
-                  <p className="text-on-surface-variant">Tuesdays at 6:00 PM<br />Viking Union 552</p>
+                  <p className="text-on-surface-variant">
+                    Tuesdays at 6:00 PM
+                    <br />
+                    Viking Union 552
+                  </p>
                 </InfoRow>
               </div>
               <div className="mt-8 border-l-2 border-imperial-gold pl-4">
@@ -201,7 +314,9 @@ function ContactPage() {
             <div className="border-t border-[color:var(--color-outline-variant)]/60 pt-6">
               <div className="mb-3 flex items-center justify-between px-2">
                 <h3 className="text-sm font-semibold text-on-surface">Find Us at WWU</h3>
-                <span className="material-symbols-outlined text-[color:var(--color-imperial-gold)]">location_on</span>
+                <span className="material-symbols-outlined text-[color:var(--color-imperial-gold)]">
+                  location_on
+                </span>
               </div>
               <div className="relative aspect-video overflow-hidden rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-high">
                 <iframe
@@ -221,7 +336,15 @@ function ContactPage() {
   );
 }
 
-function InfoRow({ icon, title, children }: { icon: string; title: string; children: React.ReactNode }) {
+function InfoRow({
+  icon,
+  title,
+  children,
+}: {
+  icon: string;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="flex items-start gap-4">
       <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-viking-blue/10">
@@ -237,7 +360,9 @@ function InfoRow({ icon, title, children }: { icon: string; title: string; child
 function FieldError({ id, children }: { id: string; children: React.ReactNode }) {
   return (
     <p id={id} className="mt-2 flex items-center gap-1 text-sm text-vietnamese-red">
-      <span className="material-symbols-outlined text-base" aria-hidden="true">error</span>
+      <span className="material-symbols-outlined text-base" aria-hidden="true">
+        error
+      </span>
       {children}
     </p>
   );

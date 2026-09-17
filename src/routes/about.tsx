@@ -100,24 +100,24 @@ function AboutPage() {
           <div className="mt-12">
             <EditorialFeatureColumns
               items={[
-              {
-                icon: "diversity_3",
-                title: "Community",
-                description: "Building a family where every student feels seen and heard.",
-                accent: "red" as const,
-              },
-              {
-                icon: "temple_buddhist",
-                title: "Heritage",
-                description: "Preserving traditions while creating new memories at WWU.",
-                accent: "gold" as const,
-              },
-              {
-                icon: "school",
-                title: "Leadership",
-                description: "Preparing the next generation of visionary professionals.",
-                accent: "blue" as const,
-              },
+                {
+                  icon: "diversity_3",
+                  title: "Community",
+                  description: "Building a family where every student feels seen and heard.",
+                  accent: "red" as const,
+                },
+                {
+                  icon: "temple_buddhist",
+                  title: "Heritage",
+                  description: "Preserving traditions while creating new memories at WWU.",
+                  accent: "gold" as const,
+                },
+                {
+                  icon: "school",
+                  title: "Leadership",
+                  description: "Preparing the next generation of visionary professionals.",
+                  accent: "blue" as const,
+                },
               ]}
             />
           </div>
@@ -250,7 +250,10 @@ function AboutPage() {
                 "text-[color:var(--color-imperial-gold)]",
               ][i % 3];
               return (
-                <li key={org.id} className="group flex border-b border-[color:var(--color-outline-variant)]/60 py-8 last:border-b-0 md:border-b-0 md:border-l md:px-8 md:first:border-l-0">
+                <li
+                  key={org.id}
+                  className="group flex border-b border-[color:var(--color-outline-variant)]/60 py-8 last:border-b-0 md:border-b-0 md:border-l md:px-8 md:first:border-l-0"
+                >
                   <div className="flex h-full w-full flex-col text-left">
                     <div className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-surface p-4 transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100">
                       {org.logoUrl ? (
@@ -275,7 +278,9 @@ function AboutPage() {
                     <p className="mt-1 text-center text-xs leading-snug text-on-surface-variant">
                       {org.fullName}
                     </p>
-                    <span className={`mx-auto mt-3 border-b pb-1 text-[11px] font-semibold uppercase tracking-wider ${color}`}>
+                    <span
+                      className={`mx-auto mt-3 border-b pb-1 text-[11px] font-semibold uppercase tracking-wider ${color}`}
+                    >
                       {org.scope}
                     </span>
                     <p className="mt-5 text-sm leading-relaxed text-on-surface-variant">

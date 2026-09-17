@@ -107,7 +107,10 @@ export function DividedDetails({
   return (
     <dl className="divide-y divide-[color:var(--color-outline-variant)]/50 border-y border-[color:var(--color-outline-variant)]/50">
       {items.map((item) => (
-        <div key={item.label} className="grid gap-1 py-4 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6">
+        <div
+          key={item.label}
+          className="grid gap-1 py-4 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6"
+        >
           <dt className={cn("text-xs font-semibold uppercase tracking-wider", accentText[accent])}>
             {item.label}
           </dt>
