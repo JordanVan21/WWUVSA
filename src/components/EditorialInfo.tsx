@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type Accent = "red" | "gold" | "blue";
@@ -47,12 +46,8 @@ export function EditorialFeatureColumns({
       {items.map((item, index) => {
         const accent = item.accent ?? (["red", "gold", "blue"][index % 3] as Accent);
         return (
-          <motion.article
+          <article
             key={item.title}
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.45, delay: index * 0.06 }}
             className={cn(
               "group relative min-w-0 border-b border-[color:var(--color-outline-variant)]/55 py-7 last:border-b-0 sm:px-7 sm:first:pl-0 sm:[&:nth-child(2)]:border-l sm:[&:nth-child(2)]:border-[color:var(--color-outline-variant)]/55",
               columns === 3
@@ -90,7 +85,7 @@ export function EditorialFeatureColumns({
               )}
               aria-hidden="true"
             />
-          </motion.article>
+          </article>
         );
       })}
     </div>
@@ -107,7 +102,10 @@ export function DividedDetails({
   return (
     <dl className="divide-y divide-[color:var(--color-outline-variant)]/50 border-y border-[color:var(--color-outline-variant)]/50">
       {items.map((item) => (
-        <div key={item.label} className="grid gap-1 py-4 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6">
+        <div
+          key={item.label}
+          className="grid gap-1 py-4 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6"
+        >
           <dt className={cn("text-xs font-semibold uppercase tracking-wider", accentText[accent])}>
             {item.label}
           </dt>
