@@ -320,14 +320,18 @@ function ContactPage() {
               </div>
               <div className="relative aspect-video overflow-hidden rounded-lg border border-[color:var(--color-outline-variant)] bg-surface-container-high">
                 <iframe
-                  title="WWU Campus Map"
+                  title="Map showing Academic West at Western Washington University"
                   className="h-full w-full"
                   loading="lazy"
-                  src="https://www.google.com/maps?q=Western+Washington+University+Bellingham&output=embed"
+                  src="https://www.google.com/maps?q=Academic+West%2C+Western+Washington+University%2C+Bellingham%2C+WA&output=embed"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
-              <p className="mt-3 text-center text-xs text-on-surface-variant">Bellingham, WA</p>
+              <p className="mt-3 text-center text-xs text-on-surface-variant">
+                Academic West
+                <br />
+                Western Washington University, Bellingham, WA
+              </p>
             </div>
           </div>
         </div>

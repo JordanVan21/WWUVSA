@@ -32,7 +32,7 @@ export const WWU_VSA_EMAIL = "westernvsa@gmail.com";
  * is disabled gracefully and visitors are pointed at the direct email address.
  * The Apps Script source to deploy lives in docs/apps-script/contact-form.gs.
  */
-export const CONTACT_FORM_ENDPOINT = "";
+export const CONTACT_FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwm2kBXyRA55JPx6WdM7ydnsLumNrVkpJzW_jGEU9uEsavDEN_QkQBVxhYZYU9BVzEfaw/exec";
 
 /** True once a real Apps Script endpoint has been configured above. */
 export const isContactFormConfigured = () =>
